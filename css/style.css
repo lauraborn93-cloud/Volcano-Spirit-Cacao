@@ -110,7 +110,7 @@ p { margin: 0 0 1em; }
   color: var(--terracotta-dark);
   border-color: var(--terracotta);
 }
-.btn-outline:hover { background: var(--terracotta); color: #fff; border-color: var(--terracotta); }
+.btn-outline:hover { background: var(--terracotta); color: var(--parchment); border-color: var(--terracotta); }
 .on-dark .btn-outline,
 .cta-band .btn-outline,
 .photo-cta .btn-outline,
