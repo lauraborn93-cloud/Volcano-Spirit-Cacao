@@ -312,7 +312,7 @@ body.is-scrolled .hero-logo-big { opacity: 0; transform: translateX(-50%) transl
   margin: 18px 0 22px;
   color: #fff;
 }
-.hero h1 em { font-style: italic; color: #e6b98d; }
+.hero h1 em { font-style: normal; color: var(--terracotta); }
 .hero p.lede {
   font-size: clamp(1rem, 1.6vw, 1.2rem);
   max-width: 560px;
