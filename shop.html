@@ -65,6 +65,7 @@
   <a class="btn btn-primary" href="https://www.instagram.com/volcanospiritcacao/" target="_blank" rel="noopener">Follow @volcanospiritcacao</a>
 </nav>
 
+<main id="main">
 
 <div class="page-hero has-photo has-trust">
   <div class="page-hero-media"><img src="images/craft-cup-hands.jpg" alt="Hands cradling a warm cup of ceremonial cacao" loading="eager" fetchpriority="high" /></div>
@@ -75,20 +76,28 @@
   </div>
   <ul class="trust-row">
     <li>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V10" stroke-linecap="round"/><path d="M12 10C12 10 6 10 6 4C12 4 12 10 12 10Z" stroke-linejoin="round"/><path d="M12 14C12 14 18 14 18 8C12 8 12 14 12 14Z" stroke-linejoin="round"/></svg>
-      <span>Grown in Cacao Forest</span>
+      <span class="icon-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c4 2 6 6 6 10s-2 7-6 8c-4-1-6-4-6-8s2-8 6-10z" stroke-linejoin="round"/><path d="M12 5v16" stroke-linecap="round"/></svg></span>
+      <span>100% Pure Cacao</span>
     </li>
     <li>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg>
+      <span class="icon-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l5-7 4 5 3-4 6 6" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 20h18" stroke-linecap="round"/></svg></span>
+      <span>Sourced From Small-Scale Farms</span>
+    </li>
+    <li>
+      <span class="icon-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l4 7H9l3 6H5l3-6H6l4-7z" stroke-linejoin="round"/><path d="M7 17v3" stroke-linecap="round"/><path d="M17 8l3 5h-2l2 5h-6l2-5h-2l3-5z" stroke-linejoin="round"/><path d="M17 18v2" stroke-linecap="round"/></svg></span>
+      <span>Grown in Cacao Forests</span>
+    </li>
+    <li>
+      <span class="icon-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg></span>
       <span>Directly Sourced &amp; Fairtrade</span>
     </li>
     <li>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20C4 20 4 4 20 4C20 4 20 20 4 20Z" stroke-linejoin="round"/><path d="M4 20L16 8" stroke-linecap="round"/></svg>
-      <span>Vegan, Gluten &amp; Sugar Free</span>
+      <span class="icon-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.5-4.6-10-9.3C.5 7 2 3.5 5.7 3c2.3-.3 4.4 1 6.3 3.4C14 3.9 16.1 2.7 18.3 3c3.7.5 5.2 4 3.7 7.7C19.5 15.4 12 20 12 20z" stroke-linejoin="round"/></svg></span>
+      <span>Handmade with Love</span>
     </li>
     <li>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.5-4.6-10-9.3C.5 7 2 3.5 5.7 3c2.3-.3 4.4 1 6.3 3.4C14 3.9 16.1 2.7 18.3 3c3.7.5 5.2 4 3.7 7.7C19.5 15.4 12 20 12 20z" stroke-linejoin="round"/></svg>
-      <span>Handmade with Love</span>
+      <span class="icon-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20C4 20 4 4 20 4C20 4 20 20 4 20Z" stroke-linejoin="round"/><path d="M4 20L16 8" stroke-linecap="round"/></svg></span>
+      <span>Vegan &amp; Gluten-Free</span>
     </li>
   </ul>
 </div>
@@ -110,17 +119,29 @@
           <li>Direct trade with Mayan farming families</li>
         </ul>
 
-        <div class="buy-box" data-buy-box>
-          <div>
-            <span class="price-tag" data-price>$48.00</span>
-            <span class="price-note">Per 1kg block · shipping quoted before you pay</span>
+        <div data-buy-box>
+          <div class="size-select" role="radiogroup" aria-label="Size">
+            <label class="size-option">
+              <input type="radio" name="size" value="ceremonial-cacao-454g" data-size-option />
+              <span>454g <small>(1 lb)</small></span>
+            </label>
+            <label class="size-option">
+              <input type="radio" name="size" value="ceremonial-cacao-1kg" data-size-option checked />
+              <span>1kg</span>
+            </label>
           </div>
-          <div class="qty-stepper">
-            <button type="button" data-qty-minus aria-label="Decrease quantity">−</button>
-            <input type="number" min="1" value="1" data-qty aria-label="Quantity" />
-            <button type="button" data-qty-plus aria-label="Increase quantity">+</button>
+          <div class="buy-box">
+            <div>
+              <span class="price-tag" data-price>$48.00</span>
+              <span class="price-note">Shipping quoted before you pay</span>
+            </div>
+            <div class="qty-stepper">
+              <button type="button" data-qty-minus aria-label="Decrease quantity">−</button>
+              <input type="number" min="1" value="1" data-qty aria-label="Quantity" />
+              <button type="button" data-qty-plus aria-label="Increase quantity">+</button>
+            </div>
+            <button type="button" class="btn btn-primary" data-add-to-cart>Order Cacao</button>
           </div>
-          <button type="button" class="btn btn-primary" data-add-to-cart>Order Cacao</button>
         </div>
         <p class="add-note">Ships from Guatemala. We'll confirm exact shipping cost and delivery time by email before any payment is taken, nothing is charged automatically.</p>
 
@@ -200,6 +221,50 @@
   </div>
 </div>
 
+<section class="faq-band">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow on-dark">FAQ</p>
+      <h2>Your Questions about Ceremonial Cacao, Answered</h2>
+    </div>
+    <div class="faq-list" data-reveal itemscope itemtype="https://schema.org/FAQPage">
+      <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">What is ceremonial cacao and how is it different from regular chocolate?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Ceremonial cacao is 100% pure, minimally processed cacao made by fermenting, sun-drying, and stone-grinding whole cacao beans into a paste, with nothing added and nothing removed. Regular chocolate is heavily processed and typically contains sugar, dairy, and emulsifiers, often with only a small percentage of actual cacao.</p></div>
+      </details>
+      <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">Why buy ceremonial cacao from Guatemala?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Guatemala's volcanic highlands provide mineral-rich soil and a climate cacao has grown in for thousands of years. Our cacao is grown by Mayan family farmers in biodiverse forests rather than monocultures, hand-harvested, and traded directly with the families who grow it.</p></div>
+      </details>
+      <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">What is ceremonial cacao used for?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Ceremonial cacao is traditionally prepared as a warm drink for ceremony, meditation, and daily ritual. Many people use it to slow down, set an intention, or create a moment of presence, whether alone or shared with others.</p></div>
+      </details>
+      <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">What does ceremonial cacao taste like?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Ceremonial cacao is rich, earthy, and intensely chocolatey, with a natural bitterness and fuller body than sweetened chocolate. Because it contains no added sugar, its flavor is closer to a dense, dark drink than to hot cocoa, and many people add a natural sweetener to taste.</p></div>
+      </details>
+      <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">What does "ceremonial grade" cacao mean?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">"Ceremonial grade" refers to cacao made from whole beans, minimally processed with no added sugar, dairy, or emulsifiers, and prepared with care rather than mass-produced. There's no official legal standard for the term, so sourcing and transparency from the producer matter more than the label itself.</p></div>
+      </details>
+      <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">How much ceremonial cacao should I use?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">A traditional ceremonial dose is around 35 to 45 grams, roughly one to one and a half tablespoons, per 200ml of hot water. Many people start with a smaller amount, around 20 to 28 grams, to see how their body responds before working up to a full dose.</p></div>
+      </details>
+      <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">Is ceremonial cacao the same as raw cacao?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Not exactly. Raw cacao usually refers to unroasted beans processed at low temperatures, while ceremonial cacao specifically describes whole-bean cacao prepared for ritual use, fermented and sun-dried, then stone-ground with nothing added.</p></div>
+      </details>
+      <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">Can I drink ceremonial cacao every day?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Many people enjoy ceremonial cacao daily as part of a morning or evening ritual, often in smaller microdose amounts of 10 to 15 grams. As with any cacao product, it naturally contains theobromine and a small amount of caffeine, so it's worth noticing how your body responds.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
 
 <footer class="site-footer">
   <div class="container">
@@ -246,12 +311,20 @@
   <a href="cart.html">View Cart</a>
 </div>
 
-<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent">
-  <p>We use a few essential cookies to keep this site working, and, only with your permission, optional analytics and marketing cookies to understand what's resonating and reach you elsewhere. See our <a href="legal/cookie-policy.html">Cookie Policy</a>.</p>
-  <div class="cookie-actions">
-    <button type="button" class="btn btn-primary" id="cookie-accept-all">Accept All</button>
-    <button type="button" class="btn btn-outline" id="cookie-reject">Necessary Only</button>
-    <button type="button" class="btn-text" id="cookie-manage">Manage Consent</button>
+<div id="cookie-banner-overlay" class="cookie-banner-overlay" aria-hidden="true">
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cookie-banner-title">
+    <button type="button" class="cookie-banner-close" id="cookie-banner-close" aria-label="Close">&times;</button>
+    <h3 id="cookie-banner-title">Manage Consent</h3>
+    <p>To provide the best experience, we use technologies like cookies to store and/or access device information. Consenting to these technologies will allow us to process data such as browsing behavior on this site. Not consenting may adversely affect certain features and functions.</p>
+    <div class="cookie-actions">
+      <button type="button" class="btn btn-primary" id="cookie-accept-all">Accept</button>
+      <button type="button" class="btn btn-light" id="cookie-reject">Deny</button>
+      <button type="button" class="btn btn-light" id="cookie-manage">View Preferences</button>
+    </div>
+    <div class="cookie-links">
+      <a href="legal/cookie-policy.html">Cookie Policy</a>
+      <a href="legal/terms.html">Terms and Conditions</a>
+    </div>
   </div>
 </div>
 

@@ -1,4 +1,4 @@
-/* Self-hosted Fraunces + Jost (Latin subset) — avoids sending visitor IPs to Google Fonts' CDN pre-consent. */
+/* Self-hosted Fraunces + Jost (Latin subset), avoids sending visitor IPs to Google Fonts' CDN pre-consent. */
 
 @font-face {
   font-family: 'Fraunces';

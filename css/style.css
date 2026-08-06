@@ -1,5 +1,5 @@
 /* ===================================================================
-   Volcano Spirit Cacao — stylesheet
+   Volcano Spirit Cacao, stylesheet
    Palette drawn from the brand's own photography & packaging:
    charcoal (logo ground), parchment (kraft packaging), cacao brown,
    volcanic terracotta, deep maroon (raw pod), highland sage.
@@ -289,7 +289,7 @@ body.has-hero.is-scrolled .site-header .brand { pointer-events: auto; }
   position: absolute;
   inset: 0;
   /* Subjects in the source photo sit bottom-center, so the text lives in the
-     open sky/mountain area up top instead of over them — darken the top for
+     open sky/mountain area up top instead of over them, darken the top for
      legibility, keep the lower half (where people are) mostly undarkened. */
   background: linear-gradient(180deg, rgba(61,39,24,0.62) 0%, rgba(61,39,24,0.3) 40%, rgba(61,39,24,0.12) 60%, rgba(61,39,24,0.4) 100%);
 }
@@ -335,34 +335,63 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  align-items: center;
-  gap: 36px;
+  align-items: stretch;
+  gap: 0;
   margin: 0;
-  padding: 20px 32px;
+  padding: 26px 32px;
   border-top: 1px solid rgba(245,237,225,0.22);
-  background: linear-gradient(0deg, rgba(61,39,24,0.5) 0%, rgba(61,39,24,0.1) 100%);
+  background: linear-gradient(0deg, rgba(61,39,24,0.55) 0%, rgba(61,39,24,0.15) 100%);
 }
 .trust-row li {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 16px;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
   white-space: nowrap;
+  padding: 0 22px;
+  position: relative;
+}
+.trust-row li:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: rgba(245,237,225,0.25);
+}
+.trust-row .icon-circle {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: 1px solid var(--terracotta);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 .trust-row svg {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
   stroke: var(--terracotta);
   fill: none;
   stroke-width: 1.1;
 }
-.trust-row span {
-  font-size: 11px;
+.trust-row span:last-child {
+  font-size: 10.5px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--parchment);
   opacity: 0.92;
   line-height: 1.3;
+  max-width: 110px;
+  white-space: normal;
+}
+@media (max-width: 900px) {
+  .trust-row li:not(:first-child)::before { display: none; }
 }
 .scroll-cue {
   position: absolute;
@@ -640,8 +669,11 @@ section { position: relative; }
   .section { padding: 66px 0; }
   .manifesto, .gallery-band, .cta-band { padding: 66px 0; }
   .hero-content { padding: 150px 20px 40px; max-width: 100%; }
-  .trust-row { flex-wrap: wrap; gap: 12px 22px; padding: 14px 16px; }
-  .trust-row span { font-size: 10px; }
+  .trust-row { flex-wrap: wrap; gap: 16px 10px; padding: 18px 16px; }
+  .trust-row li { padding: 0 6px; flex: 1 1 40%; }
+  .trust-row .icon-circle { width: 50px; height: 50px; }
+  .trust-row svg { width: 20px; height: 20px; }
+  .trust-row span:last-child { font-size: 9.5px; max-width: 100%; }
   .scroll-cue { display: none; }
   .value-grid { grid-template-columns: 1fr; }
   .stat-row { gap: 26px; }

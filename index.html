@@ -86,19 +86,19 @@
     </div>
     <ul class="trust-row">
       <li>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V10" stroke-linecap="round"/><path d="M12 10C12 10 6 10 6 4C12 4 12 10 12 10Z" stroke-linejoin="round"/><path d="M12 14C12 14 18 14 18 8C12 8 12 14 12 14Z" stroke-linejoin="round"/></svg>
+        <span class="icon-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V10" stroke-linecap="round"/><path d="M12 10C12 10 6 10 6 4C12 4 12 10 12 10Z" stroke-linejoin="round"/><path d="M12 14C12 14 18 14 18 8C12 8 12 14 12 14Z" stroke-linejoin="round"/></svg></span>
         <span>Grown in Cacao Forest</span>
       </li>
       <li>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg>
+        <span class="icon-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg></span>
         <span>Directly Sourced &amp; Fairtrade</span>
       </li>
       <li>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20C4 20 4 4 20 4C20 4 20 20 4 20Z" stroke-linejoin="round"/><path d="M4 20L16 8" stroke-linecap="round"/></svg>
+        <span class="icon-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20C4 20 4 4 20 4C20 4 20 20 4 20Z" stroke-linejoin="round"/><path d="M4 20L16 8" stroke-linecap="round"/></svg></span>
         <span>Vegan, Gluten &amp; Sugar Free</span>
       </li>
       <li>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.5-4.6-10-9.3C.5 7 2 3.5 5.7 3c2.3-.3 4.4 1 6.3 3.4C14 3.9 16.1 2.7 18.3 3c3.7.5 5.2 4 3.7 7.7C19.5 15.4 12 20 12 20z" stroke-linejoin="round"/></svg>
+        <span class="icon-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.5-4.6-10-9.3C.5 7 2 3.5 5.7 3c2.3-.3 4.4 1 6.3 3.4C14 3.9 16.1 2.7 18.3 3c3.7.5 5.2 4 3.7 7.7C19.5 15.4 12 20 12 20z" stroke-linejoin="round"/></svg></span>
         <span>Handmade with Love</span>
       </li>
     </ul>
@@ -286,12 +286,20 @@
   <a href="cart.html">View Cart</a>
 </div>
 
-<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent">
-  <p>We use a few essential cookies to keep this site working, and, only with your permission, optional analytics and marketing cookies to understand what's resonating and reach you elsewhere. See our <a href="legal/cookie-policy.html">Cookie Policy</a>.</p>
-  <div class="cookie-actions">
-    <button type="button" class="btn btn-primary" id="cookie-accept-all">Accept All</button>
-    <button type="button" class="btn btn-outline" id="cookie-reject">Necessary Only</button>
-    <button type="button" class="btn-text" id="cookie-manage">Manage Consent</button>
+<div id="cookie-banner-overlay" class="cookie-banner-overlay" aria-hidden="true">
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cookie-banner-title">
+    <button type="button" class="cookie-banner-close" id="cookie-banner-close" aria-label="Close">&times;</button>
+    <h3 id="cookie-banner-title">Manage Consent</h3>
+    <p>To provide the best experience, we use technologies like cookies to store and/or access device information. Consenting to these technologies will allow us to process data such as browsing behavior on this site. Not consenting may adversely affect certain features and functions.</p>
+    <div class="cookie-actions">
+      <button type="button" class="btn btn-primary" id="cookie-accept-all">Accept</button>
+      <button type="button" class="btn btn-light" id="cookie-reject">Deny</button>
+      <button type="button" class="btn btn-light" id="cookie-manage">View Preferences</button>
+    </div>
+    <div class="cookie-links">
+      <a href="legal/cookie-policy.html">Cookie Policy</a>
+      <a href="legal/terms.html">Terms and Conditions</a>
+    </div>
   </div>
 </div>
 

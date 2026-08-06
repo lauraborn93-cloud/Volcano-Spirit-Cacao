@@ -25,7 +25,7 @@
           if (res.ok) {
             form.reset();
             if (status) {
-              status.textContent = form.getAttribute("data-success-message") || "Thank you — you're on the list.";
+              status.textContent = form.getAttribute("data-success-message") || "Thank you, you're on the list.";
               status.className = "form-status show ok";
             }
             form.dispatchEvent(new CustomEvent("vsc:form-success"));
@@ -35,7 +35,7 @@
         })
         .catch(function () {
           if (status) {
-            status.textContent = "Something went wrong — please try again, or email us directly at " + (window.VSC ? VSC.contactEmail : "our team") + ".";
+            status.textContent = "Something went wrong, please try again, or email us directly at " + (window.VSC ? VSC.contactEmail : "our team") + ".";
             status.className = "form-status show err";
           }
         })

@@ -62,7 +62,7 @@
   }
 
   function formatMoney(amount, currency) {
-    currency = currency || (window.VSC && VSC.product && VSC.product.currency) || "USD";
+    currency = currency || (window.VSC && VSC.products && VSC.products[0] && VSC.products[0].currency) || "USD";
     try {
       return new Intl.NumberFormat("en-US", { style: "currency", currency: currency }).format(amount);
     } catch (e) {
@@ -91,13 +91,28 @@
   /* ---------- Product page: add-to-cart wiring ---------- */
   function initBuyBox() {
     var box = document.querySelector("[data-buy-box]");
-    if (!box || !window.VSC) return;
+    if (!box || !window.VSC || !VSC.products || !VSC.products.length) return;
     var priceEl = box.querySelector("[data-price]");
-    if (priceEl) priceEl.textContent = formatMoney(VSC.product.price, VSC.product.currency);
     var qtyInput = box.querySelector("[data-qty]");
     var minus = box.querySelector("[data-qty-minus]");
     var plus = box.querySelector("[data-qty-plus]");
     var addBtn = box.querySelector("[data-add-to-cart]");
+    var sizeInputs = box.querySelectorAll("[data-size-option]");
+
+    function selectedProduct() {
+      var checked = box.querySelector("[data-size-option]:checked");
+      var id = checked ? checked.value : VSC.products[0].id;
+      var match = VSC.products.filter(function (p) { return p.id === id; })[0];
+      return match || VSC.products[0];
+    }
+    function updatePrice() {
+      var p = selectedProduct();
+      if (priceEl) priceEl.textContent = formatMoney(p.price, p.currency);
+    }
+    sizeInputs.forEach(function (input) {
+      input.addEventListener("change", updatePrice);
+    });
+    updatePrice();
 
     minus.addEventListener("click", function () {
       qtyInput.value = Math.max(1, (parseInt(qtyInput.value, 10) || 1) - 1);
@@ -106,8 +121,9 @@
       qtyInput.value = (parseInt(qtyInput.value, 10) || 1) + 1;
     });
     addBtn.addEventListener("click", function () {
-      addToCart(VSC.product, qtyInput.value);
-      showToast(qtyInput.value + " × " + VSC.product.name + " added to your bag.");
+      var p = selectedProduct();
+      addToCart(p, qtyInput.value);
+      showToast(qtyInput.value + " × " + p.name + " added to your bag.");
     });
   }
 
@@ -217,7 +233,7 @@
 
         if (action.indexOf("YOUR_ORDER_FORM_ID") !== -1) {
           if (status) {
-            status.textContent = "Online order submission isn't connected yet — please email your order to " + (window.VSC ? VSC.contactEmail : "us") + " using the button below, and we'll confirm pricing, shipping and payment with you directly.";
+            status.textContent = "Online order submission isn't connected yet, please email your order to " + (window.VSC ? VSC.contactEmail : "us") + " using the button below, and we'll confirm pricing, shipping and payment with you directly.";
             status.className = "form-status show err";
           }
           return;

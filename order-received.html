@@ -120,12 +120,20 @@
   <a href="cart.html">View Cart</a>
 </div>
 
-<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent">
-  <p>We use a few essential cookies to keep this site working, and, only with your permission, optional analytics and marketing cookies to understand what's resonating and reach you elsewhere. See our <a href="legal/cookie-policy.html">Cookie Policy</a>.</p>
-  <div class="cookie-actions">
-    <button type="button" class="btn btn-primary" id="cookie-accept-all">Accept All</button>
-    <button type="button" class="btn btn-outline" id="cookie-reject">Necessary Only</button>
-    <button type="button" class="btn-text" id="cookie-manage">Manage Consent</button>
+<div id="cookie-banner-overlay" class="cookie-banner-overlay" aria-hidden="true">
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cookie-banner-title">
+    <button type="button" class="cookie-banner-close" id="cookie-banner-close" aria-label="Close">&times;</button>
+    <h3 id="cookie-banner-title">Manage Consent</h3>
+    <p>To provide the best experience, we use technologies like cookies to store and/or access device information. Consenting to these technologies will allow us to process data such as browsing behavior on this site. Not consenting may adversely affect certain features and functions.</p>
+    <div class="cookie-actions">
+      <button type="button" class="btn btn-primary" id="cookie-accept-all">Accept</button>
+      <button type="button" class="btn btn-light" id="cookie-reject">Deny</button>
+      <button type="button" class="btn btn-light" id="cookie-manage">View Preferences</button>
+    </div>
+    <div class="cookie-links">
+      <a href="legal/cookie-policy.html">Cookie Policy</a>
+      <a href="legal/terms.html">Terms and Conditions</a>
+    </div>
   </div>
 </div>
 

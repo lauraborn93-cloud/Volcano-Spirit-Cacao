@@ -1,5 +1,5 @@
 /* ===================================================================
-   Volcano Spirit Cacao — shop, legal & consent components
+   Volcano Spirit Cacao, shop, legal & consent components
    Extends css/style.css (shares the same custom properties).
 =================================================================== */
 
@@ -31,6 +31,27 @@
 }
 .cart-badge[data-count="0"] { display: none; }
 .mobile-nav .cart-badge[data-count="0"] { display: inline; }
+
+/* ---------- Size selector ---------- */
+.size-select { display: flex; gap: 10px; margin: 18px 0 20px; flex-wrap: wrap; }
+.size-option { position: relative; cursor: pointer; }
+.size-option input { position: absolute; opacity: 0; width: 0; height: 0; }
+.size-option span {
+  display: block;
+  padding: 11px 20px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.92rem;
+  color: var(--cacao);
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+.size-option span small { opacity: 0.65; font-size: 0.85em; }
+.size-option input:checked + span {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: var(--parchment);
+}
+.size-option input:focus-visible + span { outline: 2px solid var(--terracotta-dark); outline-offset: 2px; }
 
 /* ---------- Product add-to-cart block ---------- */
 .buy-box {
@@ -361,40 +382,68 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
 .legal-toc h4 { margin: 0 0 12px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; }
 .legal-toc ol { margin: 0; padding-left: 1.2em; columns: 2; font-size: 0.9rem; }
 
-/* ---------- Cookie consent banner ---------- */
-.cookie-banner {
+/* ---------- Cookie consent banner (centered modal + backdrop) ---------- */
+.cookie-banner-overlay {
   position: fixed;
-  left: auto;
-  right: 20px;
-  bottom: 20px;
+  inset: 0;
   z-index: 2000;
-  width: 380px;
-  max-width: calc(100vw - 40px);
-  margin: 0;
-  background: var(--forest-dark);
-  color: var(--parchment);
-  border-radius: 14px;
-  padding: 26px 26px 22px;
-  box-shadow: 0 25px 60px -20px rgba(0,0,0,0.55);
-  transform: translateY(140%);
-  transition: transform 0.4s ease;
+  background: rgba(27,23,18,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
-.cookie-banner.is-visible { transform: translateY(0); }
-.cookie-banner p { font-size: 0.88rem; opacity: 0.85; margin: 0 0 18px; line-height: 1.55; }
-.cookie-banner p a { color: #e6b98d; text-decoration: underline; }
-.cookie-actions { display: flex; flex-direction: column; gap: 10px; }
-.cookie-actions .btn { padding: 11px 18px; font-size: 12px; width: 100%; justify-content: center; }
-.cookie-actions .btn-text {
-  background: none;
+.cookie-banner-overlay.is-visible { opacity: 1; pointer-events: auto; }
+.cookie-banner {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  max-height: 86vh;
+  overflow-y: auto;
+  background: var(--parchment);
+  color: var(--cacao);
+  border-radius: 20px;
+  padding: 40px 44px;
+  box-shadow: 0 40px 80px -20px rgba(0,0,0,0.5);
+  text-align: center;
+  transform: translateY(16px);
+  transition: transform 0.3s ease;
+}
+.cookie-banner-overlay.is-visible .cookie-banner { transform: translateY(0); }
+.cookie-banner h3 { font-size: 1.5rem; margin: 0 0 16px; }
+.cookie-banner-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 32px;
+  height: 32px;
   border: none;
-  color: var(--parchment);
-  opacity: 0.7;
-  text-decoration: underline;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  background: none;
+  color: var(--terracotta);
+  font-size: 22px;
+  line-height: 1;
   cursor: pointer;
-  padding: 11px 4px;
+  border-radius: 50%;
+}
+.cookie-banner-close:hover { background: var(--parchment-dim); }
+.cookie-banner p { font-size: 0.92rem; opacity: 0.8; margin: 0 0 26px; line-height: 1.6; }
+.cookie-banner p a { color: var(--terracotta-dark); text-decoration: underline; }
+.cookie-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.cookie-actions .btn { padding: 13px 24px; font-size: 13px; flex: 1 1 140px; justify-content: center; }
+.btn-light {
+  background: var(--parchment);
+  color: var(--cacao);
+  border: 1px solid var(--line);
+}
+.btn-light:hover { background: #fff; }
+.cookie-links { display: flex; gap: 22px; justify-content: center; margin-top: 20px; }
+.cookie-links a { font-size: 0.82rem; color: var(--terracotta-dark); text-decoration: underline; opacity: 0.85; }
+@media (max-width: 480px) {
+  .cookie-banner { padding: 34px 24px; }
+  .cookie-actions .btn { flex: 1 1 100%; }
 }
 
 .cookie-modal-overlay {
@@ -451,5 +500,33 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
   .cart-item-info img { width: 56px; height: 56px; }
   .cart-table th:nth-child(3), .cart-table td:nth-child(3) { display: none; }
   .page-hero { padding: 130px 0 46px; }
-  .cookie-banner { left: 10px; right: 10px; bottom: 10px; padding: 20px; }
 }
+
+/* ---------- FAQ accordion ---------- */
+.faq-band { background: var(--forest-dark); color: var(--parchment); padding: 90px 0; }
+.faq-band .section-head { margin-bottom: 44px; }
+.faq-band h2 { color: var(--parchment); }
+.faq-band .section-head p { color: var(--parchment); opacity: 0.75; }
+.faq-list { max-width: 860px; margin: 0 auto; border-top: 1px solid rgba(245,237,225,0.2); }
+.faq-item { border-bottom: 1px solid rgba(245,237,225,0.2); }
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 4px;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+";
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--terracotta);
+  flex-shrink: 0;
+}
+.faq-item[open] summary::after { content: "\2212"; }
+.faq-item .faq-answer { padding: 0 4px 26px; max-width: 760px; opacity: 0.82; font-size: 0.96rem; line-height: 1.6; }
