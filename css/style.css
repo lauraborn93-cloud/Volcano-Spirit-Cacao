@@ -16,6 +16,7 @@
   --maroon: #6e2430;
   --sage: #565f42;
   --sage-light: #7c8560;
+  --forest-dark: #2d3624;
   --cream-ink: #efe6d6;
   --line: rgba(27, 23, 18, 0.12);
   --line-light: rgba(245, 237, 225, 0.18);
@@ -119,7 +120,7 @@ p { margin: 0 0 1em; }
   position: absolute;
   left: -999px;
   top: 0;
-  background: var(--charcoal);
+  background: var(--forest-dark);
   color: var(--parchment);
   padding: 12px 20px;
   z-index: 2000;
@@ -144,7 +145,7 @@ p { margin: 0 0 1em; }
   max-width: 1400px;
 }
 .site-header.is-scrolled {
-  background: rgba(27, 23, 18, 0.94);
+  background: rgba(45, 54, 36, 0.94);
   backdrop-filter: blur(8px);
   padding: 12px 0;
   box-shadow: 0 10px 30px -20px rgba(0,0,0,0.6);
@@ -206,7 +207,7 @@ body.has-hero.is-scrolled .site-header .brand { opacity: 1; pointer-events: auto
 
 .header-cta { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
 .header-cta .btn { color: var(--parchment); border-color: var(--parchment); padding: 11px 22px; }
-.header-cta .btn:hover { background: var(--parchment); color: var(--charcoal); }
+.header-cta .btn:hover { background: var(--parchment); color: var(--cacao); }
 
 .nav-toggle {
   display: none;
@@ -270,7 +271,7 @@ body.has-hero.is-scrolled .site-header .brand { opacity: 1; pointer-events: auto
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(20,16,12,0.55) 0%, rgba(20,16,12,0.25) 32%, rgba(20,16,12,0.75) 100%);
+  background: linear-gradient(180deg, rgba(61,39,24,0.55) 0%, rgba(61,39,24,0.22) 32%, rgba(61,39,24,0.78) 100%);
 }
 .hero-logo-big {
   position: absolute;
@@ -281,7 +282,7 @@ body.has-hero.is-scrolled .site-header .brand { opacity: 1; pointer-events: auto
   transform: translateX(-50%);
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
-.hero-logo-big img { width: 100%; display: block; filter: drop-shadow(0 6px 20px rgba(0,0,0,0.35)); }
+.hero-logo-big img { width: 100%; height: auto; display: block; filter: drop-shadow(0 6px 20px rgba(0,0,0,0.35)); }
 body.is-scrolled .hero-logo-big { opacity: 0; transform: translateX(-50%) translateY(-16px); pointer-events: none; }
 .hero-content {
   position: relative;
@@ -484,7 +485,7 @@ section { position: relative; }
 
 /* ---------- Footer ---------- */
 .site-footer {
-  background: var(--charcoal);
+  background: var(--forest-dark);
   color: #cbbfa9;
   padding: 70px 0 30px;
 }
@@ -537,7 +538,7 @@ section { position: relative; }
   .header-cta { gap: 0; }
 
   .mobile-nav {
-    background: var(--charcoal);
+    background: var(--forest-dark);
     display: flex;
     flex-direction: column;
     justify-content: center;
