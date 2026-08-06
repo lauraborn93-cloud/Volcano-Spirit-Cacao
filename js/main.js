@@ -18,6 +18,7 @@
 
     var progress = Math.min(window.scrollY / LOGO_FADE_DISTANCE, 1);
     document.documentElement.style.setProperty("--hero-logo-opacity", String(1 - progress));
+    document.documentElement.style.setProperty("--hero-logo-scale", String(1 - progress * 0.55));
     document.documentElement.style.setProperty("--brand-opacity", String(progress));
   }
   window.addEventListener("scroll", onScroll, { passive: true });
