@@ -141,6 +141,7 @@ p { margin: 0 0 1em; }
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  max-width: 1400px;
 }
 .site-header.is-scrolled {
   background: rgba(27, 23, 18, 0.94);
@@ -154,33 +155,42 @@ p { margin: 0 0 1em; }
   align-items: center;
   gap: 12px;
   color: var(--parchment);
+  flex-shrink: 0;
 }
-.brand img { height: 40px; width: 40px; border-radius: 50%; }
+.brand img { height: 40px; width: 40px; border-radius: 50%; flex-shrink: 0; }
 .brand-word {
   font-family: var(--font-display);
-  font-size: 18px;
-  letter-spacing: 0.08em;
+  font-size: 15px;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  white-space: nowrap;
   line-height: 1.1;
 }
 .brand-word span { display: block; font-size: 10px; letter-spacing: 0.3em; color: #cbb190; font-family: var(--font-body); margin-top: 2px; }
 
-.main-nav { display: flex; }
+/* Homepage only: the big centered hero logo carries the brand at scroll=0,
+   so the small corner mark starts hidden and crossfades in once scrolled
+   (see .hero-logo-big below, and body.has-hero/is-scrolled toggled by main.js). */
+body.has-hero .site-header .brand { opacity: 0; transition: opacity 0.35s ease; pointer-events: none; }
+body.has-hero.is-scrolled .site-header .brand { opacity: 1; pointer-events: auto; }
+
+.main-nav { display: flex; min-width: 0; }
 .main-nav ul {
   list-style: none;
   display: flex;
-  gap: 34px;
+  gap: 22px;
   margin: 0;
   padding: 0;
 }
 .main-nav a {
   color: var(--parchment);
-  font-size: 13px;
-  letter-spacing: 0.12em;
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   font-weight: 500;
   position: relative;
   padding-bottom: 4px;
+  white-space: nowrap;
 }
 .main-nav a::after {
   content: "";
@@ -194,7 +204,7 @@ p { margin: 0 0 1em; }
 }
 .main-nav a:hover::after { transform: scaleX(1); }
 
-.header-cta { display: flex; align-items: center; gap: 18px; }
+.header-cta { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
 .header-cta .btn { color: var(--parchment); border-color: var(--parchment); padding: 11px 22px; }
 .header-cta .btn:hover { background: var(--parchment); color: var(--charcoal); }
 
@@ -262,6 +272,17 @@ p { margin: 0 0 1em; }
   inset: 0;
   background: linear-gradient(180deg, rgba(20,16,12,0.55) 0%, rgba(20,16,12,0.25) 32%, rgba(20,16,12,0.75) 100%);
 }
+.hero-logo-big {
+  position: absolute;
+  top: 34px;
+  left: 50%;
+  z-index: 2;
+  width: 108px;
+  transform: translateX(-50%);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.hero-logo-big img { width: 100%; display: block; filter: drop-shadow(0 6px 20px rgba(0,0,0,0.35)); }
+body.is-scrolled .hero-logo-big { opacity: 0; transform: translateX(-50%) translateY(-16px); pointer-events: none; }
 .hero-content {
   position: relative;
   z-index: 1;
@@ -305,14 +326,14 @@ section { position: relative; }
 .section-head p { font-size: 1.05rem; opacity: 0.85; }
 .center { text-align: center; margin-left: auto; margin-right: auto; }
 
-.on-dark { background: var(--charcoal); color: var(--parchment); }
-.on-cacao { background: var(--cacao); color: var(--parchment); }
-.on-sage { background: var(--sage); color: var(--parchment); }
+.on-dark { color: var(--parchment); }
+.on-cacao { color: var(--parchment); }
+.on-sage { color: var(--parchment); }
 
 /* ---------- Manifesto (controversial section) ---------- */
 .manifesto {
-  background: var(--charcoal);
-  color: var(--parchment);
+  background: var(--parchment-dim);
+  color: var(--cacao);
   padding: 110px 0;
   position: relative;
   overflow: hidden;
@@ -321,7 +342,7 @@ section { position: relative; }
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 85% 20%, rgba(168,90,52,0.18), transparent 55%);
+  background: radial-gradient(circle at 85% 20%, rgba(168,90,52,0.1), transparent 55%);
   pointer-events: none;
 }
 .manifesto-grid {
@@ -333,23 +354,24 @@ section { position: relative; }
 }
 .manifesto h2 {
   font-size: clamp(2rem, 4.2vw, 3.1rem);
-  color: #fff;
+  color: var(--cacao);
 }
-.manifesto h2 .strike { position: relative; color: #b98a68; }
-.manifesto-body p { font-size: 1.08rem; color: #e6dbc9; }
-.manifesto-body p.lead { font-size: 1.25rem; color: #fff; font-family: var(--font-display); font-weight: 400; line-height: 1.5; }
+.manifesto h2 .strike { position: relative; color: var(--terracotta-dark); }
+.manifesto-body p { font-size: 1.08rem; color: var(--cacao); opacity: 0.85; }
+.manifesto-body p.lead { font-size: 1.25rem; color: var(--cacao); opacity: 1; font-family: var(--font-display); font-weight: 400; line-height: 1.5; }
 .manifesto-list { list-style: none; margin: 30px 0 0; padding: 0; display: grid; gap: 18px; }
 .manifesto-list li {
   display: flex;
   gap: 14px;
   padding: 18px 20px;
-  background: rgba(245, 237, 225, 0.05);
-  border: 1px solid var(--line-light);
+  background: #fff;
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   font-size: 0.95rem;
-  color: #e6dbc9;
+  color: var(--cacao);
+  opacity: 0.9;
 }
-.manifesto-list b { color: #fff; font-family: var(--font-display); font-weight: 500; display: block; margin-bottom: 4px; }
+.manifesto-list b { color: var(--cacao); font-family: var(--font-display); font-weight: 500; display: block; margin-bottom: 4px; opacity: 1; }
 .manifesto-list .mark { color: var(--terracotta); font-size: 1.1rem; flex-shrink: 0; }
 
 /* ---------- Origin / story with image ---------- */
@@ -548,4 +570,10 @@ section { position: relative; }
   .footer-grid { grid-template-columns: 1fr; }
   .btn-row { flex-direction: column; align-items: stretch; }
   .btn-row .btn { justify-content: center; }
+  .hero-logo-big { width: 76px; top: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-logo-big,
+  body.has-hero .site-header .brand { transition: none; }
 }

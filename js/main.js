@@ -6,14 +6,13 @@
   var mobileNav = document.querySelector(".mobile-nav");
 
   var hasHero = !!document.querySelector(".hero");
+  if (hasHero) document.body.classList.add("has-hero");
 
   function onScroll() {
     if (!hasHero) return;
-    if (window.scrollY > 40) {
-      header.classList.add("is-scrolled");
-    } else {
-      header.classList.remove("is-scrolled");
-    }
+    var scrolled = window.scrollY > 40;
+    header.classList.toggle("is-scrolled", scrolled);
+    document.body.classList.toggle("is-scrolled", scrolled);
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
