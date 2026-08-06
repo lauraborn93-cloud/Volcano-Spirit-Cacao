@@ -87,7 +87,7 @@ p { margin: 0 0 1em; }
   align-items: center;
   gap: 10px;
   padding: 15px 30px;
-  border-radius: var(--radius);
+  border-radius: 999px;
   font-family: var(--font-body);
   font-size: 13.5px;
   letter-spacing: 0.14em;
@@ -473,6 +473,8 @@ section { position: relative; }
   padding-bottom: 50px;
   border-bottom: 1px solid var(--line-light);
 }
+.footer-grid-2 { grid-template-columns: 1.5fr 1fr; }
+.footer-grid-2 h4:not(:first-of-type) { margin-top: 26px; }
 .footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
 .footer-brand img { height: 44px; width: 44px; border-radius: 50%; }
 .footer-brand span { font-family: var(--font-display); color: #fff; font-size: 17px; letter-spacing: 0.06em; text-transform: uppercase; }
