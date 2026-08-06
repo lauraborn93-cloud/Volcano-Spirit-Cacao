@@ -495,6 +495,14 @@ section { position: relative; }
 }
 .value-card h3 { font-size: 1.25rem; margin: 14px 0 10px; }
 .value-card p { font-size: 0.96rem; opacity: 0.82; margin: 0; }
+.value-card img.card-thumb {
+  display: block;
+  width: calc(100% + 60px);
+  margin: -34px -30px 20px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
 
 /* ---------- Ceremony gallery band ---------- */
 .gallery-band { background: var(--maroon); color: var(--parchment); padding: 90px 0; }

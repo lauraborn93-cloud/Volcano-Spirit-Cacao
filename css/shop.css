@@ -105,6 +105,53 @@
 .page-hero h1 { color: var(--cacao); font-size: clamp(1.9rem, 4vw, 2.8rem); margin-bottom: 6px; }
 .page-hero p { opacity: 0.75; max-width: 560px; margin: 0; }
 
+/* ---------- Page hero, full-width photo variant (about/spirit/shop/recipes/etc) ---------- */
+.page-hero.has-photo {
+  position: relative;
+  overflow: hidden;
+  min-height: 52vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 150px 0 54px;
+  border-bottom: none;
+  color: var(--parchment);
+}
+.page-hero-media { position: absolute; inset: 0; z-index: 0; }
+.page-hero-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.page-hero.has-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, rgba(61,39,24,0.28) 0%, rgba(61,39,24,0.72) 100%);
+}
+.page-hero.has-photo .container { position: relative; z-index: 1; }
+.page-hero.has-photo h1 { color: var(--parchment); }
+.page-hero.has-photo p { color: var(--parchment); opacity: 0.92; }
+@media (max-width: 640px) {
+  .page-hero.has-photo { min-height: 40vh; padding: 128px 0 40px; }
+}
+
+/* Hero variant that also carries a bottom trust-row (see .trust-row in
+   style.css): text anchors to the top instead of the bottom, and extra
+   bottom padding reserves room so the trust-row doesn't overlap it. */
+.page-hero.has-photo.has-trust {
+  align-items: flex-start;
+  padding-bottom: 130px;
+}
+@media (max-width: 640px) {
+  .page-hero.has-photo.has-trust { padding-bottom: 190px; }
+}
+
+/* ---------- Solid-terracotta mission band ---------- */
+.cta-band.on-terracotta { background: var(--terracotta); }
+.cta-band.on-terracotta p { color: var(--parchment); opacity: 0.92; }
+
+/* ---------- Simple checkmark list (benefits) ---------- */
+.check-list { list-style: none; margin: 22px 0 28px; padding: 0; display: grid; gap: 12px; }
+.check-list li { display: flex; align-items: baseline; gap: 10px; font-size: 1rem; }
+.check-list li::before { content: "✓"; color: var(--terracotta); font-weight: 600; }
+
 .page-body { padding: 60px 0 100px; }
 
 /* ---------- Cart page ---------- */
