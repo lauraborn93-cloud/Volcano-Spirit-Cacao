@@ -123,7 +123,7 @@ p { margin: 0 0 1em; }
 .photo-cta .btn-outline:hover,
 .hero .btn-outline:hover {
   background: rgba(245,237,225,0.12);
-  color: #fff;
+  color: var(--parchment);
 }
 
 .btn-row { display: flex; flex-wrap: wrap; gap: 14px; }
@@ -183,10 +183,11 @@ p { margin: 0 0 1em; }
 .brand-word span { display: block; font-size: 10px; letter-spacing: 0.3em; color: #cbb190; font-family: var(--font-body); margin-top: 2px; }
 
 /* Homepage only: the big centered hero logo carries the brand at scroll=0,
-   so the small corner mark starts hidden and crossfades in once scrolled
-   (see .hero-logo-big below, and body.has-hero/is-scrolled toggled by main.js). */
-body.has-hero .site-header .brand { opacity: 0; transition: opacity 0.35s ease; pointer-events: none; }
-body.has-hero.is-scrolled .site-header .brand { opacity: 1; pointer-events: auto; }
+   and slowly fades out as you scroll (opacity driven by --hero-logo-opacity,
+   set continuously in main.js) while the small corner mark crossfades in
+   (see .hero-logo-big below). */
+body.has-hero .site-header .brand { opacity: var(--brand-opacity, 0); transition: opacity 0.1s linear; pointer-events: none; }
+body.has-hero.is-scrolled .site-header .brand { pointer-events: auto; }
 
 .main-nav { display: flex; min-width: 0; }
 .main-nav ul {
@@ -292,25 +293,26 @@ body.has-hero.is-scrolled .site-header .brand { opacity: 1; pointer-events: auto
 }
 .hero-logo-big {
   position: absolute;
-  top: 100px;
+  top: 56px;
   left: 50%;
   z-index: 2;
-  width: 108px;
+  width: 130px;
   transform: translateX(-50%);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  opacity: var(--hero-logo-opacity, 1);
+  transition: opacity 0.1s linear;
 }
 .hero-logo-big img { width: 100%; height: auto; display: block; filter: drop-shadow(0 6px 20px rgba(0,0,0,0.35)); }
-body.is-scrolled .hero-logo-big { opacity: 0; transform: translateX(-50%) translateY(-16px); pointer-events: none; }
+body.is-scrolled .hero-logo-big { pointer-events: none; }
 .hero-content {
   position: relative;
   z-index: 1;
-  padding: 250px 0 90px;
+  padding: 200px 0 90px;
   max-width: 780px;
 }
 .hero h1 {
   font-size: clamp(2.4rem, 6vw, 4.4rem);
   margin: 18px 0 22px;
-  color: #fff;
+  color: var(--parchment);
 }
 .hero h1 em { font-style: normal; color: var(--terracotta); }
 .hero p.lede {
@@ -453,7 +455,7 @@ section { position: relative; }
 
 /* ---------- Ceremony gallery band ---------- */
 .gallery-band { background: var(--maroon); color: var(--parchment); padding: 90px 0; }
-.gallery-band .section-head h2 { color: #fff; }
+.gallery-band .section-head h2 { color: var(--parchment); }
 .gallery-band .section-head p { color: #e9c9c9; }
 .gallery-grid {
   display: grid;
@@ -499,11 +501,11 @@ section { position: relative; }
   padding: 90px 0;
   text-align: center;
 }
-.cta-band h2 { color: #fff; font-size: clamp(1.8rem, 3.6vw, 2.6rem); max-width: 760px; margin: 16px auto 14px; }
+.cta-band h2 { color: var(--parchment); font-size: clamp(1.8rem, 3.6vw, 2.6rem); max-width: 760px; margin: 16px auto 14px; }
 .cta-band p { max-width: 600px; margin: 0 auto 30px; color: #e7ead9; }
 .cta-band .btn-row { justify-content: center; }
 .cta-band .btn-primary { background: var(--terracotta); border-color: var(--terracotta); }
-.cta-band .btn-outline { border-color: rgba(255,255,255,0.6); color: #fff; }
+.cta-band .btn-outline { border-color: rgba(245,237,225,0.6); color: var(--parchment); }
 
 /* ---------- Footer ---------- */
 .site-footer {
@@ -522,9 +524,9 @@ section { position: relative; }
 .footer-grid-2 h4:not(:first-of-type) { margin-top: 26px; }
 .footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
 .footer-brand img { height: 44px; width: 44px; border-radius: 50%; }
-.footer-brand span { font-family: var(--font-display); color: #fff; font-size: 17px; letter-spacing: 0.06em; text-transform: uppercase; }
+.footer-brand span { font-family: var(--font-display); color: var(--parchment); font-size: 17px; letter-spacing: 0.06em; text-transform: uppercase; }
 .site-footer p.tag { font-size: 0.92rem; max-width: 320px; opacity: 0.8; }
-.site-footer h4 { color: #fff; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-family: var(--font-body); font-weight: 500; margin-bottom: 18px; }
+.site-footer h4 { color: var(--parchment); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-family: var(--font-body); font-weight: 500; margin-bottom: 18px; }
 .site-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .site-footer a { font-size: 0.94rem; opacity: 0.85; transition: opacity 0.2s ease, color 0.2s ease; }
 .site-footer a:hover { opacity: 1; color: #e6b98d; }
@@ -593,7 +595,7 @@ section { position: relative; }
   .footer-grid { grid-template-columns: 1fr; }
   .btn-row { flex-direction: column; align-items: stretch; }
   .btn-row .btn { justify-content: center; }
-  .hero-logo-big { width: 76px; top: 22px; }
+  .hero-logo-big { width: 100px; top: 22px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -8,11 +8,17 @@
   var hasHero = !!document.querySelector(".hero");
   if (hasHero) document.body.classList.add("has-hero");
 
+  var LOGO_FADE_DISTANCE = 380;
+
   function onScroll() {
     if (!hasHero) return;
     var scrolled = window.scrollY > 40;
     header.classList.toggle("is-scrolled", scrolled);
     document.body.classList.toggle("is-scrolled", scrolled);
+
+    var progress = Math.min(window.scrollY / LOGO_FADE_DISTANCE, 1);
+    document.documentElement.style.setProperty("--hero-logo-opacity", String(1 - progress));
+    document.documentElement.style.setProperty("--brand-opacity", String(progress));
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();

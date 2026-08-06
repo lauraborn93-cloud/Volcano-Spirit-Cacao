@@ -23,7 +23,7 @@
   padding: 0 4px;
   border-radius: 999px;
   background: var(--terracotta);
-  color: #fff;
+  color: var(--parchment);
   font-size: 10.5px;
   font-weight: 600;
   line-height: 17px;
@@ -220,7 +220,7 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #fff;
+  color: var(--parchment);
   overflow: hidden;
   background-size: cover;
   background-position: center;
@@ -236,14 +236,14 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
   .photo-cta { background-attachment: scroll; }
 }
 .photo-cta-content { position: relative; z-index: 1; max-width: 640px; padding: 0 24px; }
-.photo-cta-content h2 { color: #fff; font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom: 16px; }
+.photo-cta-content h2 { color: var(--parchment); font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom: 16px; }
 .photo-cta-content p { opacity: 0.92; margin-bottom: 30px; }
 .photo-cta .btn-white {
   background: var(--parchment);
   color: var(--cacao);
   border-color: var(--parchment);
 }
-.photo-cta .btn-white:hover { background: #fff; }
+.photo-cta .btn-white:hover { background: #fdf8ef; }
 
 /* ---------- Spirit of Cacao: stats + comparison ---------- */
 .stat-grid-4 {
