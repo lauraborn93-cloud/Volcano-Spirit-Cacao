@@ -317,25 +317,26 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
 /* ---------- Cookie consent banner ---------- */
 .cookie-banner {
   position: fixed;
-  left: 16px;
-  right: 16px;
-  bottom: 16px;
+  left: auto;
+  right: 20px;
+  bottom: 20px;
   z-index: 2000;
-  max-width: 620px;
-  margin: 0 auto;
+  width: 380px;
+  max-width: calc(100vw - 40px);
+  margin: 0;
   background: var(--forest-dark);
   color: var(--parchment);
-  border-radius: var(--radius);
-  padding: 24px 26px;
+  border-radius: 14px;
+  padding: 26px 26px 22px;
   box-shadow: 0 25px 60px -20px rgba(0,0,0,0.55);
   transform: translateY(140%);
   transition: transform 0.4s ease;
 }
 .cookie-banner.is-visible { transform: translateY(0); }
-.cookie-banner p { font-size: 0.88rem; opacity: 0.85; margin: 0 0 16px; line-height: 1.55; }
+.cookie-banner p { font-size: 0.88rem; opacity: 0.85; margin: 0 0 18px; line-height: 1.55; }
 .cookie-banner p a { color: #e6b98d; text-decoration: underline; }
-.cookie-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-.cookie-actions .btn { padding: 11px 18px; font-size: 12px; }
+.cookie-actions { display: flex; flex-direction: column; gap: 10px; }
+.cookie-actions .btn { padding: 11px 18px; font-size: 12px; width: 100%; justify-content: center; }
 .cookie-actions .btn-text {
   background: none;
   border: none;

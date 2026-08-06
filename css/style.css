@@ -155,7 +155,9 @@ p { margin: 0 0 1em; }
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  max-width: 1400px;
+  max-width: 100%;
+  padding-left: 48px;
+  padding-right: 48px;
 }
 .site-header.is-scrolled {
   background: rgba(45, 54, 36, 0.94);
@@ -189,18 +191,18 @@ p { margin: 0 0 1em; }
 body.has-hero .site-header .brand { opacity: var(--brand-opacity, 0); transition: opacity 0.1s linear; pointer-events: none; }
 body.has-hero.is-scrolled .site-header .brand { pointer-events: auto; }
 
-.main-nav { display: flex; min-width: 0; }
+.main-nav { display: flex; flex: 1 1 auto; min-width: 0; justify-content: center; }
 .main-nav ul {
   list-style: none;
   display: flex;
-  gap: 22px;
+  gap: 42px;
   margin: 0;
   padding: 0;
 }
 .main-nav a {
   color: var(--parchment);
   font-size: 12.5px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   font-weight: 500;
   position: relative;
@@ -293,10 +295,10 @@ body.has-hero.is-scrolled .site-header .brand { pointer-events: auto; }
 }
 .hero-logo-big {
   position: absolute;
-  top: 44px;
+  top: 34px;
   left: 50%;
   z-index: 2;
-  width: 168px;
+  width: 138px;
   transform: translateX(-50%) scale(var(--hero-logo-scale, 1));
   transform-origin: top center;
   opacity: var(--hero-logo-opacity, 1);
@@ -308,20 +310,20 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
   position: relative;
   z-index: 1;
   margin: 0;
-  padding: 230px 24px 40px 56px;
+  padding: 168px 24px 24px 56px;
   max-width: 560px;
 }
 .hero h1 {
-  font-size: clamp(2.6rem, 6.6vw, 4.6rem);
-  margin: 18px 0 22px;
+  font-size: clamp(2.3rem, 5.6vw, 3.9rem);
+  margin: 14px 0 16px;
   color: var(--parchment);
 }
 .hero h1 em { font-style: normal; color: var(--terracotta); }
 .hero p.lede {
-  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
   max-width: 480px;
   color: #ecdfd0;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 .trust-row {
   position: absolute;
@@ -343,7 +345,7 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
 .trust-row li {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 16px;
   white-space: nowrap;
 }
 .trust-row svg {
