@@ -15,10 +15,9 @@
 <meta property="og:description" content="100% ceremonial cacao, hand-harvested in the volcanic highlands of Lake Atitlán, Guatemala. No sugar, no fillers, no shortcuts." />
 <meta property="og:image" content="images/hero-pod-hand.jpg" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/fonts.css" />
 <link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/shop.css" />
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -42,6 +41,10 @@
 
     <div class="header-cta">
       <a class="btn btn-outline" href="#contact">Get in Touch</a>
+      <a class="cart-link" href="cart.html" aria-label="View your bag">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 8h12l-1.2 10.2a2 2 0 01-2 1.8H9.2a2 2 0 01-2-1.8L6 8z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 8V6a3 3 0 016 0v2"/></svg>
+        <span class="cart-badge" data-count="0">0</span>
+      </a>
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
         <span></span>
       </button>
@@ -56,6 +59,7 @@
     <li><a href="#craft">The Craft</a></li>
     <li><a href="#ceremony">Ceremony</a></li>
     <li><a href="#cacao">The Cacao</a></li>
+    <li><a href="cart.html">Your Bag (<span class="cart-badge" data-count="0">0</span>)</a></li>
     <li><a href="#contact">Get in Touch</a></li>
   </ul>
   <a class="btn btn-primary" href="https://www.instagram.com/atitlanspiritcacao/" target="_blank" rel="noopener">Follow @atitlanspiritcacao</a>
@@ -217,8 +221,23 @@
             <li>No sugar, dairy, or emulsifiers — ever</li>
             <li>Direct trade with Mayan farming families</li>
           </ul>
-          <div class="btn-row">
-            <a href="#contact" class="btn btn-primary">Get in Touch to Order</a>
+
+          <div class="buy-box" data-buy-box>
+            <div>
+              <span class="price-tag" data-price>$48.00</span>
+              <span class="price-note">Per 1kg block · shipping quoted before you pay</span>
+            </div>
+            <div class="qty-stepper">
+              <button type="button" data-qty-minus aria-label="Decrease quantity">−</button>
+              <input type="number" min="1" value="1" data-qty aria-label="Quantity" />
+              <button type="button" data-qty-plus aria-label="Increase quantity">+</button>
+            </div>
+            <button type="button" class="btn btn-primary" data-add-to-cart>Add to Bag</button>
+          </div>
+          <p class="add-note">Ships from Lake Atitlán, Guatemala. We'll confirm exact shipping cost and delivery time by email before any payment is taken — nothing is charged automatically.</p>
+
+          <div class="btn-row" style="margin-top:18px">
+            <a href="mailto:hello@atitlanspiritcacao.com" class="btn btn-outline">Prefer Email? Get in Touch</a>
           </div>
         </div>
       </div>
@@ -230,11 +249,29 @@
     <div class="container">
       <p class="eyebrow on-dark center" style="justify-content:center">Join Us</p>
       <h2>Come sit in circle with us — or just ask us anything.</h2>
-      <p>Whether you want to order cacao, host a ceremony, or bring this into your own community, we'd love to hear from you. The fastest way to reach us is Instagram — we read every message ourselves.</p>
+      <p>Whether you want to order cacao, host a ceremony, or bring this into your own community, we'd love to hear from you. We read every message ourselves.</p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="https://www.instagram.com/atitlanspiritcacao/" target="_blank" rel="noopener">Message Us on Instagram</a>
-        <a class="btn btn-outline" href="#top">Back to Top</a>
+        <a class="btn btn-primary" href="mailto:hello@atitlanspiritcacao.com">Email hello@atitlanspiritcacao.com</a>
+        <a class="btn btn-outline" href="https://www.instagram.com/atitlanspiritcacao/" target="_blank" rel="noopener" style="color:#fff;border-color:rgba(255,255,255,.7)">Message Us on Instagram</a>
       </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter-band" id="newsletter">
+    <div class="container">
+      <p class="eyebrow on-dark center" style="justify-content:center">Stay Close</p>
+      <h2>Join our circle.</h2>
+      <p>Origin updates, ceremony dates, and honest notes from the farm — straight from us, no spam. Unsubscribe anytime.</p>
+      <form data-ajax action="https://formspree.io/f/YOUR_NEWSLETTER_FORM_ID" method="POST" data-success-message="You're in. Check your inbox for a welcome note.">
+        <div class="newsletter-form">
+          <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address" />
+          <input type="hidden" name="form_name" value="Newsletter signup" />
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </div>
+        <p class="newsletter-consent">By subscribing you agree to receive emails from Volcano Spirit Cacao and to our <a href="legal/privacy-policy.html">Privacy Policy</a>. You can unsubscribe at any time.</p>
+        <div class="form-status" aria-live="polite"></div>
+      </form>
     </div>
   </section>
 
@@ -263,25 +300,72 @@
         <h4>The Cacao</h4>
         <ul>
           <li><a href="#cacao">100% Ceremonial Block</a></li>
+          <li><a href="cart.html">Your Bag</a></li>
           <li><a href="#people">Our Farmers</a></li>
-          <li><a href="#contact">Order &amp; Wholesale</a></li>
         </ul>
       </div>
       <div>
         <h4>Connect</h4>
         <ul>
+          <li><a href="mailto:hello@atitlanspiritcacao.com">hello@atitlanspiritcacao.com</a></li>
           <li><a href="https://www.instagram.com/atitlanspiritcacao/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="#contact">Get in Touch</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© <span id="year">2026</span> Volcano Spirit Cacao. Lake Atitlán, Guatemala.</span>
-      <span>Grown in fire. Kept by water. Shared in circle.</span>
+      <nav aria-label="Legal">
+        <a href="legal/privacy-policy.html">Privacy Policy</a> ·
+        <a href="legal/terms.html">Terms of Service</a> ·
+        <a href="legal/shipping-returns.html">Shipping &amp; Returns</a> ·
+        <a href="legal/cookie-policy.html">Cookie Policy</a> ·
+        <a href="#" id="open-cookie-prefs">Cookie Preferences</a>
+      </nav>
     </div>
   </div>
 </footer>
 
+<div class="cart-toast" role="status" aria-live="polite">
+  <span class="cart-toast-msg"></span>
+  <a href="cart.html">View Bag</a>
+</div>
+
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <p>We use a few essential cookies to keep this site working, and — only with your permission — optional analytics and marketing cookies to understand what's resonating and reach you elsewhere. See our <a href="legal/cookie-policy.html">Cookie Policy</a>.</p>
+  <div class="cookie-actions">
+    <button type="button" class="btn btn-primary" id="cookie-accept-all">Accept All</button>
+    <button type="button" class="btn btn-outline" id="cookie-reject">Necessary Only</button>
+    <button type="button" class="btn-text" id="cookie-manage">Manage Preferences</button>
+  </div>
+</div>
+
+<div id="cookie-modal-overlay" class="cookie-modal-overlay" aria-hidden="true">
+  <div class="cookie-modal" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
+    <h3 id="cookie-modal-title">Cookie Preferences</h3>
+    <p>Choose which optional cookies we can use. Necessary cookies are always on because the site can't function without them.</p>
+    <div class="cookie-cat">
+      <div><h4>Necessary</h4><p>Session, bag contents, and your cookie choice itself. Cannot be switched off.</p></div>
+      <label class="switch"><input type="checkbox" checked disabled /><span></span></label>
+    </div>
+    <div class="cookie-cat">
+      <div><h4>Analytics</h4><p>Helps us understand which pages are useful, anonymously. Off until you say yes.</p></div>
+      <label class="switch"><input type="checkbox" id="consent-analytics" /><span></span></label>
+    </div>
+    <div class="cookie-cat">
+      <div><h4>Marketing</h4><p>Lets us show relevant offers on other sites. Off until you say yes.</p></div>
+      <label class="switch"><input type="checkbox" id="consent-marketing" /><span></span></label>
+    </div>
+    <div class="cookie-modal-actions">
+      <button type="button" class="btn btn-primary" id="cookie-modal-save">Save Preferences</button>
+      <button type="button" class="btn btn-outline" id="cookie-modal-close">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/cookie-consent.js"></script>
+<script src="js/forms.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

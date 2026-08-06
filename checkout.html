@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Checkout — Volcano Spirit Cacao</title>
+<meta name="description" content="Complete your order with Volcano Spirit Cacao." />
+<meta name="robots" content="noindex" />
+<link rel="icon" href="favicon.ico" sizes="32x32" />
+<link rel="icon" type="image/png" href="images/favicon-512.png" sizes="512x512" />
+<link rel="apple-touch-icon" href="images/favicon-512.png" />
+<meta name="theme-color" content="#1b1712" />
+<link rel="stylesheet" href="css/fonts.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/shop.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header is-scrolled">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark.png" alt="Volcano Spirit Cacao emblem" width="40" height="40" loading="eager" />
+      <span class="brand-word">Volcano Spirit<span>Lake Atitlán · Guatemala</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html#manifesto">Our Stand</a></li>
+        <li><a href="index.html#origin">Origin</a></li>
+        <li><a href="index.html#craft">The Craft</a></li>
+        <li><a href="index.html#cacao">The Cacao</a></li>
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-outline" href="index.html#contact">Get in Touch</a>
+      <a class="cart-link" href="cart.html" aria-label="View your bag">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 8h12l-1.2 10.2a2 2 0 01-2 1.8H9.2a2 2 0 01-2-1.8L6 8z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 8V6a3 3 0 016 0v2"/></svg>
+        <span class="cart-badge" data-count="0">0</span>
+      </a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav id="mobile-nav" class="mobile-nav" aria-label="Mobile">
+  <ul>
+    <li><a href="index.html#manifesto">Our Stand</a></li>
+    <li><a href="index.html#cacao">The Cacao</a></li>
+    <li><a href="cart.html">Your Bag (<span class="cart-badge" data-count="0">0</span>)</a></li>
+    <li><a href="index.html#contact">Get in Touch</a></li>
+  </ul>
+  <a class="btn btn-primary" href="https://www.instagram.com/atitlanspiritcacao/" target="_blank" rel="noopener">Follow @atitlanspiritcacao</a>
+</nav>
+
+<main id="main">
+  <div class="page-hero">
+    <div class="container">
+      <p class="eyebrow on-dark">Checkout</p>
+      <h1>Tell us where this is headed.</h1>
+      <p>This sends us an order request — we'll reply by email within one business day to confirm shipping cost and arrange secure payment. No card details are collected on this site.</p>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <div class="container">
+      <div class="cart-layout">
+        <form data-checkout-form action="https://formspree.io/f/YOUR_ORDER_FORM_ID" method="POST">
+          <input type="hidden" name="form_name" value="Checkout order request" />
+          <textarea name="order_details" hidden></textarea>
+
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="first_name">First name</label>
+              <input type="text" id="first_name" name="first_name" required />
+            </div>
+            <div class="form-field">
+              <label for="last_name">Last name</label>
+              <input type="text" id="last_name" name="last_name" required />
+            </div>
+            <div class="form-field full">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-field full">
+              <label for="phone">Phone (for shipping questions)</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+            <div class="form-field full">
+              <label for="address">Shipping address</label>
+              <input type="text" id="address" name="address" required />
+            </div>
+            <div class="form-field">
+              <label for="city">City</label>
+              <input type="text" id="city" name="city" required />
+            </div>
+            <div class="form-field">
+              <label for="postal">Postal code</label>
+              <input type="text" id="postal" name="postal" required />
+            </div>
+            <div class="form-field full">
+              <label for="country">Country</label>
+              <input type="text" id="country" name="country" required />
+            </div>
+            <div class="form-field full">
+              <label for="notes">Notes (optional)</label>
+              <textarea id="notes" name="notes" rows="3"></textarea>
+            </div>
+          </div>
+
+          <label style="display:flex;gap:10px;align-items:flex-start;font-size:0.85rem;opacity:0.8;margin:18px 0">
+            <input type="checkbox" required style="margin-top:3px" />
+            I agree to the <a href="legal/terms.html" style="text-decoration:underline">Terms of Service</a> and <a href="legal/privacy-policy.html" style="text-decoration:underline">Privacy Policy</a>, and understand this is an order request, not a final charge.
+          </label>
+
+          <div class="btn-row">
+            <button type="submit" class="btn btn-primary">Send Order Request</button>
+            <a href="mailto:hello@atitlanspiritcacao.com" class="btn btn-outline">Email Us Instead</a>
+          </div>
+          <div class="form-status" aria-live="polite"></div>
+        </form>
+
+        <aside class="summary-card">
+          <h3 style="margin-top:0">Order Summary</h3>
+          <div data-checkout-summary></div>
+          <div class="summary-row total"><span>Estimated total</span><span data-summary-total>$0.00</span></div>
+          <p class="form-note">Shipping from Guatemala is calculated and confirmed with you by email before anything is charged.</p>
+        </aside>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="images/logo-mark.png" alt="Volcano Spirit Cacao emblem" width="44" height="44" loading="lazy" />
+          <span>Volcano Spirit</span>
+        </div>
+        <p class="tag">100% ceremonial cacao, hand-harvested in the volcanic highlands of Lake Atitlán and traded directly with the Mayan families who grow it.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html#manifesto">Our Stand</a></li>
+          <li><a href="index.html#origin">Origin</a></li>
+          <li><a href="index.html#craft">The Craft</a></li>
+          <li><a href="index.html#ceremony">Ceremony</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>The Cacao</h4>
+        <ul>
+          <li><a href="index.html#cacao">100% Ceremonial Block</a></li>
+          <li><a href="cart.html">Your Bag</a></li>
+          <li><a href="index.html#people">Our Farmers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:hello@atitlanspiritcacao.com">hello@atitlanspiritcacao.com</a></li>
+          <li><a href="https://www.instagram.com/atitlanspiritcacao/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> Volcano Spirit Cacao. Lake Atitlán, Guatemala.</span>
+      <nav aria-label="Legal">
+        <a href="legal/privacy-policy.html">Privacy Policy</a> ·
+        <a href="legal/terms.html">Terms of Service</a> ·
+        <a href="legal/shipping-returns.html">Shipping &amp; Returns</a> ·
+        <a href="legal/cookie-policy.html">Cookie Policy</a> ·
+        <a href="#" id="open-cookie-prefs">Cookie Preferences</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<div class="cart-toast" role="status" aria-live="polite">
+  <span class="cart-toast-msg"></span>
+  <a href="cart.html">View Bag</a>
+</div>
+
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <p>We use a few essential cookies to keep this site working, and — only with your permission — optional analytics and marketing cookies to understand what's resonating and reach you elsewhere. See our <a href="legal/cookie-policy.html">Cookie Policy</a>.</p>
+  <div class="cookie-actions">
+    <button type="button" class="btn btn-primary" id="cookie-accept-all">Accept All</button>
+    <button type="button" class="btn btn-outline" id="cookie-reject">Necessary Only</button>
+    <button type="button" class="btn-text" id="cookie-manage">Manage Preferences</button>
+  </div>
+</div>
+
+<div id="cookie-modal-overlay" class="cookie-modal-overlay" aria-hidden="true">
+  <div class="cookie-modal" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
+    <h3 id="cookie-modal-title">Cookie Preferences</h3>
+    <p>Choose which optional cookies we can use. Necessary cookies are always on because the site can't function without them.</p>
+    <div class="cookie-cat">
+      <div><h4>Necessary</h4><p>Session, bag contents, and your cookie choice itself. Cannot be switched off.</p></div>
+      <label class="switch"><input type="checkbox" checked disabled /><span></span></label>
+    </div>
+    <div class="cookie-cat">
+      <div><h4>Analytics</h4><p>Helps us understand which pages are useful, anonymously. Off until you say yes.</p></div>
+      <label class="switch"><input type="checkbox" id="consent-analytics" /><span></span></label>
+    </div>
+    <div class="cookie-cat">
+      <div><h4>Marketing</h4><p>Lets us show relevant offers on other sites. Off until you say yes.</p></div>
+      <label class="switch"><input type="checkbox" id="consent-marketing" /><span></span></label>
+    </div>
+    <div class="cookie-modal-actions">
+      <button type="button" class="btn btn-primary" id="cookie-modal-save">Save Preferences</button>
+      <button type="button" class="btn btn-outline" id="cookie-modal-close">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/cookie-consent.js"></script>
+<script src="js/forms.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

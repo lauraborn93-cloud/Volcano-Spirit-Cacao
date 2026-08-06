@@ -5,7 +5,10 @@
   var toggle = document.querySelector(".nav-toggle");
   var mobileNav = document.querySelector(".mobile-nav");
 
+  var hasHero = !!document.querySelector(".hero");
+
   function onScroll() {
+    if (!hasHero) return;
     if (window.scrollY > 40) {
       header.classList.add("is-scrolled");
     } else {
