@@ -403,6 +403,28 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
 .legal-toc h4 { margin: 0 0 12px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; }
 .legal-toc ol { margin: 0; padding-left: 1.2em; columns: 2; font-size: 0.9rem; }
 
+/* ---------- Blog list ---------- */
+.article-list { display: flex; flex-direction: column; }
+.article-row {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 44px;
+  align-items: center;
+  padding: 44px 0;
+  border-bottom: 1px solid var(--line);
+}
+.article-list .article-row:first-child { padding-top: 0; }
+.article-list .article-row:last-child { border-bottom: none; }
+.article-row-media img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius); }
+.article-row h2 { font-size: 1.4rem; margin-bottom: 10px; }
+.article-row h2 a { color: inherit; }
+.article-row h2 a:hover { color: var(--terracotta-dark); }
+.article-row p { opacity: 0.85; margin-bottom: 10px; }
+.article-row .add-note { margin: 0; }
+@media (max-width: 720px) {
+  .article-row { grid-template-columns: 1fr; gap: 20px; padding: 32px 0; }
+}
+
 /* ---------- Cookie consent banner (centered modal + backdrop) ---------- */
 .cookie-banner-overlay {
   position: fixed;
