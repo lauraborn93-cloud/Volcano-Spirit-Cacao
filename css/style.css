@@ -277,12 +277,12 @@ body.has-hero.is-scrolled .site-header .brand { pointer-events: auto; }
   position: absolute;
   inset: 0;
   z-index: 0;
+  background-size: cover;
+  background-position: center 30%;
+  background-attachment: fixed;
 }
-.hero-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
+@media (max-width: 800px) {
+  .hero-media { background-attachment: scroll; }
 }
 .hero-media::after {
   content: "";
@@ -295,7 +295,7 @@ body.has-hero.is-scrolled .site-header .brand { pointer-events: auto; }
 }
 .hero-logo-big {
   position: absolute;
-  top: 34px;
+  top: 60px;
   left: 50%;
   z-index: 2;
   width: 138px;
@@ -310,7 +310,7 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
   position: relative;
   z-index: 1;
   margin: 0;
-  padding: 168px 24px 24px 56px;
+  padding: 214px 24px 190px 56px;
   max-width: 560px;
 }
 .hero h1 {
