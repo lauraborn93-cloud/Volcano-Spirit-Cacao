@@ -177,6 +177,11 @@
   align-items: flex-start;
   padding-bottom: 190px;
 }
+/* .container centers itself (margin:0 auto) by default, which left the
+   has-trust hero text sitting in a centered box while reading left-aligned,
+   an in-between look. Pin the box flush left instead so it's unambiguously
+   left-bound, matching the homepage hero's treatment. */
+.page-hero.has-photo.has-trust .container { margin-left: 0; max-width: 640px; }
 @media (max-width: 640px) {
   .page-hero.has-photo.has-trust { padding-bottom: 230px; }
 }
@@ -368,17 +373,6 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
   font-size: 1.1rem;
   opacity: 0.5;
   text-align: center;
-}
-
-.hero-quote { margin-top: 26px; max-width: 600px; }
-.hero-quote-lead { font-size: 0.98rem; color: #ecdfd0; opacity: 0.9; margin: 0 0 14px; }
-.hero-quote-main {
-  font-family: var(--font-display);
-  font-size: clamp(1.15rem, 2.1vw, 1.45rem);
-  font-style: italic;
-  color: #f0c9a0;
-  line-height: 1.45;
-  margin: 0;
 }
 
 @media (max-width: 900px) {
