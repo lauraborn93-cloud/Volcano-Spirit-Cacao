@@ -11,7 +11,7 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  color: var(--parchment);
+  color: var(--ivory);
 }
 .cart-link svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.5; }
 .cart-badge {
@@ -23,7 +23,7 @@
   padding: 0 4px;
   border-radius: 999px;
   background: var(--terracotta);
-  color: var(--parchment);
+  color: var(--ivory);
   font-size: 10.5px;
   font-weight: 600;
   line-height: 17px;
@@ -99,7 +99,7 @@
   right: 22px;
   z-index: 1400;
   background: var(--forest-dark);
-  color: var(--parchment);
+  color: var(--ivory);
   padding: 16px 20px;
   border-radius: var(--radius);
   font-size: 0.92rem;
@@ -133,7 +133,7 @@
   align-items: flex-end;
   padding: 150px 0 54px;
   border-bottom: none;
-  color: var(--parchment);
+  color: var(--ivory);
 }
 .page-hero-media { position: absolute; inset: 0; z-index: 0; }
 .page-hero-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -145,8 +145,8 @@
   background: linear-gradient(180deg, rgba(61,39,24,0.28) 0%, rgba(61,39,24,0.72) 100%);
 }
 .page-hero.has-photo .container { position: relative; z-index: 1; }
-.page-hero.has-photo h1 { color: var(--parchment); }
-.page-hero.has-photo p { color: var(--parchment); opacity: 0.92; }
+.page-hero.has-photo h1 { color: var(--ivory); }
+.page-hero.has-photo p { color: var(--ivory); opacity: 0.92; }
 @media (max-width: 640px) {
   .page-hero.has-photo { min-height: 46vh; padding: 128px 0 40px; }
 }
@@ -188,7 +188,7 @@
 
 /* ---------- Solid-terracotta mission band ---------- */
 .cta-band.on-terracotta { background: var(--terracotta); }
-.cta-band.on-terracotta p { color: var(--parchment); opacity: 0.92; }
+.cta-band.on-terracotta p { color: var(--ivory); opacity: 0.92; }
 
 /* ---------- Simple checkmark list (benefits) ---------- */
 .check-list { list-style: none; margin: 22px 0 28px; padding: 0; display: grid; gap: 12px; }
@@ -260,7 +260,7 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
 /* ---------- Newsletter band: photo left, cream card right, on solid terracotta ---------- */
 .newsletter-band {
   background: var(--terracotta);
-  color: var(--parchment);
+  color: var(--ivory);
   padding: 90px 0;
 }
 .newsletter-grid {
@@ -310,7 +310,7 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: var(--parchment);
+  color: var(--ivory);
   overflow: hidden;
   background-size: cover;
   background-position: center;
@@ -326,12 +326,12 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
   .photo-cta { background-attachment: scroll; }
 }
 .photo-cta-content { position: relative; z-index: 1; max-width: 640px; padding: 0 24px; }
-.photo-cta-content h2 { color: var(--parchment); font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom: 16px; }
+.photo-cta-content h2 { color: var(--ivory); font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom: 16px; }
 .photo-cta-content p { opacity: 0.92; margin-bottom: 30px; }
 .photo-cta .btn-white {
-  background: var(--parchment);
+  background: var(--ivory);
   color: var(--cacao);
-  border-color: var(--parchment);
+  border-color: var(--ivory);
 }
 .photo-cta .btn-white:hover { background: #fdf8ef; }
 
@@ -379,6 +379,34 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
   .stat-grid-4 { grid-template-columns: repeat(2, 1fr); }
   .compare-grid { grid-template-columns: 1fr; }
   .compare-vs { padding: 4px 0; }
+}
+
+/* ---------- Divider columns: an unboxed, editorial two-up layout,
+   a single hairline between columns instead of card backgrounds/borders ---------- */
+.divider-cols {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 56px;
+  align-items: start;
+  margin-top: 50px;
+}
+.divider-cols-rule { width: 1px; align-self: stretch; background: var(--line); }
+.divider-cols-col { text-align: center; padding: 0 8px; }
+.divider-cols-label {
+  display: block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.02rem;
+  color: var(--terracotta-dark);
+  margin-bottom: 10px;
+}
+.divider-cols-col h3 { font-size: 1.35rem; font-weight: 400; margin: 0 0 18px; }
+.divider-cols-col p { font-size: 0.98rem; line-height: 1.7; opacity: 0.82; max-width: 420px; margin: 0 auto 14px; }
+.divider-cols-col p:last-child { margin-bottom: 0; }
+.divider-cols-col-muted { opacity: 0.75; }
+@media (max-width: 800px) {
+  .divider-cols { grid-template-columns: 1fr; gap: 34px; margin-top: 38px; }
+  .divider-cols-rule { width: 60px; height: 1px; margin: 0 auto; }
 }
 
 /* ---------- Legal / prose pages ---------- */
@@ -475,7 +503,7 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
   color: var(--cacao);
   border: 1px solid var(--line);
 }
-.btn-light:hover { background: #fff; }
+.btn-light:hover { background: var(--ivory); }
 .cookie-links { display: flex; gap: 22px; justify-content: center; margin-top: 20px; }
 .cookie-links a { font-size: 0.82rem; color: var(--terracotta-dark); text-decoration: underline; opacity: 0.85; }
 @media (max-width: 480px) {
@@ -540,12 +568,12 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
 }
 
 /* ---------- FAQ accordion ---------- */
-.faq-band { background: var(--forest-dark); color: var(--parchment); padding: 90px 0; }
+.faq-band { background: var(--forest-dark); color: var(--ivory); padding: 90px 0; }
 .faq-band .section-head { margin-bottom: 44px; }
-.faq-band h2 { color: var(--parchment); }
-.faq-band .section-head p { color: var(--parchment); opacity: 0.75; }
-.faq-list { max-width: 860px; margin: 0 auto; border-top: 1px solid rgba(245,237,225,0.2); }
-.faq-item { border-bottom: 1px solid rgba(245,237,225,0.2); }
+.faq-band h2 { color: var(--ivory); }
+.faq-band .section-head p { color: var(--ivory); opacity: 0.75; }
+.faq-list { max-width: 860px; margin: 0 auto; border-top: 1px solid rgba(241,227,201,0.2); }
+.faq-item { border-bottom: 1px solid rgba(241,227,201,0.2); }
 .faq-item summary {
   display: flex;
   align-items: center;
