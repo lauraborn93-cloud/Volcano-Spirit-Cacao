@@ -32,26 +32,24 @@
 .cart-badge[data-count="0"] { display: none; }
 .mobile-nav .cart-badge[data-count="0"] { display: inline; }
 
-/* ---------- Size selector ---------- */
-.size-select { display: flex; gap: 10px; margin: 18px 0 20px; flex-wrap: wrap; }
-.size-option { position: relative; cursor: pointer; }
-.size-option input { position: absolute; opacity: 0; width: 0; height: 0; }
-.size-option span {
-  display: block;
-  padding: 11px 20px;
+/* ---------- Product cards (two distinct sizes, each its own buy-box) ---------- */
+.product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin: 34px 0 0; }
+.product-card {
+  background: var(--parchment-dim);
   border: 1px solid var(--line);
-  border-radius: 999px;
-  font-size: 0.92rem;
-  color: var(--cacao);
-  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+  border-radius: var(--radius);
+  padding: 26px;
+  text-align: center;
 }
-.size-option span small { opacity: 0.65; font-size: 0.85em; }
-.size-option input:checked + span {
-  background: var(--terracotta);
-  border-color: var(--terracotta);
-  color: var(--parchment);
+.product-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); margin-bottom: 18px; }
+.product-card h3 { font-size: 1.15rem; margin-bottom: 16px; }
+.product-card h3 small { opacity: 0.65; font-size: 0.8em; font-weight: 400; }
+.product-card [data-buy-box] { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.product-card .qty-stepper { margin: 0 auto; }
+.product-card .btn { width: 100%; justify-content: center; }
+@media (max-width: 640px) {
+  .product-grid { grid-template-columns: 1fr; }
 }
-.size-option input:focus-visible + span { outline: 2px solid var(--terracotta-dark); outline-offset: 2px; }
 
 /* ---------- Product add-to-cart block ---------- */
 .buy-box {
@@ -130,7 +128,7 @@
 .page-hero.has-photo {
   position: relative;
   overflow: hidden;
-  min-height: 52vh;
+  min-height: 60vh;
   display: flex;
   align-items: flex-end;
   padding: 150px 0 54px;
@@ -150,18 +148,31 @@
 .page-hero.has-photo h1 { color: var(--parchment); }
 .page-hero.has-photo p { color: var(--parchment); opacity: 0.92; }
 @media (max-width: 640px) {
-  .page-hero.has-photo { min-height: 40vh; padding: 128px 0 40px; }
+  .page-hero.has-photo { min-height: 46vh; padding: 128px 0 40px; }
 }
+
+/* Plain photo hero (no trust-row): fully centered rather than the
+   in-between "centered box, left-aligned text" look -- the .has-trust
+   variant (home/shop) is the deliberate exception, left-bound to match
+   its bigger headline treatment. */
+.page-hero.has-photo:not(.has-trust) {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.page-hero.has-photo:not(.has-trust) .container { max-width: 720px; margin: 0 auto; }
+.page-hero.has-photo:not(.has-trust) .eyebrow { justify-content: center; }
+.page-hero.has-photo:not(.has-trust) p { margin-left: auto; margin-right: auto; }
 
 /* Hero variant that also carries a bottom trust-row (see .trust-row in
    style.css): text anchors to the top instead of the bottom, and extra
    bottom padding reserves room so the trust-row doesn't overlap it. */
 .page-hero.has-photo.has-trust {
   align-items: flex-start;
-  padding-bottom: 130px;
+  padding-bottom: 190px;
 }
 @media (max-width: 640px) {
-  .page-hero.has-photo.has-trust { padding-bottom: 190px; }
+  .page-hero.has-photo.has-trust { padding-bottom: 230px; }
 }
 
 /* ---------- Solid-terracotta mission band ---------- */
@@ -338,6 +349,15 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
   border-radius: var(--radius);
   padding: 32px 30px;
   height: 100%;
+}
+.compare-card img.card-thumb {
+  display: block;
+  width: calc(100% + 61px);
+  max-width: none;
+  margin: -32px -30px 20px -33px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
 }
 .compare-card h3 { font-size: 1.2rem; margin: 0 0 14px; }
 .compare-card p { font-size: 0.94rem; opacity: 0.85; margin: 0 0 12px; }

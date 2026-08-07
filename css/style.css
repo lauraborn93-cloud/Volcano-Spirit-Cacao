@@ -527,10 +527,20 @@ section { position: relative; }
 .value-card img.card-thumb {
   display: block;
   width: calc(100% + 60px);
+  max-width: none;
   margin: -34px -30px 20px;
   border-radius: var(--radius) var(--radius) 0 0;
   aspect-ratio: 16 / 10;
   object-fit: cover;
+}
+.blog-meta {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--terracotta-dark);
+  opacity: 0.85;
+  font-weight: 500;
+  margin-top: 14px;
 }
 
 /* ---------- Ceremony gallery band ---------- */

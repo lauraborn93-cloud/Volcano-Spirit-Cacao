@@ -88,42 +88,33 @@
     toastTimer = setTimeout(function () { toast.classList.remove("is-visible"); }, 3800);
   }
 
-  /* ---------- Product page: add-to-cart wiring ---------- */
+  /* ---------- Product page: add-to-cart wiring ----------
+     Each [data-buy-box] is an independent product card (its own qty
+     stepper + add button), tied to a product via data-product-id. */
   function initBuyBox() {
-    var box = document.querySelector("[data-buy-box]");
-    if (!box || !window.VSC || !VSC.products || !VSC.products.length) return;
-    var priceEl = box.querySelector("[data-price]");
-    var qtyInput = box.querySelector("[data-qty]");
-    var minus = box.querySelector("[data-qty-minus]");
-    var plus = box.querySelector("[data-qty-plus]");
-    var addBtn = box.querySelector("[data-add-to-cart]");
-    var sizeInputs = box.querySelectorAll("[data-size-option]");
+    var boxes = document.querySelectorAll("[data-buy-box]");
+    if (!boxes.length || !window.VSC || !VSC.products || !VSC.products.length) return;
 
-    function selectedProduct() {
-      var checked = box.querySelector("[data-size-option]:checked");
-      var id = checked ? checked.value : VSC.products[0].id;
-      var match = VSC.products.filter(function (p) { return p.id === id; })[0];
-      return match || VSC.products[0];
-    }
-    function updatePrice() {
-      var p = selectedProduct();
-      if (priceEl) priceEl.textContent = formatMoney(p.price, p.currency);
-    }
-    sizeInputs.forEach(function (input) {
-      input.addEventListener("change", updatePrice);
-    });
-    updatePrice();
+    boxes.forEach(function (box) {
+      var productId = box.getAttribute("data-product-id");
+      var product = VSC.products.filter(function (p) { return p.id === productId; })[0] || VSC.products[0];
+      var priceEl = box.querySelector("[data-price]");
+      if (priceEl) priceEl.textContent = formatMoney(product.price, product.currency);
+      var qtyInput = box.querySelector("[data-qty]");
+      var minus = box.querySelector("[data-qty-minus]");
+      var plus = box.querySelector("[data-qty-plus]");
+      var addBtn = box.querySelector("[data-add-to-cart]");
 
-    minus.addEventListener("click", function () {
-      qtyInput.value = Math.max(1, (parseInt(qtyInput.value, 10) || 1) - 1);
-    });
-    plus.addEventListener("click", function () {
-      qtyInput.value = (parseInt(qtyInput.value, 10) || 1) + 1;
-    });
-    addBtn.addEventListener("click", function () {
-      var p = selectedProduct();
-      addToCart(p, qtyInput.value);
-      showToast(qtyInput.value + " × " + p.name + " added to your bag.");
+      minus.addEventListener("click", function () {
+        qtyInput.value = Math.max(1, (parseInt(qtyInput.value, 10) || 1) - 1);
+      });
+      plus.addEventListener("click", function () {
+        qtyInput.value = (parseInt(qtyInput.value, 10) || 1) + 1;
+      });
+      addBtn.addEventListener("click", function () {
+        addToCart(product, qtyInput.value);
+        showToast(qtyInput.value + " × " + product.name + " added to your bag.");
+      });
     });
   }
 

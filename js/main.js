@@ -11,11 +11,15 @@
   var LOGO_FADE_DISTANCE = 380;
 
   function onScroll() {
-    if (!hasHero) return;
+    // The header has no background until scrolled (so it sits invisibly over
+    // a hero photo at the top). That must apply on every page, hero or not,
+    // or the nav goes unreadable once a non-hero page scrolls past its
+    // (comparatively short) photo hero into plain page content beneath it.
     var scrolled = window.scrollY > 40;
     header.classList.toggle("is-scrolled", scrolled);
     document.body.classList.toggle("is-scrolled", scrolled);
 
+    if (!hasHero) return;
     var progress = Math.min(window.scrollY / LOGO_FADE_DISTANCE, 1);
     document.documentElement.style.setProperty("--hero-logo-opacity", String(1 - progress));
     document.documentElement.style.setProperty("--hero-logo-scale", String(1 - progress * 0.55));
