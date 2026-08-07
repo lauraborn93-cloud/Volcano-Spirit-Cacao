@@ -352,25 +352,6 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
   display: flex;
   flex-direction: column;
 }
-.compare-card img.card-thumb {
-  display: block;
-  width: calc(100% + 61px);
-  max-width: none;
-  margin: -32px -30px 20px -33px;
-  border-radius: var(--radius) var(--radius) 0 0;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-}
-.compare-card-pattern {
-  width: calc(100% + 61px);
-  margin: -32px -30px 20px -33px;
-  border-radius: var(--radius) var(--radius) 0 0;
-  aspect-ratio: 16 / 10;
-  background:
-    repeating-linear-gradient(90deg, rgba(45,54,36,0.16) 0 3px, transparent 3px 32px),
-    repeating-linear-gradient(0deg, rgba(45,54,36,0.09) 0 3px, transparent 3px 32px),
-    var(--line);
-}
 .compare-card h3 { font-size: 1.2rem; margin: 0 0 14px; }
 .compare-card p { font-size: 0.94rem; opacity: 0.85; margin: 0 0 12px; }
 .compare-card p:last-child { margin-bottom: 0; }
@@ -383,13 +364,13 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
   text-align: center;
 }
 
-.quote-block { max-width: 640px; margin: 0 auto; text-align: center; }
-.quote-lead { font-size: 1.05rem; opacity: 0.8; margin: 18px 0 22px; }
-.quote-main {
+.hero-quote { margin-top: 26px; max-width: 600px; }
+.hero-quote-lead { font-size: 0.98rem; color: #ecdfd0; opacity: 0.9; margin: 0 0 14px; }
+.hero-quote-main {
   font-family: var(--font-display);
-  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-size: clamp(1.15rem, 2.1vw, 1.45rem);
   font-style: italic;
-  color: var(--cacao);
+  color: #f0c9a0;
   line-height: 1.45;
   margin: 0;
 }
