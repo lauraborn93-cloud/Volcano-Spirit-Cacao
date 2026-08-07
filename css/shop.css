@@ -151,6 +151,12 @@
   .page-hero.has-photo { min-height: 46vh; padding: 128px 0 40px; }
 }
 
+/* Taller hero variant, for pages that want more room for the photo */
+.page-hero.has-photo.is-tall { min-height: 82vh; }
+@media (max-width: 640px) {
+  .page-hero.has-photo.is-tall { min-height: 62vh; }
+}
+
 /* Plain photo hero (no trust-row): fully centered rather than the
    in-between "centered box, left-aligned text" look -- the .has-trust
    variant (home/shop) is the deliberate exception, left-bound to match
