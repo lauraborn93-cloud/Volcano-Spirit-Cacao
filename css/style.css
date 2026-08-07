@@ -127,6 +127,11 @@ p { margin: 0 0 1em; }
 }
 
 .btn-row { display: flex; flex-wrap: wrap; gap: 14px; }
+.split-text .btn-row,
+.value-card .btn-row,
+.page-body .btn-row { margin-top: 26px; }
+.cta-band .btn-row,
+.photo-cta .btn-row { margin-top: 8px; }
 
 /* ---------- Skip link ---------- */
 .skip-link {
