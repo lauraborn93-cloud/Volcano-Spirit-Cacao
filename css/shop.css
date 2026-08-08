@@ -135,8 +135,17 @@
   border-bottom: none;
   color: var(--ivory);
 }
-.page-hero-media { position: absolute; inset: 0; z-index: 0; }
-.page-hero-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.page-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+@media (max-width: 800px) {
+  .page-hero-media { background-attachment: scroll; }
+}
 .page-hero.has-photo::after {
   content: "";
   position: absolute;
@@ -176,12 +185,11 @@
 .page-hero.has-photo.has-trust {
   align-items: flex-start;
   padding-bottom: 190px;
+  text-align: center;
 }
-/* .container centers itself (margin:0 auto) by default, which left the
-   has-trust hero text sitting in a centered box while reading left-aligned,
-   an in-between look. Pin the box flush left instead so it's unambiguously
-   left-bound, matching the homepage hero's treatment. */
-.page-hero.has-photo.has-trust .container { margin-left: 0; max-width: 640px; }
+.page-hero.has-photo.has-trust .container { margin: 0 auto; max-width: 640px; }
+.page-hero.has-photo.has-trust .eyebrow { justify-content: center; }
+.page-hero.has-photo.has-trust p { margin-left: auto; margin-right: auto; }
 @media (max-width: 640px) {
   .page-hero.has-photo.has-trust { padding-bottom: 230px; }
 }
