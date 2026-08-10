@@ -573,6 +573,7 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
   .cart-item-info img { width: 56px; height: 56px; }
   .cart-table th:nth-child(3), .cart-table td:nth-child(3) { display: none; }
   .page-hero { padding: 130px 0 46px; }
+  .prose table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
 }
 
 /* ---------- FAQ accordion ---------- */

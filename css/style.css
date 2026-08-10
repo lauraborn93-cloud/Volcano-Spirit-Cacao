@@ -500,6 +500,11 @@ section { position: relative; }
 @media (max-width: 480px) {
   .stat-row { flex-wrap: wrap; }
   .stat-row .stat { flex: 1 1 100%; }
+  /* Brand wordmark is too wide to sit alongside the cart icon and menu
+     button on very narrow phones; drop to just the logo mark so the
+     header controls stay fully reachable. */
+  .brand-word { display: none; }
+  .site-header .container { padding-left: 16px; padding-right: 16px; gap: 12px; }
 }
 
 /* ---------- Photo strip ---------- */
@@ -680,6 +685,7 @@ section { position: relative; }
   .main-nav, .header-cta .btn { display: none; }
   .nav-toggle { display: block; }
   .header-cta { gap: 0; }
+  .site-header .container { padding-left: 20px; padding-right: 20px; }
 
   .mobile-nav {
     background: var(--forest-dark);
@@ -720,7 +726,7 @@ section { position: relative; }
   .photo-strip { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr; }
   .btn-row { flex-direction: column; align-items: stretch; }
-  .btn-row .btn { justify-content: center; }
+  .btn-row .btn { justify-content: center; white-space: normal; text-align: center; word-break: break-word; }
   .hero-logo-big { width: 110px; top: 22px; }
 }
 
