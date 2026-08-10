@@ -555,6 +555,23 @@ section { position: relative; }
   margin-top: 14px;
 }
 
+/* ---------- Blog preview (homepage): unboxed, image over text ---------- */
+.blog-preview-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 50px; margin-top: 46px; }
+.blog-preview-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 22px;
+}
+.blog-preview-card .blog-meta { margin-top: 0; margin-bottom: 8px; }
+.blog-preview-card h3 { font-size: 1.3rem; margin: 0 0 10px; }
+.blog-preview-card h3 a:hover { color: var(--terracotta-dark); }
+.blog-preview-card p:not(.blog-meta) { font-size: 0.96rem; opacity: 0.8; margin: 0; }
+@media (max-width: 700px) {
+  .blog-preview-grid { grid-template-columns: 1fr; gap: 36px; }
+}
+
 /* ---------- Ceremony gallery band ---------- */
 .gallery-band { background: var(--maroon); color: var(--ivory); padding: 90px 0; }
 .gallery-band .section-head h2 { color: var(--ivory); }
