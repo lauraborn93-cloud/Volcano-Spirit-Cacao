@@ -1,10 +1,8 @@
 /*
  * Central config for the shop, checkout and forms.
- * Replace the placeholder values below before going live:
- *   - products[].price   -> your real prices
- *   - formspree.order / formspree.newsletter -> your own Formspree form endpoints
- *     (free account at https://formspree.io, create two forms, paste their
- *     "https://formspree.io/f/xxxxxxxx" endpoints in below)
+ * The Formspree endpoints actually used by the site live directly on the
+ * <form action="..."> in checkout.html and index.html; the values below
+ * are kept in sync for reference only.
  */
 window.VSC = {
   products: [
@@ -24,8 +22,8 @@ window.VSC = {
     },
   ],
   formspree: {
-    order: "https://formspree.io/f/YOUR_ORDER_FORM_ID",
-    newsletter: "https://formspree.io/f/YOUR_NEWSLETTER_FORM_ID",
+    order: "https://formspree.io/f/mvkpkyal",
+    newsletter: "https://formspree.io/f/meajadzz",
   },
   contactEmail: "hello@atitlanspiritcacao.com",
 };
