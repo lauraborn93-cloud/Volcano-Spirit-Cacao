@@ -510,6 +510,12 @@ section { position: relative; }
 }
 .photo-strip img { width: 100%; height: 320px; object-fit: cover; }
 
+/* ---------- Image band: a single full-bleed breather photo between sections ---------- */
+.image-band img { width: 100%; height: 52vh; min-height: 320px; max-height: 560px; object-fit: cover; display: block; }
+@media (max-width: 640px) {
+  .image-band img { height: 38vh; min-height: 240px; }
+}
+
 /* ---------- Values / cards ---------- */
 .value-grid {
   display: grid;
