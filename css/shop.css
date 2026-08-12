@@ -191,7 +191,7 @@
 .page-hero.has-photo.has-trust .eyebrow { justify-content: center; }
 .page-hero.has-photo.has-trust p { margin-left: auto; margin-right: auto; }
 @media (max-width: 640px) {
-  .page-hero.has-photo.has-trust { padding-bottom: 230px; }
+  .page-hero.has-photo.has-trust { padding-bottom: 320px; }
 }
 
 /* ---------- Solid-terracotta mission band ---------- */
