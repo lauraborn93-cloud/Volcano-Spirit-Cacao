@@ -704,6 +704,8 @@ section { position: relative; }
     text-align: center;
     white-space: normal;
     word-break: break-word;
+    padding: 12px 20px;
+    font-size: 11px;
   }
 
   .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
