@@ -632,6 +632,10 @@ section { position: relative; }
 .cta-band .btn-primary { background: var(--terracotta); border-color: var(--terracotta); }
 .cta-band .btn-outline { border-color: rgba(241,227,201,0.6); color: var(--ivory); }
 
+.cta-band.cta-terracotta { background: var(--terracotta); }
+.cta-band.cta-terracotta .btn-primary { background: var(--ivory); color: var(--cacao); border-color: var(--ivory); }
+.cta-band.cta-terracotta .btn-primary:hover { background: #fdf8ef; }
+
 /* ---------- Footer ---------- */
 .site-footer {
   background: var(--forest-dark);
