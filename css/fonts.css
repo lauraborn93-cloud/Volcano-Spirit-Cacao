@@ -1,4 +1,4 @@
-/* Self-hosted Fraunces + Jost (Latin subset), avoids sending visitor IPs to Google Fonts' CDN pre-consent. */
+/* Self-hosted Fraunces + Poppins (Latin subset), avoids sending visitor IPs to Google Fonts' CDN pre-consent. */
 
 @font-face {
   font-family: 'Fraunces';
@@ -33,26 +33,26 @@
 }
 
 @font-face {
-  font-family: 'Jost';
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('../fonts/Jost-400-normal.woff2') format('woff2');
+  src: url('../fonts/Poppins-400-normal.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Jost';
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('../fonts/Jost-500-normal.woff2') format('woff2');
+  src: url('../fonts/Poppins-500-normal.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Jost';
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('../fonts/Jost-600-normal.woff2') format('woff2');
+  src: url('../fonts/Poppins-600-normal.woff2') format('woff2');
 }
 
