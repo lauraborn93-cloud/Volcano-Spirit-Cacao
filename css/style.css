@@ -535,6 +535,29 @@ section { position: relative; }
 }
 .value-card h3 { font-size: 1.25rem; margin: 14px 0 10px; }
 .value-card p { font-size: 0.96rem; opacity: 0.82; margin: 0; }
+.value-card .recipe-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  opacity: 1;
+  color: var(--terracotta-dark);
+  margin: 18px 0 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.value-card .recipe-label:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+.value-card .recipe-ingredients { list-style: none; padding: 0; margin: 0; display: grid; gap: 7px; }
+.value-card .recipe-ingredients li {
+  display: flex;
+  gap: 9px;
+  font-size: 0.93rem;
+  opacity: 0.85;
+  line-height: 1.4;
+}
+.value-card .recipe-ingredients li::before { content: "◆"; color: var(--terracotta); font-size: 8px; margin-top: 5px; flex-shrink: 0; }
+.value-card .add-note { font-size: 0.93rem; opacity: 0.85; }
 .value-card img.card-thumb {
   display: block;
   width: calc(100% + 60px);
