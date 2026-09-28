@@ -600,6 +600,41 @@ section { position: relative; }
   aspect-ratio: 16 / 10;
   object-fit: cover;
 }
+/* ---------- Wholesale: icon row (no boxes) ---------- */
+.wholesale-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+.wholesale-feature .feature-icon-circle {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(168,90,52,0.45);
+  background: rgba(168,90,52,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+.wholesale-feature svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--terracotta-dark);
+  fill: none;
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.wholesale-feature h3 { font-size: 1.08rem; margin: 0 0 10px; }
+.wholesale-feature p { font-size: 0.92rem; opacity: 0.8; margin: 0; }
+@media (max-width: 900px) {
+  .wholesale-features { grid-template-columns: repeat(2, 1fr); gap: 40px 24px; }
+}
+@media (max-width: 560px) {
+  .wholesale-features { grid-template-columns: 1fr; gap: 36px; }
+}
 .blog-meta {
   font-size: 11px;
   letter-spacing: 0.08em;
