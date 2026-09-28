@@ -98,7 +98,7 @@
   bottom: 22px;
   right: 22px;
   z-index: 1400;
-  background: var(--forest-dark);
+  background: var(--cacao);
   color: var(--ivory);
   padding: 16px 20px;
   border-radius: var(--radius);
@@ -577,7 +577,7 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
 }
 
 /* ---------- FAQ accordion ---------- */
-.faq-band { background: var(--forest-dark); color: var(--ivory); padding: 90px 0; }
+.faq-band { background: var(--cacao); color: var(--ivory); padding: 90px 0; }
 .faq-band .section-head { margin-bottom: 44px; }
 .faq-band h2 { color: var(--ivory); }
 .faq-band .section-head p { color: var(--ivory); opacity: 0.75; }
