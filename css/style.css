@@ -28,7 +28,7 @@
   --font-body: "Poppins", "Helvetica Neue", Arial, sans-serif;
 
   --container: 1180px;
-  --radius: 2px;
+  --radius: 6px;
   --shadow-soft: 0 20px 50px -25px rgba(27, 23, 18, 0.35);
 }
 
@@ -46,7 +46,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-img { max-width: 100%; display: block; }
+img { max-width: 100%; display: block; border-radius: var(--radius); }
 
 .container {
   max-width: var(--container);
