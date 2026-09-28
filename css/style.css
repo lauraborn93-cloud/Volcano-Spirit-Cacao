@@ -17,8 +17,10 @@
   --maroon: #6e2430;
   --sage: #565f42;
   --sage-light: #7c8560;
-  --forest-dark: #2d3624;
   --cream-ink: #efe6d6;
+  --ash: #4a453d;
+  --ash-dark: #322e28;
+  --blush: #d9a690;
   --line: rgba(27, 23, 18, 0.12);
   --line-light: rgba(241,227,201,0.18);
 
@@ -139,7 +141,7 @@ p { margin: 0 0 1em; }
   position: absolute;
   left: -999px;
   top: 0;
-  background: var(--forest-dark);
+  background: var(--cacao);
   color: var(--ivory);
   padding: 12px 20px;
   z-index: 2000;
@@ -166,10 +168,12 @@ p { margin: 0 0 1em; }
   padding-right: 48px;
 }
 .site-header.is-scrolled {
-  background: rgba(45, 54, 36, 0.94);
-  backdrop-filter: blur(8px);
+  background: rgba(61, 39, 24, 0.52);
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
   padding: 12px 0;
-  box-shadow: 0 10px 30px -20px rgba(0,0,0,0.6);
+  box-shadow: 0 10px 30px -20px rgba(0,0,0,0.5);
+  border-bottom: 1px solid rgba(241,227,201,0.14);
 }
 
 .brand {
@@ -367,10 +371,11 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
   background: rgba(241,227,201,0.4);
 }
 .trust-row .icon-circle {
-  width: 62px;
-  height: 62px;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
-  border: 1px solid rgba(241,227,201,0.85);
+  border: 1px solid rgba(241,227,201,0.55);
+  background: rgba(241,227,201,0.06);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -378,21 +383,24 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
   filter: drop-shadow(0 1px 4px rgba(0,0,0,0.5));
 }
 .trust-row svg {
-  width: 24px;
-  height: 24px;
+  width: 21px;
+  height: 21px;
   flex-shrink: 0;
   stroke: var(--ivory);
   fill: none;
-  stroke-width: 1.1;
+  stroke-width: 0.85;
 }
 .trust-row span:last-child {
-  font-size: 10.5px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12.5px;
+  letter-spacing: 0.01em;
+  text-transform: none;
   color: var(--ivory);
   opacity: 0.96;
-  line-height: 1.3;
-  max-width: 110px;
+  line-height: 1.35;
+  max-width: 118px;
   white-space: normal;
   text-shadow: 0 1px 4px rgba(0,0,0,0.55);
 }
@@ -621,13 +629,13 @@ section { position: relative; }
 
 /* ---------- CTA band ---------- */
 .cta-band {
-  background: var(--sage);
+  background: var(--cacao);
   color: var(--ivory);
   padding: 90px 0;
   text-align: center;
 }
 .cta-band h2 { color: var(--ivory); font-size: clamp(1.8rem, 3.6vw, 2.6rem); max-width: 760px; margin: 16px auto 14px; }
-.cta-band p { max-width: 600px; margin: 0 auto 30px; color: #e7ead9; }
+.cta-band p { max-width: 600px; margin: 0 auto 30px; color: #e6d9c6; }
 .cta-band .btn-row { justify-content: center; }
 .cta-band .btn-primary { background: var(--terracotta); border-color: var(--terracotta); }
 .cta-band .btn-outline { border-color: rgba(241,227,201,0.6); color: var(--ivory); }
@@ -638,9 +646,19 @@ section { position: relative; }
 
 /* ---------- Footer ---------- */
 .site-footer {
-  background: var(--forest-dark);
-  color: #cbbfa9;
+  position: relative;
+  background-image:
+    linear-gradient(180deg, rgba(74,69,61,0.92) 0%, rgba(50,46,40,0.95) 45%, var(--ash-dark) 100%),
+    url('../images/origin-lake.jpg');
+  background-size: cover;
+  background-position: center 38%;
+  background-attachment: fixed;
+  background-blend-mode: multiply;
+  color: #d9d0bf;
   padding: 70px 0 30px;
+}
+@media (max-width: 800px) {
+  .site-footer { background-attachment: scroll; }
 }
 .footer-grid {
   display: grid;
@@ -688,12 +706,16 @@ section { position: relative; }
 @media (max-width: 860px) {
   .main-nav, .header-cta .btn { display: none; }
   .nav-toggle { display: block; }
-  .site-header.is-scrolled { background: rgba(168, 90, 52, 0.94); }
+  .site-header.is-scrolled {
+    background: rgba(168, 90, 52, 0.55);
+    backdrop-filter: blur(18px) saturate(1.15);
+    -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  }
   .header-cta { gap: 0; }
   .site-header .container { padding-left: 20px; padding-right: 20px; }
 
   .mobile-nav {
-    background: var(--forest-dark);
+    background: var(--cacao);
     display: flex;
     flex-direction: column;
     justify-content: center;
