@@ -383,23 +383,23 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
   filter: drop-shadow(0 1px 4px rgba(0,0,0,0.5));
 }
 .trust-row svg {
-  width: 21px;
-  height: 21px;
+  width: 25px;
+  height: 25px;
   flex-shrink: 0;
   stroke: var(--ivory);
   fill: none;
-  stroke-width: 0.85;
+  stroke-width: 0.75;
 }
 .trust-row span:last-child {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 12.5px;
-  letter-spacing: 0.01em;
-  text-transform: none;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
   color: var(--ivory);
   opacity: 0.96;
-  line-height: 1.35;
+  line-height: 1.4;
   max-width: 118px;
   white-space: normal;
   text-shadow: 0 1px 4px rgba(0,0,0,0.55);
@@ -407,22 +407,6 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
 @media (max-width: 900px) {
   .trust-row li:not(:first-child)::before { display: none; }
 }
-.scroll-cue {
-  position: absolute;
-  bottom: 78px;
-  right: 24px;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #d9c6ae;
-}
-.scroll-cue .line { width: 1px; height: 34px; background: linear-gradient(#d9c6ae, transparent); animation: scrollpulse 2.2s ease-in-out infinite; }
-@keyframes scrollpulse { 0%,100%{opacity:.3} 50%{opacity:1} }
-
 /* ---------- Sections ---------- */
 section { position: relative; }
 .section { padding: 100px 0; }
@@ -580,7 +564,8 @@ section { position: relative; }
 .blog-preview-card .blog-meta { margin-top: 0; margin-bottom: 8px; }
 .blog-preview-card h3 { font-size: 1.3rem; margin: 0 0 10px; }
 .blog-preview-card h3 a:hover { color: var(--terracotta-dark); }
-.blog-preview-card p:not(.blog-meta) { font-size: 0.96rem; opacity: 0.8; margin: 0; }
+.blog-preview-card p:not(.blog-meta) { font-size: 0.96rem; opacity: 0.8; margin: 0 0 20px; }
+.blog-preview-card .btn { padding: 11px 22px; font-size: 12.5px; }
 @media (max-width: 700px) {
   .blog-preview-grid { grid-template-columns: 1fr; gap: 36px; }
 }
