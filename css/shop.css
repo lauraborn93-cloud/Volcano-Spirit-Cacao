@@ -313,7 +313,7 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
 /* ---------- Photo CTA band (mid-page CTA over a photo, white pill button) ---------- */
 .photo-cta {
   position: relative;
-  min-height: 460px;
+  min-height: 360px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -323,6 +323,7 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  padding: 90px 0;
 }
 .photo-cta::before {
   content: "";
