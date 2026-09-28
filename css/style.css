@@ -510,9 +510,20 @@ section { position: relative; }
 .photo-strip img { width: 100%; height: 320px; object-fit: cover; }
 
 /* ---------- Image band: a single full-bleed breather photo between sections ---------- */
-.image-band img { width: 100%; height: 52vh; min-height: 320px; max-height: 560px; object-fit: cover; display: block; }
+.image-band {
+  width: 100%;
+  height: 62vh;
+  min-height: 420px;
+  max-height: 720px;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+@media (max-width: 800px) {
+  .image-band { background-attachment: scroll; }
+}
 @media (max-width: 640px) {
-  .image-band img { height: 38vh; min-height: 240px; }
+  .image-band { height: 46vh; min-height: 300px; }
 }
 
 /* ---------- Values / cards ---------- */
