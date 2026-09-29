@@ -642,20 +642,7 @@ section { position: relative; }
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   margin: 8px 0 2px;
 }
-.definition-card-pos { font-style: italic; opacity: 0.55; font-size: 0.9rem; margin: 0 0 22px; }
-.definition-card-body { opacity: 0.92; margin: 0 0 26px; }
-.definition-card-facts {
-  list-style: none;
-  padding: 20px 0 0;
-  margin: 0 auto;
-  max-width: 440px;
-  display: grid;
-  gap: 10px;
-  text-align: left;
-  border-top: 1px solid rgba(241, 227, 201, 0.18);
-}
-.definition-card-facts li { display: flex; gap: 10px; font-size: 0.95rem; opacity: 0.88; }
-.definition-card-facts li::before { content: "◆"; color: var(--terracotta); font-size: 8px; margin-top: 6px; flex-shrink: 0; }
+.definition-card-body { opacity: 0.92; margin: 0; }
 
 /* ---------- Nutrient figure (annotated photo, no tables) ---------- */
 .nutrient-figure {
