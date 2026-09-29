@@ -627,6 +627,12 @@ section { position: relative; }
   stroke-linejoin: round;
   stroke-linecap: round;
 }
+.wholesale-feature .om-icon {
+  font-family: "Noto Sans Devanagari", "Segoe UI", sans-serif;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--terracotta-dark);
+}
 .wholesale-feature h3 { font-size: 1.08rem; margin: 0 0 10px; }
 .wholesale-feature p { font-size: 0.92rem; opacity: 0.8; margin: 0; }
 @media (max-width: 900px) {
