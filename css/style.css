@@ -26,7 +26,7 @@
 
   --font-display: "Yeseva One", "Georgia", serif;
   --font-body: "Poppins", "Helvetica Neue", Arial, sans-serif;
-  --font-nav: "Cormorant Garamond", "Georgia", serif;
+  --font-nav: "Yeseva One", "Georgia", serif;
 
   --container: 1180px;
   --radius: 6px;
@@ -206,14 +206,14 @@ body.has-hero.is-scrolled .site-header .brand { pointer-events: auto; }
 .main-nav ul {
   list-style: none;
   display: flex;
-  gap: 42px;
+  gap: 30px;
   margin: 0;
   padding: 0;
 }
 .main-nav a {
   color: var(--ivory);
   font-family: var(--font-nav);
-  font-size: 17px;
+  font-size: 15.5px;
   font-style: normal;
   font-weight: 500;
   letter-spacing: 0.01em;
