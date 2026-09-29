@@ -10,7 +10,7 @@ const BRANCH = "main";
 const ALLOWED_FILES = new Set([
   "index.html", "about.html", "spirit-of-cacao.html", "shop.html", "recipes.html",
   "blog.html", "blog-what-is-artificial-chocolate.html", "blog-what-is-ceremonial-cacao.html",
-  "contact.html", "cart.html", "checkout.html", "order-received.html",
+  "contact.html", "cart.html", "checkout.html", "order-received.html", "wholesale.html",
   "legal/terms.html", "legal/privacy-policy.html", "legal/cookie-policy.html", "legal/shipping-returns.html",
 ]);
 
