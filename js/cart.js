@@ -3,6 +3,18 @@
 
   var CART_KEY = "vsc_cart_v1";
 
+  function pageLang() {
+    return (document.documentElement.lang || "").toLowerCase().indexOf("de") === 0 ? "de" : "en";
+  }
+
+  function localizedName(product) {
+    return pageLang() === "de" && product.name_de ? product.name_de : product.name;
+  }
+
+  function itemName(item) {
+    return pageLang() === "de" && item.name_de ? item.name_de : item.name;
+  }
+
   function getCart() {
     try {
       var raw = localStorage.getItem(CART_KEY);
@@ -28,6 +40,7 @@
       items.push({
         id: product.id,
         name: product.name,
+        name_de: product.name_de,
         price: product.price,
         currency: product.currency,
         image: product.image,
@@ -64,7 +77,7 @@
   function formatMoney(amount, currency) {
     currency = currency || (window.VSC && VSC.products && VSC.products[0] && VSC.products[0].currency) || "USD";
     try {
-      return new Intl.NumberFormat("en-US", { style: "currency", currency: currency }).format(amount);
+      return new Intl.NumberFormat(pageLang() === "de" ? "de-DE" : "en-US", { style: "currency", currency: currency }).format(amount);
     } catch (e) {
       return "$" + amount.toFixed(2);
     }
@@ -113,7 +126,10 @@
       });
       addBtn.addEventListener("click", function () {
         addToCart(product, qtyInput.value);
-        showToast(qtyInput.value + " × " + product.name + " added to your bag.");
+        var msg = pageLang() === "de"
+          ? qtyInput.value + " × " + localizedName(product) + " in den Warenkorb gelegt."
+          : qtyInput.value + " × " + localizedName(product) + " added to your bag.";
+        showToast(msg);
       });
     });
   }
@@ -137,16 +153,21 @@
       emptyEl.style.display = "none";
       filledEl.style.display = "grid";
 
+      var isDe = pageLang() === "de";
+      var eachLabel = isDe ? " / Stück" : " each";
+      var qtyLabel = isDe ? "Menge" : "Quantity";
+      var removeLabel = isDe ? "Entfernen" : "Remove";
+
       tbody.innerHTML = items.map(function (i) {
         return (
           '<tr data-row="' + i.id + '">' +
           '<td><div class="cart-item-info"><img src="' + i.image + '" alt="" width="72" height="72" loading="lazy" />' +
-          '<div><h3>' + i.name + "</h3><span>" + formatMoney(i.price, i.currency) + " each</span></div></div></td>" +
+          '<div><h3>' + itemName(i) + "</h3><span>" + formatMoney(i.price, i.currency) + eachLabel + "</span></div></div></td>" +
           '<td><div class="qty-stepper"><button type="button" data-row-minus>−</button>' +
-          '<input type="number" min="1" value="' + i.qty + '" data-row-qty aria-label="Quantity" />' +
+          '<input type="number" min="1" value="' + i.qty + '" data-row-qty aria-label="' + qtyLabel + '" />' +
           "<button type=\"button\" data-row-plus>+</button></div></td>" +
           '<td class="cart-line-total">' + formatMoney(i.price * i.qty, i.currency) + "</td>" +
-          '<td><button type="button" class="cart-remove" data-row-remove>Remove</button></td>' +
+          '<td><button type="button" class="cart-remove" data-row-remove>' + removeLabel + "</button></td>" +
           "</tr>"
         );
       }).join("");
@@ -198,7 +219,7 @@
 
     summary.innerHTML = items.map(function (i) {
       return (
-        '<div class="summary-row"><span>' + i.qty + " × " + i.name + "</span><span>" +
+        '<div class="summary-row"><span>' + i.qty + " × " + itemName(i) + "</span><span>" +
         formatMoney(i.price * i.qty, i.currency) + "</span></div>"
       );
     }).join("");
@@ -209,7 +230,7 @@
 
     var orderField = document.querySelector("[name=order_details]");
     if (orderField) {
-      var lines = items.map(function (i) { return i.qty + " × " + i.name + " (" + formatMoney(i.price, i.currency) + " each) = " + formatMoney(i.price * i.qty, i.currency); });
+      var lines = items.map(function (i) { return i.qty + " × " + itemName(i) + " (" + formatMoney(i.price, i.currency) + " each) = " + formatMoney(i.price * i.qty, i.currency); });
       lines.push("Order total: " + formatMoney(subtotal));
       orderField.value = lines.join("\n");
     }
@@ -224,7 +245,10 @@
 
         if (action.indexOf("YOUR_ORDER_FORM_ID") !== -1) {
           if (status) {
-            status.textContent = "Online order submission isn't connected yet, please email your order to " + (window.VSC ? VSC.contactEmail : "us") + " using the button below, and we'll confirm pricing, shipping and payment with you directly.";
+            var email = window.VSC ? VSC.contactEmail : (pageLang() === "de" ? "uns" : "us");
+            status.textContent = pageLang() === "de"
+              ? "Die Online-Bestellung ist noch nicht angebunden. Bitte sende deine Bestellung per E-Mail an " + email + " über den Button unten, wir bestätigen Preis, Versand und Zahlung dann direkt mit dir."
+              : "Online order submission isn't connected yet, please email your order to " + email + " using the button below, and we'll confirm pricing, shipping and payment with you directly.";
             status.className = "form-status show err";
           }
           return;
@@ -240,7 +264,9 @@
           })
           .catch(function () {
             if (status) {
-              status.textContent = "Something went wrong sending your order. Please try again, or email it to us using the button below.";
+              status.textContent = pageLang() === "de"
+                ? "Beim Senden deiner Bestellung ist etwas schiefgelaufen. Bitte versuche es erneut oder schicke sie uns per E-Mail über den Button unten."
+                : "Something went wrong sending your order. Please try again, or email it to us using the button below.";
               status.className = "form-status show err";
             }
             if (submitBtn) submitBtn.disabled = false;

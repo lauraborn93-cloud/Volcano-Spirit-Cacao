@@ -9,6 +9,7 @@ window.VSC = {
     {
       id: "ceremonial-cacao-454g",
       name: "100% Ceremonial Cacao, 454g Block (1 lb)",
+      name_de: "100% Zeremonieller Kakao, 454g Block",
       price: 49.0,
       currency: "EUR",
       image: "images/product-packaging.jpg",
@@ -16,6 +17,7 @@ window.VSC = {
     {
       id: "ceremonial-cacao-1kg",
       name: "100% Ceremonial Cacao, 1kg Block",
+      name_de: "100% Zeremonieller Kakao, 1kg Block",
       price: 75.0,
       currency: "EUR",
       image: "images/product-packaging.jpg",

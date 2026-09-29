@@ -1,6 +1,10 @@
 (function () {
   "use strict";
 
+  function pageLang() {
+    return (document.documentElement.lang || "").toLowerCase().indexOf("de") === 0 ? "de" : "en";
+  }
+
   function wireAjaxForm(form) {
     form.addEventListener("submit", function (e) {
       var action = form.getAttribute("action") || "";
@@ -9,7 +13,9 @@
       if (action.indexOf("YOUR_") !== -1) {
         e.preventDefault();
         if (status) {
-          status.textContent = "This form isn't connected to an email service yet. See the README for a 2-minute Formspree setup.";
+          status.textContent = pageLang() === "de"
+            ? "Dieses Formular ist noch nicht mit einem E-Mail-Dienst verbunden. Siehe README für die 2-Minuten-Formspree-Einrichtung."
+            : "This form isn't connected to an email service yet. See the README for a 2-minute Formspree setup.";
           status.className = "form-status show err";
         }
         return;
@@ -25,7 +31,8 @@
           if (res.ok) {
             form.reset();
             if (status) {
-              status.textContent = form.getAttribute("data-success-message") || "Thank you, you're on the list.";
+              status.textContent = form.getAttribute("data-success-message") ||
+                (pageLang() === "de" ? "Danke, du bist jetzt auf der Liste." : "Thank you, you're on the list.");
               status.className = "form-status show ok";
             }
             form.dispatchEvent(new CustomEvent("vsc:form-success"));
@@ -35,7 +42,10 @@
         })
         .catch(function () {
           if (status) {
-            status.textContent = "Something went wrong, please try again, or email us directly at " + (window.VSC ? VSC.contactEmail : "our team") + ".";
+            var team = window.VSC ? VSC.contactEmail : (pageLang() === "de" ? "unser Team" : "our team");
+            status.textContent = pageLang() === "de"
+              ? "Etwas ist schiefgelaufen. Bitte versuche es erneut oder schreibe uns direkt an " + team + "."
+              : "Something went wrong, please try again, or email us directly at " + team + ".";
             status.className = "form-status show err";
           }
         })
