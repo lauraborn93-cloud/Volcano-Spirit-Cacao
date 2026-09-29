@@ -624,6 +624,80 @@ section { position: relative; }
   aspect-ratio: 16 / 10;
   object-fit: cover;
 }
+
+/* ---------- Definition card (dark, dictionary-entry style callout) ---------- */
+.definition-card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--cacao);
+  color: var(--ivory);
+  border-radius: var(--radius);
+  padding: 48px 44px;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+}
+.definition-card .eyebrow { justify-content: center; margin-bottom: 4px; }
+.definition-card h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin: 8px 0 2px;
+}
+.definition-card-pos { font-style: italic; opacity: 0.55; font-size: 0.9rem; margin: 0 0 22px; }
+.definition-card-body { opacity: 0.92; margin: 0 0 26px; }
+.definition-card-facts {
+  list-style: none;
+  padding: 20px 0 0;
+  margin: 0 auto;
+  max-width: 440px;
+  display: grid;
+  gap: 10px;
+  text-align: left;
+  border-top: 1px solid rgba(241, 227, 201, 0.18);
+}
+.definition-card-facts li { display: flex; gap: 10px; font-size: 0.95rem; opacity: 0.88; }
+.definition-card-facts li::before { content: "◆"; color: var(--terracotta); font-size: 8px; margin-top: 6px; flex-shrink: 0; }
+
+/* ---------- Nutrient figure (annotated photo, no tables) ---------- */
+.nutrient-figure {
+  position: relative;
+  max-width: 460px;
+  margin: 0 auto;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+.nutrient-figure img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.nutrient-tag { position: absolute; display: flex; align-items: center; }
+.nutrient-tag-arrow { width: 34px; height: 1.5px; background: var(--terracotta); position: relative; margin-right: 8px; flex-shrink: 0; }
+.nutrient-tag-arrow::before {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  box-shadow: 0 0 0 4px rgba(168, 90, 52, 0.32);
+}
+.nutrient-tag-label {
+  font-family: var(--font-nav);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--ivory);
+  background: rgba(61, 39, 24, 0.72);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  padding: 5px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .nutrient-tag-label { font-size: 11px; padding: 4px 10px; }
+  .nutrient-tag-arrow { width: 22px; }
+}
+
 /* ---------- Wholesale: icon row (no boxes) ---------- */
 .wholesale-features {
   display: grid;
