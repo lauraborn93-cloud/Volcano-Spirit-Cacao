@@ -214,7 +214,7 @@ body.has-hero.is-scrolled .site-header .brand { pointer-events: auto; }
   color: var(--ivory);
   font-family: var(--font-nav);
   font-size: 17px;
-  font-style: italic;
+  font-style: normal;
   font-weight: 500;
   letter-spacing: 0.01em;
   text-transform: none;
@@ -810,7 +810,7 @@ section { position: relative; }
     overflow-y: auto;
   }
   .mobile-nav ul { list-style: none; padding: 0; margin: 0 0 30px; display: grid; gap: 22px; }
-  .mobile-nav a { color: var(--ivory); font-family: var(--font-nav); font-style: italic; font-weight: 500; font-size: 1.9rem; }
+  .mobile-nav a { color: var(--ivory); font-family: var(--font-nav); font-style: normal; font-weight: 500; font-size: 1.9rem; }
   .mobile-nav .btn {
     align-self: stretch;
     justify-content: center;
