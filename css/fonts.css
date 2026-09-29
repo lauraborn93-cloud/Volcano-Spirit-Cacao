@@ -1,4 +1,4 @@
-/* Self-hosted Fraunces + Poppins (Latin subset), avoids sending visitor IPs to Google Fonts' CDN pre-consent. */
+/* Self-hosted Fraunces + Poppins + Cormorant Garamond (Latin subset), avoids sending visitor IPs to Google Fonts' CDN pre-consent. */
 
 @font-face {
   font-family: 'Fraunces';
@@ -54,5 +54,29 @@
   font-weight: 600;
   font-display: swap;
   src: url('../fonts/Poppins-600-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/CormorantGaramond-500-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/CormorantGaramond-500-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/CormorantGaramond-600-normal.woff2') format('woff2');
 }
 
