@@ -331,6 +331,7 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
   inset: 0;
   background: linear-gradient(180deg, rgba(61,39,24,0.55), rgba(61,39,24,0.62));
 }
+#contact.photo-cta::before { background: rgba(43,27,16,0.45); }
 @media (max-width: 800px) {
   .photo-cta { background-attachment: scroll; }
 }
