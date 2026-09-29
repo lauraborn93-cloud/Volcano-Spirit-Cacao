@@ -805,7 +805,7 @@ section { position: relative; }
 }
 .cta-band h2 { color: var(--ivory); font-size: clamp(1.8rem, 3.6vw, 2.6rem); max-width: 760px; margin: 16px auto 14px; }
 .cta-band p { max-width: 600px; margin: 0 auto 30px; color: #e6d9c6; }
-.cta-band .btn-row { justify-content: center; }
+.cta-band .btn-row, .photo-cta .btn-row { justify-content: center; }
 .cta-band .btn-primary { background: var(--terracotta); border-color: var(--terracotta); }
 .cta-band .btn-outline { border-color: rgba(241,227,201,0.6); color: var(--ivory); }
 
