@@ -1,0 +1,9 @@
+{
+  "name": "volcano-spirit-cacao",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static site. The only server-side code is the /api functions behind the live text editor (see js/edit-mode.js).",
+  "dependencies": {
+    "node-html-parser": "^6.1.13"
+  }
+}
