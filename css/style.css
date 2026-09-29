@@ -213,7 +213,7 @@ body.has-hero.is-scrolled .site-header .brand { pointer-events: auto; }
 .main-nav a {
   color: var(--ivory);
   font-family: var(--font-nav);
-  font-size: 15.5px;
+  font-size: 16.5px;
   font-style: normal;
   font-weight: 500;
   letter-spacing: 0.01em;
