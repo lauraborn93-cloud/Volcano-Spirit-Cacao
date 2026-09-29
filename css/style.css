@@ -24,7 +24,7 @@
   --line: rgba(27, 23, 18, 0.12);
   --line-light: rgba(241,227,201,0.18);
 
-  --font-display: "Fraunces", "Georgia", serif;
+  --font-display: "Yeseva One", "Georgia", serif;
   --font-body: "Poppins", "Helvetica Neue", Arial, sans-serif;
   --font-nav: "Cormorant Garamond", "Georgia", serif;
 
@@ -424,6 +424,10 @@ section { position: relative; }
 .on-dark { color: var(--ivory); }
 .on-cacao { color: var(--ivory); }
 .on-sage { color: var(--ivory); }
+
+/* Mobile scannability: neutral on desktop, bold + terracotta on small
+   screens so key words pop out of longer paragraphs while skimming. */
+.scan-hl { font-weight: inherit; color: inherit; }
 
 /* ---------- Manifesto (controversial section) ---------- */
 .manifesto {
@@ -831,6 +835,8 @@ section { position: relative; }
   .section { padding: 66px 0; }
   .manifesto, .gallery-band, .cta-band { padding: 66px 0; }
   .hero-content { padding: 128px 20px 40px; max-width: 100%; }
+  .scan-hl { font-weight: 700; color: var(--terracotta); }
+  .on-dark .scan-hl, .cta-band .scan-hl, .photo-cta .scan-hl, .hero .scan-hl { color: #e8b98f; }
   .trust-row {
     flex-wrap: nowrap;
     justify-content: flex-start;
