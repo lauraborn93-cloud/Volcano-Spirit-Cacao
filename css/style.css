@@ -581,7 +581,8 @@ section { position: relative; }
 }
 .value-card h3 { font-size: 1.25rem; margin: 14px 0 10px; }
 .value-card p { font-size: 0.96rem; opacity: 0.82; margin: 0; }
-.value-card .recipe-label {
+.value-card .recipe-label,
+.recipe-plain .recipe-label {
   font-family: var(--font-body);
   font-size: 11px;
   letter-spacing: 0.12em;
@@ -593,17 +594,23 @@ section { position: relative; }
   padding-top: 16px;
   border-top: 1px solid var(--line);
 }
-.value-card .recipe-label:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
-.value-card .recipe-ingredients { list-style: none; padding: 0; margin: 0; display: grid; gap: 7px; }
-.value-card .recipe-ingredients li {
+.value-card .recipe-label:first-of-type,
+.recipe-plain .recipe-label:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+.value-card .recipe-ingredients,
+.recipe-plain .recipe-ingredients { list-style: none; padding: 0; margin: 0; display: grid; gap: 7px; }
+.value-card .recipe-ingredients li,
+.recipe-plain .recipe-ingredients li {
   display: flex;
   gap: 9px;
   font-size: 0.93rem;
   opacity: 0.85;
   line-height: 1.4;
 }
-.value-card .recipe-ingredients li::before { content: "◆"; color: var(--terracotta); font-size: 8px; margin-top: 5px; flex-shrink: 0; }
-.value-card .add-note { font-size: 0.93rem; opacity: 0.85; }
+.value-card .recipe-ingredients li::before,
+.recipe-plain .recipe-ingredients li::before { content: "◆"; color: var(--terracotta); font-size: 8px; margin-top: 5px; flex-shrink: 0; }
+.value-card .add-note,
+.recipe-plain .add-note { font-size: 0.93rem; opacity: 0.85; }
+.recipe-plain { max-width: 540px; margin: 0 auto; }
 .recipe-features {
   display: flex;
   flex-wrap: wrap;
