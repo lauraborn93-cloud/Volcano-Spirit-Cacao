@@ -320,7 +320,7 @@ body.has-hero.is-scrolled .site-header .brand { pointer-events: auto; }
   inset: 0;
   /* Overlay for text legibility up top, tapering to nothing by the
      trust-row band at the bottom so that strip shows the photo untinted. */
-  background: linear-gradient(180deg, rgba(30,20,12,0.58) 0%, rgba(30,20,12,0.36) 34%, rgba(30,20,12,0.16) 56%, rgba(30,20,12,0) 76%);
+  background: linear-gradient(180deg, rgba(74,42,20,0.64) 0%, rgba(74,42,20,0.42) 34%, rgba(74,42,20,0.19) 56%, rgba(74,42,20,0) 76%);
 }
 .hero-logo-big {
   position: absolute;
@@ -636,24 +636,23 @@ section { position: relative; }
   object-fit: cover;
 }
 
-/* ---------- Definition card (dark, dictionary-entry style callout) ---------- */
+/* ---------- Definition card (outlined dictionary-entry style callout) ---------- */
 .definition-card {
-  max-width: 720px;
-  margin: 0 auto;
-  background: var(--cacao);
-  color: var(--ivory);
+  background: var(--parchment);
+  color: var(--cacao);
+  border: 1.5px solid var(--terracotta);
   border-radius: var(--radius);
-  padding: 48px 44px;
-  text-align: center;
-  box-shadow: var(--shadow-soft);
+  padding: 40px 38px;
+  align-self: start;
 }
-.definition-card .eyebrow { justify-content: center; margin-bottom: 4px; }
+.definition-card .eyebrow { margin-bottom: 4px; }
 .definition-card h3 {
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   margin: 8px 0 2px;
 }
-.definition-card-body { opacity: 0.92; margin: 0; }
+.definition-card-body { opacity: 0.85; margin: 0; }
+.nutrient-note strong { color: var(--terracotta-dark); font-weight: 700; }
 
 /* ---------- Nutrient figure (annotated photo, no tables) ---------- */
 .nutrient-figure {
@@ -687,13 +686,14 @@ section { position: relative; }
   font-size: 13.5px;
   font-weight: 600;
   letter-spacing: 0.01em;
-  color: var(--ivory);
-  background: rgba(43, 27, 16, 0.86);
+  color: var(--cacao);
+  background: rgba(241, 227, 201, 0.95);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   padding: 6px 13px;
   border-radius: 999px;
   white-space: nowrap;
+  box-shadow: 0 1px 5px rgba(61, 39, 24, 0.2);
 }
 @media (max-width: 480px) {
   .nutrient-tag-label { font-size: 12px; padding: 5px 11px; }
