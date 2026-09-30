@@ -664,9 +664,9 @@ section { position: relative; }
   overflow: hidden;
   box-shadow: var(--shadow-soft);
 }
-.nutrient-figure img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.nutrient-figure img { display: block; width: 100%; height: auto; }
 .nutrient-tag { position: absolute; display: flex; align-items: center; }
-.nutrient-tag-arrow { width: 34px; height: 1.5px; background: var(--terracotta); position: relative; margin-right: 8px; flex-shrink: 0; }
+.nutrient-tag-arrow { width: 30px; height: 1.5px; background: var(--terracotta); position: relative; margin-right: 8px; flex-shrink: 0; }
 .nutrient-tag-arrow::before {
   content: "";
   position: absolute;
@@ -679,21 +679,25 @@ section { position: relative; }
   background: var(--terracotta);
   box-shadow: 0 0 0 4px rgba(168, 90, 52, 0.32);
 }
+.nutrient-tag--r { flex-direction: row-reverse; }
+.nutrient-tag--r .nutrient-tag-arrow { margin-right: 0; margin-left: 8px; }
+.nutrient-tag--r .nutrient-tag-arrow::before { left: auto; right: -3px; }
 .nutrient-tag-label {
-  font-family: var(--font-nav);
-  font-size: 12px;
-  letter-spacing: 0.02em;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   color: var(--ivory);
-  background: rgba(61, 39, 24, 0.72);
+  background: rgba(43, 27, 16, 0.86);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
-  padding: 5px 12px;
+  padding: 6px 13px;
   border-radius: 999px;
   white-space: nowrap;
 }
 @media (max-width: 480px) {
-  .nutrient-tag-label { font-size: 11px; padding: 4px 10px; }
-  .nutrient-tag-arrow { width: 22px; }
+  .nutrient-tag-label { font-size: 12px; padding: 5px 11px; }
+  .nutrient-tag-arrow { width: 18px; }
 }
 
 /* ---------- Wholesale: icon row (no boxes) ---------- */
