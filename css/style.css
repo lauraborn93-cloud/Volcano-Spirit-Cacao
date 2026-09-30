@@ -195,9 +195,9 @@ p { margin: 0 0 1em; }
 }
 .brand-word span { display: block; font-size: 10px; letter-spacing: 0.3em; color: #cbb190; font-family: var(--font-body); margin-top: 2px; }
 
-/* Homepage only: the big logo centered in the header carries the brand,
-   starting large on load and fading out as you scroll (opacity/scale
-   driven by --hero-logo-opacity/--hero-logo-scale, set in main.js; see
+/* Homepage only: the logo centered in the header carries the brand,
+   starting large on load and shrinking to a small permanent mark as you
+   scroll (scale driven by --hero-logo-scale, set in main.js; see
    .hero-logo-big below). The small corner mark is unused on this page. */
 body.has-hero .site-header .brand { display: none; }
 
@@ -322,12 +322,8 @@ body.has-hero .site-header .brand { display: none; }
      trust-row band at the bottom so that strip shows the photo untinted. */
   background: linear-gradient(180deg, rgba(74,42,20,0.64) 0%, rgba(74,42,20,0.42) 34%, rgba(74,42,20,0.19) 56%, rgba(74,42,20,0) 76%);
 }
-.hero-logo-big {
-  opacity: var(--hero-logo-opacity, 1);
-  transition: opacity 0.1s linear, transform 0.1s linear;
-}
+.hero-logo-big { transition: transform 0.1s linear; }
 .hero-logo-big img { width: 100%; height: auto; display: block; filter: drop-shadow(0 6px 20px rgba(0,0,0,0.35)); }
-body.is-scrolled .hero-logo-big { pointer-events: none; }
 
 /* Desktop: the logo sits in flow between the split nav's two link groups,
    starting oversized (via --hero-logo-scale) and settling into its native
@@ -339,15 +335,15 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
   width: 64px;
   flex-shrink: 0;
   transform: scale(var(--hero-logo-scale, 1));
-  transform-origin: center center;
+  transform-origin: center top;
 }
 
 /* Mobile: main-nav is hidden behind the hamburger, so the logo floats on
    its own, centered over the header/hero top. */
 .hero-logo-big--floating {
   display: none;
-  position: absolute;
-  top: 30px;
+  position: fixed;
+  top: 40px;
   left: 50%;
   z-index: 1001;
   width: 138px;
@@ -594,10 +590,11 @@ section { position: relative; }
   gap: 30px;
 }
 .value-card {
-  background: transparent;
+  background: #fff;
   border: 1px solid rgba(168,90,52,0.3);
   border-radius: var(--radius);
   padding: 34px 30px;
+  box-shadow: var(--shadow-soft);
 }
 .value-card .num {
   font-family: var(--font-display);
@@ -671,12 +668,13 @@ section { position: relative; }
 
 /* ---------- Definition card (outlined dictionary-entry style callout) ---------- */
 .definition-card {
-  background: var(--parchment);
+  background: #fff;
   color: var(--cacao);
   border: 1.5px solid var(--terracotta);
   border-radius: var(--radius);
   padding: 40px 38px;
   align-self: start;
+  box-shadow: var(--shadow-soft);
 }
 .definition-card .eyebrow { margin-bottom: 4px; }
 .definition-card h3 {
