@@ -29,6 +29,34 @@ function escapeHtml(s) {
   return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
+// Elements the editor lets you edit as a whole block (e.g. a paragraph with a
+// bold word in it) send back innerHTML instead of plain text. Only these
+// inline formatting tags are allowed through -- anything else (script, div,
+// style attributes, event handlers, target=...) is stripped or unwrapped, so
+// a captured contenteditable selection can never commit arbitrary markup.
+var ALLOWED_INLINE_TAGS = new Set(["STRONG", "EM", "B", "I", "A", "SPAN", "BR", "U", "SMALL"]);
+
+function sanitizeInlineHtml(html) {
+  var frag = parse(html);
+  function render(node) {
+    if (node.nodeType === 3) return escapeHtml(node.rawText != null ? node.rawText : node.text);
+    if (node.nodeType === 1) {
+      var tag = (node.rawTagName || node.tagName || "").toUpperCase();
+      var inner = node.childNodes.map(render).join("");
+      if (!ALLOWED_INLINE_TAGS.has(tag)) return inner;
+      if (tag === "BR") return "<br>";
+      var lower = tag.toLowerCase();
+      if (tag === "A") {
+        var href = node.getAttribute ? node.getAttribute("href") : null;
+        return "<a" + (href ? ' href="' + escapeHtml(href) + '"' : "") + ">" + inner + "</a>";
+      }
+      return "<" + lower + ">" + inner + "</" + lower + ">";
+    }
+    return "";
+  }
+  return frag.childNodes.map(render).join("").replace(/\s+/g, " ").trim();
+}
+
 // Walks the same child-index path the client computed (relative to #main)
 // so both sides agree on which element is being edited, independent of
 // text content -- this is what lets two identical strings on a page be
@@ -55,7 +83,8 @@ function applyEdits(fileContent, edits) {
 
   var replacements = [];
   edits.forEach(function (edit) {
-    if (!Array.isArray(edit.path) || typeof edit.text !== "string") return;
+    var isHtml = typeof edit.html === "string";
+    if (!Array.isArray(edit.path) || (!isHtml && typeof edit.text !== "string")) return;
     var target = resolvePath(mainEl, edit.path);
     if (!target || !target.range) return;
     var start = target.range[0];
@@ -66,8 +95,8 @@ function applyEdits(fileContent, edits) {
     if (openEnd <= 0 || closeStart <= openEnd) return;
     var openTag = origSlice.slice(0, openEnd);
     var closeTag = origSlice.slice(closeStart);
-    var cleanText = edit.text.replace(/\s+/g, " ").trim();
-    replacements.push({ start: start, end: end, newSlice: openTag + escapeHtml(cleanText) + closeTag });
+    var newInner = isHtml ? sanitizeInlineHtml(edit.html) : escapeHtml(edit.text.replace(/\s+/g, " ").trim());
+    replacements.push({ start: start, end: end, newSlice: openTag + newInner + closeTag });
   });
 
   // Apply back-to-front so earlier offsets in the string stay valid as

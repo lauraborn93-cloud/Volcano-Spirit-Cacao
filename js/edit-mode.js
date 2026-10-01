@@ -9,17 +9,26 @@
  * only the targeted elements' inner text (byte-precise, nothing else in the
  * file is touched), and commits straight to main. Vercel then rebuilds.
  *
- * Only plain text is editable (elements with no nested tags), and only
- * within <main> -- shared header/nav/footer chrome is duplicated across
- * every page's own HTML file, so editing it here would only change the one
- * page you're on, not the rest of the site.
+ * Plain elements (no nested tags) are edited as text. A block that mixes
+ * plain text with simple inline formatting (bold/italic/link/span) is
+ * edited as one whole unit via innerHTML instead, so you aren't stuck
+ * editing just the bold word -- the server re-sanitizes that HTML down to
+ * the same small set of inline tags before it's ever written to a file.
+ * Editing is scoped to <main> only -- shared header/nav/footer chrome is
+ * duplicated across every page's own HTML file, so editing it here would
+ * only change the one page you're on, not the rest of the site.
  */
 (function () {
   "use strict";
   if (!/[?&]edit(=|&|$)/.test(location.search)) return;
 
   var EDITABLE_TAGS = ["H1", "H2", "H3", "H4", "H5", "P", "LI", "SPAN", "A", "BLOCKQUOTE", "BUTTON", "TD", "TH", "LABEL", "FIGCAPTION"];
-  var EXCLUDE_CLOSEST = "[data-buy-box], .qty-stepper, .cart-badge, #year, .form-status, .summary, .cart-toast, .newsletter-form";
+  // Block-level tags that may contain a MIX of plain text and simple inline
+  // formatting (bold word, link, etc.) -- these get made editable as one
+  // whole unit so you aren't stuck clicking into just the bold/linked word.
+  var RICH_CONTAINER_TAGS = ["H1", "H2", "H3", "H4", "H5", "P", "LI", "BLOCKQUOTE", "TD", "TH", "FIGCAPTION"];
+  var INLINE_ALLOWED = ["STRONG", "EM", "B", "I", "A", "SPAN", "BR", "U", "SMALL"];
+  var EXCLUDE_CLOSEST = "[data-buy-box], .qty-stepper, .cart-badge, #year, .form-status, .summary, .cart-toast, .newsletter-form, .typewriter";
   var STORAGE_KEY = "vsc_edit_password";
 
   var pageRelPath = location.pathname.replace(/^\//, "");
@@ -47,6 +56,23 @@
     if (EDITABLE_TAGS.indexOf(el.tagName) === -1) return false;
     if (el.closest(EXCLUDE_CLOSEST)) return false;
     if (el.hasAttribute("data-price")) return false;
+    return true;
+  }
+
+  // A block whose only markup is simple inline formatting (bold/italic/link/
+  // span) -- made editable as a whole so the surrounding plain text isn't
+  // stranded outside any clickable element.
+  function isRichEligible(el) {
+    if (el.children.length === 0) return false;
+    if (!el.textContent || !el.textContent.trim()) return false;
+    if (RICH_CONTAINER_TAGS.indexOf(el.tagName) === -1) return false;
+    if (el.closest(EXCLUDE_CLOSEST)) return false;
+    if (el.querySelector(EXCLUDE_CLOSEST)) return false;
+    var kids = el.querySelectorAll("*");
+    for (var i = 0; i < kids.length; i++) {
+      if (INLINE_ALLOWED.indexOf(kids[i].tagName) === -1) return false;
+      if (kids[i].hasAttribute("data-price")) return false;
+    }
     return true;
   }
 
@@ -157,30 +183,41 @@
     document.body.appendChild(badge);
   }
 
+  function attachEditHandlers(el, isRich) {
+    el.classList.add("vsc-edit-target");
+    el.setAttribute("contenteditable", "true");
+    if (isRich) el.setAttribute("data-vsc-rich", "1");
+    el.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") e.preventDefault();
+    });
+    el.addEventListener("paste", function (e) {
+      e.preventDefault();
+      var text = (e.clipboardData || window.clipboardData).getData("text/plain");
+      document.execCommand("insertText", false, text);
+    });
+    el.addEventListener("input", function () {
+      if (!isRich && el.children.length > 0) el.textContent = el.textContent;
+      var path = getPath(el);
+      if (!path) return;
+      dirty[path.join(".")] = isRich ? { path: path, html: el.innerHTML } : { path: path, text: el.textContent };
+      el.classList.add("vsc-edit-dirty");
+      updateBar();
+    });
+  }
+
   function markEditable() {
     mainEl = document.querySelector("#main");
     if (!mainEl) return;
-    var all = mainEl.querySelectorAll(EDITABLE_TAGS.join(","));
-    all.forEach(function (el) {
+
+    mainEl.querySelectorAll(RICH_CONTAINER_TAGS.join(",")).forEach(function (el) {
+      if (!isRichEligible(el)) return;
+      attachEditHandlers(el, true);
+    });
+
+    mainEl.querySelectorAll(EDITABLE_TAGS.join(",")).forEach(function (el) {
+      if (el.closest("[data-vsc-rich]")) return;
       if (!isEligible(el)) return;
-      el.classList.add("vsc-edit-target");
-      el.setAttribute("contenteditable", "true");
-      el.addEventListener("keydown", function (e) {
-        if (e.key === "Enter") e.preventDefault();
-      });
-      el.addEventListener("paste", function (e) {
-        e.preventDefault();
-        var text = (e.clipboardData || window.clipboardData).getData("text/plain");
-        document.execCommand("insertText", false, text);
-      });
-      el.addEventListener("input", function () {
-        if (el.children.length > 0) el.textContent = el.textContent;
-        var path = getPath(el);
-        if (!path) return;
-        dirty[path.join(".")] = { path: path, text: el.textContent };
-        el.classList.add("vsc-edit-dirty");
-        updateBar();
-      });
+      attachEditHandlers(el, false);
     });
   }
 
