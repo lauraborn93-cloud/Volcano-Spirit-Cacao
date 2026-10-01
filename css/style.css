@@ -427,24 +427,17 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
 .trust-row .icon-circle {
   width: 72px;
   height: 72px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(241,227,201,0.75);
-  background: rgba(241,227,201,0.07);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   filter: drop-shadow(0 1px 4px rgba(0,0,0,0.5));
 }
-.trust-row svg {
-  width: 38px;
-  height: 38px;
-  flex-shrink: 0;
-  stroke: var(--ivory);
-  fill: none;
-  stroke-width: 1.2;
-  stroke-linejoin: round;
-  stroke-linecap: round;
+.trust-row .icon-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 .trust-row span:last-child {
   font-family: var(--font-body);
@@ -994,7 +987,6 @@ section { position: relative; }
   .trust-row::-webkit-scrollbar { display: none; }
   .trust-row li { padding: 0 12px; scroll-snap-align: start; }
   .trust-row .icon-circle { width: 54px; height: 54px; }
-  .trust-row svg { width: 28px; height: 28px; }
   .trust-row span:last-child { font-size: 9.5px; max-width: 100%; }
   .scroll-cue { display: none; }
   .value-grid { grid-template-columns: 1fr; }
