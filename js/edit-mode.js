@@ -97,14 +97,22 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password: pw }),
       })
-        .then(function (r) { return r.json(); })
-        .then(function (data) {
-          if (data.ok) {
+        .then(function (r) { return r.json().then(function (data) { return { httpOk: r.ok, status: r.status, data: data }; }); })
+        .then(function (res) {
+          if (res.httpOk && res.data.ok) {
             sessionStorage.setItem(STORAGE_KEY, pw);
             overlay.remove();
             cb();
-          } else {
+          } else if (res.httpOk) {
             errorEl.textContent = "Incorrect password.";
+            btn.disabled = false;
+            btn.textContent = "Unlock";
+          } else {
+            // A non-2xx response (e.g. EDIT_PASSWORD not set on the server)
+            // would otherwise masquerade as "Incorrect password" below, since
+            // the JSON body still parses fine even on a 500. Surface what
+            // actually went wrong instead.
+            errorEl.textContent = "Server error (" + res.status + "): " + (res.data && res.data.error ? res.data.error : "unknown error");
             btn.disabled = false;
             btn.textContent = "Unlock";
           }
