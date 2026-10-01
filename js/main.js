@@ -21,14 +21,14 @@
     document.body.classList.toggle("is-scrolled", scrolled);
 
     if (!hasHero) return;
-    // The logo starts big on load and shrinks as you scroll, but always
-    // stays visible (a small permanent mark), so only scale is animated
-    // here, not opacity.
+    // The logo starts big on load, shrinks as you scroll, and fades out
+    // completely so it's gone well before you're past the hero.
     var progress = Math.min(window.scrollY / LOGO_SHRINK_DISTANCE, 1);
     var isMobile = window.innerWidth <= 640;
     var startScale = isMobile ? 1 : 1.35;
     var endScale = isMobile ? 0.45 : 0.4;
     document.documentElement.style.setProperty("--hero-logo-scale", String(startScale - progress * (startScale - endScale)));
+    document.documentElement.style.setProperty("--hero-logo-opacity", String(1 - progress));
   }
   // Throttle via rAF so this runs at most once per frame instead of once
   // per raw scroll event, which can otherwise cause visible jank/jumping
