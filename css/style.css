@@ -330,7 +330,7 @@ body.has-hero .site-header .brand { display: none; }
    to keep this on its own compositing layer to avoid scroll jank. */
 .hero-logo-big {
   position: fixed;
-  top: 18px;
+  top: 92px;
   left: 50%;
   z-index: 1001;
   width: 138px;
