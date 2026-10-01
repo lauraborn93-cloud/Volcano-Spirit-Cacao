@@ -9,6 +9,7 @@
   if (hasHero) document.body.classList.add("has-hero");
 
   var LOGO_SHRINK_DISTANCE = 380;
+  var scrollTicking = false;
 
   function onScroll() {
     // The header has no background until scrolled (so it sits invisibly over
@@ -21,15 +22,29 @@
 
     if (!hasHero) return;
     // The logo starts big on load and shrinks as you scroll, but always
-    // stays visible (a permanent small mark centered in the menu), so
-    // only scale is animated here, not opacity.
+    // stays visible (a small permanent mark), so only scale is animated
+    // here, not opacity.
     var progress = Math.min(window.scrollY / LOGO_SHRINK_DISTANCE, 1);
-    var isMobile = window.innerWidth <= 860;
-    var startScale = isMobile ? 1 : 2.2;
-    var endScale = isMobile ? 0.4 : 0.65;
+    var isMobile = window.innerWidth <= 640;
+    var startScale = isMobile ? 1 : 1.35;
+    var endScale = isMobile ? 0.45 : 0.4;
     document.documentElement.style.setProperty("--hero-logo-scale", String(startScale - progress * (startScale - endScale)));
   }
-  window.addEventListener("scroll", onScroll, { passive: true });
+  // Throttle via rAF so this runs at most once per frame instead of once
+  // per raw scroll event, which can otherwise cause visible jank/jumping
+  // the moment scrolling starts, especially on mobile.
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (scrollTicking) return;
+      scrollTicking = true;
+      window.requestAnimationFrame(function () {
+        onScroll();
+        scrollTicking = false;
+      });
+    },
+    { passive: true }
+  );
   onScroll();
 
   function closeNav() {
