@@ -408,7 +408,7 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
   text-align: center;
   white-space: nowrap;
@@ -455,6 +455,21 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
 }
 @media (max-width: 900px) {
   .trust-row li:not(:first-child)::before { display: none; }
+}
+/* A standalone dark strip for the trust row where it isn't floating over a
+   hero photo (e.g. just below the home page hero) -- same row, just not
+   absolutely positioned and with its own solid background. */
+.trust-band {
+  background: var(--cacao);
+  padding: 36px 0;
+}
+.trust-band .trust-row {
+  position: static;
+  border-top: none;
+  padding: 0 32px;
+}
+@media (max-width: 640px) {
+  .trust-band { padding: 22px 0; }
 }
 /* ---------- Sections ---------- */
 section { position: relative; }
