@@ -92,4 +92,57 @@
 
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Typewriter effect for the hero subhead: cycles through a list of
+  // phrases (pipe-separated in data-phrases), typing and deleting each
+  // in turn. The first phrase is already present in markup so the page
+  // reads correctly with JS off or before this runs; animation picks up
+  // from there. Respects prefers-reduced-motion by leaving the first
+  // phrase static.
+  var typewriterEls = document.querySelectorAll(".typewriter[data-phrases]");
+  typewriterEls.forEach(function (el) {
+    var phrases = el
+      .getAttribute("data-phrases")
+      .split("|")
+      .map(function (s) { return s.trim(); })
+      .filter(Boolean);
+    var textEl = el.querySelector(".typewriter-text");
+    if (!textEl || phrases.length < 2) return;
+
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    var TYPE_MS = 55;
+    var DELETE_MS = 30;
+    var PAUSE_MS = 1800;
+    var phraseIndex = 0;
+    var charIndex = phrases[0].length;
+    var deleting = true;
+
+    function tick() {
+      var current = phrases[phraseIndex];
+      if (deleting) {
+        charIndex--;
+        textEl.textContent = current.slice(0, charIndex);
+        if (charIndex === 0) {
+          deleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(tick, 300);
+          return;
+        }
+        setTimeout(tick, DELETE_MS);
+      } else {
+        charIndex++;
+        textEl.textContent = current.slice(0, charIndex);
+        if (charIndex === current.length) {
+          deleting = true;
+          setTimeout(tick, PAUSE_MS);
+          return;
+        }
+        setTimeout(tick, TYPE_MS);
+      }
+    }
+    setTimeout(tick, PAUSE_MS);
+  });
 })();
