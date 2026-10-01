@@ -195,10 +195,10 @@ p { margin: 0 0 1em; }
 }
 .brand-word span { display: block; font-size: 10px; letter-spacing: 0.3em; color: #cbb190; font-family: var(--font-body); margin-top: 2px; }
 
-/* Homepage only: the logo centered in the header carries the brand,
-   starting large on load and shrinking to a small permanent mark as you
-   scroll (scale driven by --hero-logo-scale, set in main.js; see
-   .hero-logo-big below). The small corner mark is unused on this page. */
+/* Homepage only: a big logo floats over the hero photo, starting large on
+   load and shrinking to a small permanent mark as you scroll (scale
+   driven by --hero-logo-scale, set in main.js; see .hero-logo-big
+   below). The small corner mark is unused on this page. */
 body.has-hero .site-header .brand { display: none; }
 
 .main-nav { display: flex; flex: 1 1 auto; min-width: 0; justify-content: center; }
@@ -209,7 +209,6 @@ body.has-hero .site-header .brand { display: none; }
   margin: 0;
   padding: 0;
 }
-.main-nav--split { align-items: center; gap: 40px; }
 .main-nav a {
   color: var(--ivory);
   font-family: var(--font-nav);
@@ -322,41 +321,24 @@ body.has-hero .site-header .brand { display: none; }
      trust-row band at the bottom so that strip shows the photo untinted. */
   background: linear-gradient(180deg, rgba(74,42,20,0.64) 0%, rgba(74,42,20,0.42) 34%, rgba(74,42,20,0.19) 56%, rgba(74,42,20,0) 76%);
 }
-.hero-logo-big { transition: transform 0.1s linear; }
-.hero-logo-big img { width: 100%; height: auto; display: block; filter: drop-shadow(0 6px 20px rgba(0,0,0,0.35)); }
-
-/* Desktop: the logo sits in flow between the split nav's two link groups,
-   starting oversized (via --hero-logo-scale) and settling into its native
-   64px size as you scroll. Transform doesn't affect layout, so it never
-   pushes the nav links even at its largest. */
-.hero-logo-big--inline {
-  display: none;
-  position: relative;
-  width: 64px;
-  flex-shrink: 0;
-  transform: scale(var(--hero-logo-scale, 1));
-  transform-origin: center top;
-}
-
-/* Mobile: main-nav is hidden behind the hamburger, so the logo floats on
-   its own, centered over the header/hero top. */
-.hero-logo-big--floating {
-  display: none;
+/* The logo floats centered over the hero photo, pinned to the viewport
+   (like the header) so it stays put and visible through scroll rather
+   than scrolling away with the hero section. It grows downward only
+   (transform-origin: top) from a fixed top edge so it can never grow
+   past the top of the browser viewport and get clipped. Scale is set
+   continuously in main.js as you scroll; will-change hints the browser
+   to keep this on its own compositing layer to avoid scroll jank. */
+.hero-logo-big {
   position: fixed;
-  top: 40px;
+  top: 18px;
   left: 50%;
   z-index: 1001;
   width: 138px;
-  transform: translate(-50%, -50%) scale(var(--hero-logo-scale, 1));
-  transform-origin: center center;
+  transform: translateX(-50%) scale(var(--hero-logo-scale, 1));
+  transform-origin: top center;
+  will-change: transform;
 }
-
-@media (min-width: 861px) {
-  .hero-logo-big--inline { display: block; }
-}
-@media (max-width: 860px) {
-  .hero-logo-big--floating { display: block; }
-}
+.hero-logo-big img { width: 100%; height: auto; display: block; filter: drop-shadow(0 6px 20px rgba(0,0,0,0.35)); }
 .hero-content {
   position: relative;
   z-index: 1;
@@ -933,10 +915,30 @@ section { position: relative; }
     background: var(--cacao);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 40px 28px;
+    /* flex-start (not center) plus generous top padding so the first
+       link always lands clear of the still-visible fixed header above
+       it; centering here could push content up underneath the header,
+       where its (higher z-index) elements intercept the tap instead of
+       the link, which is why the first item was unclickable. */
+    justify-content: flex-start;
+    padding: 112px 28px 40px;
     overflow-y: auto;
   }
+  .mobile-lang-switch {
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 30px;
+    padding: 8px 14px;
+    border: 1px solid rgba(241,227,201,0.4);
+    border-radius: 999px;
+    color: var(--ivory);
+    font-family: var(--font-nav);
+    font-size: 13px;
+    letter-spacing: 0.03em;
+  }
+  .mobile-lang-switch svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; }
   .mobile-nav ul { list-style: none; padding: 0; margin: 0 0 30px; display: grid; gap: 22px; }
   .mobile-nav a { color: var(--ivory); font-family: var(--font-nav); font-style: normal; font-weight: 500; font-size: 1.9rem; }
   .mobile-nav .btn {
