@@ -336,8 +336,11 @@ body.has-hero .site-header .brand { display: none; }
   width: 138px;
   transform: translateX(-50%) scale(var(--hero-logo-scale, 1));
   transform-origin: top center;
-  will-change: transform;
+  opacity: var(--hero-logo-opacity, 1);
+  transition: opacity 0.1s linear;
+  will-change: transform, opacity;
 }
+body.is-scrolled .hero-logo-big { pointer-events: none; }
 .hero-logo-big img { width: 100%; height: auto; display: block; filter: drop-shadow(0 6px 20px rgba(0,0,0,0.35)); }
 .hero-content {
   position: relative;
