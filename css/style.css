@@ -715,17 +715,17 @@ section { position: relative; }
   left: -22px;
   bottom: -22px;
   z-index: 2;
-  max-width: 230px;
+  max-width: 360px;
   background: #f8ece2;
   color: var(--cacao);
   border: 1.5px solid var(--terracotta);
   border-radius: var(--radius);
-  padding: 20px 22px;
+  padding: 16px 22px;
   box-shadow: var(--shadow-soft);
 }
-.note-card .eyebrow { margin-bottom: 4px; font-size: 10px; }
-.note-card h3 { font-family: var(--font-display); font-size: 1.15rem; margin: 6px 0 8px; line-height: 1.15; }
-.note-card p { font-size: 0.84rem; line-height: 1.5; opacity: 0.85; margin: 0; }
+.note-card .eyebrow { margin-bottom: 2px; font-size: 10px; }
+.note-card h3 { font-family: var(--font-display); font-size: 1.1rem; margin: 4px 0 6px; line-height: 1.15; }
+.note-card p { font-size: 0.84rem; line-height: 1.4; opacity: 0.85; margin: 0; }
 @media (max-width: 900px) {
   .note-card { position: static; max-width: 100%; margin-top: 18px; }
 }
@@ -1071,7 +1071,41 @@ section { position: relative; }
 }
 
 /* ---------- Image lightbox (click a flagged photo to view it larger) ---------- */
-.img-lightbox { cursor: zoom-in; }
+.img-lightbox-wrap {
+  position: relative;
+  display: block;
+  border-radius: var(--radius);
+}
+.img-lightbox { cursor: pointer; display: block; }
+.img-lightbox-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(27,23,18,0);
+  transition: background 0.2s ease;
+  pointer-events: none;
+}
+.img-lightbox-wrap:hover::after { background: rgba(27,23,18,0.22); }
+.lightbox-expand-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.85);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+.img-lightbox-wrap:hover .lightbox-expand-icon { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.lightbox-expand-icon svg { width: 20px; height: 20px; stroke: var(--cacao); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .lightbox-overlay {
   position: fixed;
   inset: 0;
