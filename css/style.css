@@ -509,9 +509,6 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
 .trust-strip .icon-chip {
   width: 58px;
   height: 58px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(241,227,201,0.45);
-  background: rgba(241,227,201,0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -522,6 +519,7 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
   height: 58px;
   object-fit: contain;
   opacity: 0.95;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.45));
 }
 .trust-strip span {
   font-family: var(--font-body);
