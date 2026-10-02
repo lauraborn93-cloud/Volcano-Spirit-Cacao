@@ -398,6 +398,10 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
   color: #ecdfd0;
   margin-bottom: 20px;
 }
+/* Home page only: a mobile-only trust row overlaid on the hero photo
+   itself (ivory icons/text), shown instead of the light .trust-band used
+   on wider screens -- see the max-width:640px block below. */
+.trust-row-mobile { display: none; }
 .trust-row {
   position: absolute;
   left: 0;
@@ -1061,6 +1065,9 @@ section { position: relative; }
   }
   .scan-hl { font-weight: 700; color: var(--terracotta); }
   .on-dark .scan-hl, .cta-band .scan-hl, .photo-cta .scan-hl { color: #e8b98f; }
+  /* Home page only: the "Get in Touch" band is skipped on mobile, keeping
+     the page shorter -- the footer and header still link to Contact. */
+  #contact.photo-cta { display: none; }
   .trust-row {
     flex-wrap: nowrap;
     justify-content: flex-start;
@@ -1074,6 +1081,64 @@ section { position: relative; }
   .trust-row li { padding: 0 12px; scroll-snap-align: start; }
   .trust-row .icon-circle { width: 54px; height: 54px; }
   .trust-row span:last-child { font-size: 9.5px; max-width: 100%; }
+  /* Home page only: swap the light .trust-band for icons overlaid
+     directly on the hero photo (ivory, matching the original design). */
+  .trust-band { display: none; }
+  .trust-row-mobile {
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    list-style: none;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    gap: 0;
+    margin: 0;
+    padding: 18px 16px;
+    border-top: 1px solid rgba(241,227,201,0.35);
+    scrollbar-width: none;
+  }
+  .trust-row-mobile::-webkit-scrollbar { display: none; }
+  .trust-row-mobile li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    text-align: center;
+    white-space: nowrap;
+    padding: 0 12px;
+    position: relative;
+    scroll-snap-align: start;
+  }
+  .trust-row-mobile .icon-circle {
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    filter: drop-shadow(0 1px 4px rgba(0,0,0,0.5));
+  }
+  .trust-row-mobile .icon-circle img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .trust-row-mobile span:last-child {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 9.5px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ivory);
+    opacity: 0.96;
+    line-height: 1.4;
+    max-width: 100%;
+    white-space: normal;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.55);
+  }
   .scroll-cue { display: none; }
   .value-grid { grid-template-columns: 1fr; }
   .stat-row { gap: 26px; }
