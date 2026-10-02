@@ -708,14 +708,14 @@ section { position: relative; }
 .definition-card-body { opacity: 0.85; margin: 0; }
 .nutrient-note strong { color: var(--terracotta-dark); font-weight: 700; }
 
-/* A small note card that overlaps the bottom-right corner of a .split-media
+/* A small note card that overlaps the bottom-left corner of a .split-media
    photo, instead of taking a full-width block of its own. */
 .note-card {
   position: absolute;
-  right: -22px;
+  left: -22px;
   bottom: -22px;
   z-index: 2;
-  max-width: 250px;
+  max-width: 230px;
   background: #f8ece2;
   color: var(--cacao);
   border: 1.5px solid var(--terracotta);
