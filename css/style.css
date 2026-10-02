@@ -196,10 +196,20 @@ p { margin: 0 0 1em; }
 .brand-word span { display: block; font-size: 10px; letter-spacing: 0.3em; color: #cbb190; font-family: var(--font-body); margin-top: 2px; }
 
 /* Homepage only: a big logo floats over the hero photo, starting large on
-   load and shrinking to a small permanent mark as you scroll (scale
-   driven by --hero-logo-scale, set in main.js; see .hero-logo-big
-   below). The small corner mark is unused on this page. */
-body.has-hero .site-header .brand { display: none; }
+   load and shrinking out of view as you scroll (scale/opacity driven by
+   --hero-logo-scale/--hero-logo-opacity, set in main.js; see
+   .hero-logo-big below). The small header corner mark stays hidden while
+   that floating logo is still visible, then fades in once scrolled past
+   it, so the header is never left without any mark at all. */
+body.has-hero .site-header .brand {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+body.has-hero.is-scrolled .site-header .brand {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 .main-nav { display: flex; flex: 1 1 auto; min-width: 0; justify-content: center; }
 .main-nav ul {
@@ -1066,7 +1076,7 @@ section { position: relative; }
   .footer-grid { grid-template-columns: 1fr; }
   .btn-row { flex-direction: column; align-items: stretch; }
   .btn-row .btn { justify-content: center; white-space: normal; text-align: center; word-break: break-word; }
-  .hero-logo-big { width: 110px; top: 22px; }
+  .hero-logo-big { width: 110px; top: 86px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
