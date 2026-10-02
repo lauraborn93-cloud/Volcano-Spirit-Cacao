@@ -51,6 +51,14 @@
   .product-grid { grid-template-columns: 1fr; }
 }
 
+/* Home page shop preview: a subtle studio-style grade on the product
+   photos (lifted contrast, a touch more saturation and warmth) so they
+   read as considered product shots rather than flat snapshots. */
+.home-shop .product-card img {
+  filter: contrast(1.08) saturate(1.12) brightness(1.03) sepia(0.04);
+  box-shadow: 0 14px 30px rgba(61,39,24,0.16);
+}
+
 /* ---------- Product add-to-cart block ---------- */
 .buy-box {
   display: flex;

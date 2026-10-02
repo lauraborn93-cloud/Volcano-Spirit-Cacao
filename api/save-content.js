@@ -8,11 +8,11 @@ const BRANCH = "main";
 // Only these files can ever be written to -- prevents the editor from being
 // used to touch anything outside the known set of site pages.
 const ALLOWED_FILES = new Set([
-  "index.html", "about.html", "spirit-of-cacao.html", "shop.html", "recipes.html",
+  "index.html", "about.html", "spirit-of-cacao.html", "shop.html", "recipes.html", "process.html",
   "blog.html", "blog-what-is-artificial-chocolate.html", "blog-what-is-ceremonial-cacao.html",
   "contact.html", "cart.html", "checkout.html", "order-received.html", "wholesale.html",
   "legal/terms.html", "legal/privacy-policy.html", "legal/cookie-policy.html", "legal/shipping-returns.html",
-  "de/index.html", "de/about.html", "de/spirit-of-cacao.html", "de/shop.html", "de/recipes.html",
+  "de/index.html", "de/about.html", "de/spirit-of-cacao.html", "de/shop.html", "de/recipes.html", "de/process.html",
   "de/blog.html", "de/blog-what-is-artificial-chocolate.html", "de/blog-what-is-ceremonial-cacao.html",
   "de/contact.html", "de/cart.html", "de/checkout.html", "de/order-received.html", "de/wholesale.html",
   "de/legal/terms.html", "de/legal/privacy-policy.html", "de/legal/cookie-policy.html", "de/legal/shipping-returns.html",

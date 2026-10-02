@@ -399,8 +399,9 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
   margin-bottom: 20px;
 }
 /* Home page only: a mobile-only trust row overlaid on the hero photo
-   itself (ivory icons/text), shown instead of the light .trust-band used
-   on wider screens -- see the max-width:640px block below. */
+   itself (ivory icons/text) -- see the max-width:640px block below. On
+   desktop the same six items run inline inside the hero as .trust-strip
+   instead (defined further down, near .btn-row). */
 .trust-row-mobile { display: none; }
 .trust-row {
   position: absolute;
@@ -470,34 +471,60 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
 @media (max-width: 900px) {
   .trust-row li:not(:first-child)::before { display: none; }
 }
-/* A standalone light strip for the trust row where it isn't floating over a
-   hero photo (e.g. just below the home page hero) -- same row, just not
-   absolutely positioned, with a light background and dark-tinted icons/text
-   instead of the ivory-on-photo treatment. */
-.trust-band {
-  background: var(--parchment-dim);
-  padding: 26px 0;
-  border-top: 1px solid rgba(168,90,52,0.15);
-  border-bottom: 1px solid rgba(168,90,52,0.15);
+/* Home page, desktop only: the six trust signals run inline inside the
+   hero itself, right under the CTA buttons, instead of as a separate
+   section below it -- a tidy two-column list, small icons, thin dividers
+   between columns. A fixed two-column grid (rather than flex-wrap) keeps
+   this predictable at every desktop width, since hero-content's own
+   640px max-width is too narrow to fit all six in a single line.
+   Hidden on mobile (see max-width:640px below), where the overlay-on-photo
+   .trust-row-mobile is used instead. */
+.trust-strip {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  column-gap: 26px;
+  row-gap: 12px;
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
 }
-.trust-band .trust-row {
-  position: static;
-  border-top: none;
-  padding: 0 32px;
+.trust-strip li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  position: relative;
 }
-.trust-band .trust-row li:not(:first-child)::before {
-  background: rgba(61,39,24,0.16);
+.trust-strip li:nth-child(even)::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  top: 2px;
+  bottom: 2px;
+  width: 1px;
+  background: rgba(241,227,201,0.3);
 }
-.trust-band .icon-circle {
-  filter: none;
+.trust-strip img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+  opacity: 0.92;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.45));
 }
-.trust-band .trust-row span:last-child {
-  color: var(--cacao);
-  opacity: 0.82;
-  text-shadow: none;
+.trust-strip span {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  opacity: 0.85;
+  white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
-@media (max-width: 640px) {
-  .trust-band { padding: 16px 0; }
+@media (max-width: 860px) {
+  .trust-strip { column-gap: 16px; }
+  .trust-strip li:nth-child(even)::before { left: -9px; }
 }
 /* ---------- Sections ---------- */
 section { position: relative; }
@@ -1081,9 +1108,10 @@ section { position: relative; }
   .trust-row li { padding: 0 12px; scroll-snap-align: start; }
   .trust-row .icon-circle { width: 54px; height: 54px; }
   .trust-row span:last-child { font-size: 9.5px; max-width: 100%; }
-  /* Home page only: swap the light .trust-band for icons overlaid
-     directly on the hero photo (ivory, matching the original design). */
-  .trust-band { display: none; }
+  /* Home page only: the desktop inline .trust-strip is swapped for icons
+     overlaid directly on the hero photo (ivory, matching the original
+     design) via .trust-row-mobile below. */
+  .trust-strip { display: none; }
   .trust-row-mobile {
     display: flex;
     position: absolute;
