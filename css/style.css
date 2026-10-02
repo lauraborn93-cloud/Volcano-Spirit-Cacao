@@ -518,8 +518,8 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
   flex-shrink: 0;
 }
 .trust-strip img {
-  width: 28px;
-  height: 28px;
+  width: 58px;
+  height: 58px;
   object-fit: contain;
   opacity: 0.95;
 }
@@ -540,7 +540,7 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
 }
 @media (max-width: 900px) {
   .trust-strip .icon-chip { width: 44px; height: 44px; }
-  .trust-strip img { width: 21px; height: 21px; }
+  .trust-strip img { width: 44px; height: 44px; }
   .trust-strip span { font-size: 9px; }
 }
 /* ---------- Sections ---------- */
