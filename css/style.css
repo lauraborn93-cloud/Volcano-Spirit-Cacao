@@ -327,9 +327,10 @@ body.has-hero.is-scrolled .site-header .brand {
   content: "";
   position: absolute;
   inset: 0;
-  /* Overlay for text legibility up top, tapering to nothing by the
-     trust-row band at the bottom so that strip shows the photo untinted. */
-  background: linear-gradient(180deg, rgba(74,42,20,0.64) 0%, rgba(74,42,20,0.42) 34%, rgba(74,42,20,0.19) 56%, rgba(74,42,20,0) 76%);
+  /* Overlay for text legibility up top, easing off over the photo's
+     middle, then darkening again toward the bottom so the trust-strip
+     icons/labels stay readable against whatever's in the photo there. */
+  background: linear-gradient(180deg, rgba(74,42,20,0.64) 0%, rgba(74,42,20,0.42) 34%, rgba(74,42,20,0.2) 54%, rgba(74,42,20,0.38) 78%, rgba(74,42,20,0.62) 100%);
 }
 /* The logo floats centered over the hero photo, pinned to the viewport
    (like the header) so it stays put and visible through scroll rather
