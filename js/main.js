@@ -25,9 +25,18 @@
     // completely so it's gone well before you're past the hero.
     var progress = Math.min(window.scrollY / LOGO_SHRINK_DISTANCE, 1);
     var isMobile = window.innerWidth <= 640;
-    var startScale = isMobile ? 1 : 1.35;
-    var endScale = isMobile ? 0.45 : 0.4;
-    document.documentElement.style.setProperty("--hero-logo-scale", String(startScale - progress * (startScale - endScale)));
+    // On mobile, only animate opacity, not scale. A continuously-updated
+    // transform on a position:fixed element is a known trigger for iOS
+    // Safari compositing glitches right as a scroll gesture starts
+    // (perceived as the hero photo "zooming"); a static scale removes that
+    // risk entirely while opacity is cheap to animate every frame.
+    if (isMobile) {
+      document.documentElement.style.setProperty("--hero-logo-scale", "1");
+    } else {
+      var startScale = 1.35;
+      var endScale = 0.4;
+      document.documentElement.style.setProperty("--hero-logo-scale", String(startScale - progress * (startScale - endScale)));
+    }
     document.documentElement.style.setProperty("--hero-logo-opacity", String(1 - progress));
   }
   // Throttle via rAF so this runs at most once per frame instead of once
