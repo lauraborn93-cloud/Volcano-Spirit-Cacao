@@ -145,4 +145,44 @@
     }
     setTimeout(tick, PAUSE_MS);
   });
+
+  // ---------- Image lightbox ----------
+  var lightboxImgs = document.querySelectorAll(".img-lightbox");
+  if (lightboxImgs.length) {
+    var activeOverlay = null;
+    var onLightboxKeydown = function (e) {
+      if (e.key === "Escape") closeLightbox();
+    };
+    var closeLightbox = function () {
+      if (!activeOverlay) return;
+      activeOverlay.remove();
+      activeOverlay = null;
+      document.removeEventListener("keydown", onLightboxKeydown);
+    };
+    var openLightbox = function (src, alt) {
+      var overlay = document.createElement("div");
+      overlay.className = "lightbox-overlay";
+      var closeBtn = document.createElement("button");
+      closeBtn.type = "button";
+      closeBtn.className = "lightbox-close";
+      closeBtn.setAttribute("aria-label", "Close");
+      closeBtn.textContent = "×";
+      var img = document.createElement("img");
+      img.src = src;
+      img.alt = alt || "";
+      overlay.appendChild(closeBtn);
+      overlay.appendChild(img);
+      overlay.addEventListener("click", function (e) {
+        if (e.target === overlay || e.target === closeBtn) closeLightbox();
+      });
+      document.body.appendChild(overlay);
+      activeOverlay = overlay;
+      document.addEventListener("keydown", onLightboxKeydown);
+    };
+    lightboxImgs.forEach(function (img) {
+      img.addEventListener("click", function () {
+        openLightbox(img.currentSrc || img.src, img.alt);
+      });
+    });
+  }
 })();

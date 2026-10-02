@@ -770,13 +770,18 @@ section { position: relative; }
   border-radius: 50%;
   background: #f8ece2;
   border: 1.5px solid var(--terracotta);
-  color: var(--terracotta-dark);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 13px;
+}
+.compound-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--terracotta-dark);
+  fill: none;
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .compound-item h4 { font-size: 1rem; margin: 2px 0 4px; color: var(--cacao); }
 .compound-item p { font-size: 0.86rem; opacity: 0.8; margin: 0; line-height: 1.5; }
@@ -1064,3 +1069,41 @@ section { position: relative; }
   .hero-logo-big,
   body.has-hero .site-header .brand { transition: none; }
 }
+
+/* ---------- Image lightbox (click a flagged photo to view it larger) ---------- */
+.img-lightbox { cursor: zoom-in; }
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5500;
+  background: rgba(27,23,18,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+.lightbox-overlay img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  cursor: default;
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.22); }
