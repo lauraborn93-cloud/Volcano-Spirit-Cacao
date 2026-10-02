@@ -1108,9 +1108,6 @@ section { position: relative; }
   }
   .scan-hl { font-weight: 700; color: var(--terracotta); }
   .on-dark .scan-hl, .cta-band .scan-hl, .photo-cta .scan-hl { color: #e8b98f; }
-  /* Home page only: the "Get in Touch" band is skipped on mobile, keeping
-     the page shorter -- the footer and header still link to Contact. */
-  #contact.photo-cta { display: none; }
   .trust-row {
     flex-wrap: nowrap;
     justify-content: flex-start;

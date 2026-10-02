@@ -51,61 +51,6 @@
   .product-grid { grid-template-columns: 1fr; }
 }
 
-/* Home page shop preview: a lighter band than the parchment sections
-   around it, and compact horizontal rows (thumbnail + details side by
-   side) instead of the shop page's tall stacked cards, so the whole
-   section fits in view without scrolling. A subtle studio-style grade
-   on the product photos (lifted contrast, a touch more saturation and
-   warmth) makes them read as considered product shots. */
-.home-shop { background: #fdfaf4; }
-.home-shop .product-card img {
-  filter: contrast(1.08) saturate(1.12) brightness(1.03) sepia(0.04);
-  box-shadow: 0 8px 18px rgba(61,39,24,0.16);
-}
-.home-shop .product-grid {
-  grid-template-columns: 1fr;
-  max-width: 560px;
-  margin-left: auto;
-  margin-right: auto;
-  gap: 12px;
-}
-.home-shop .product-card {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 12px;
-  text-align: left;
-}
-.home-shop .product-card img {
-  width: 84px;
-  height: 84px;
-  aspect-ratio: 1 / 1;
-  margin-bottom: 0;
-  flex-shrink: 0;
-}
-.home-shop .product-card h3 { font-size: 0.95rem; margin: 0 0 6px; }
-.home-shop .price-tag { font-size: 1.1rem; }
-.home-shop .qty-stepper button { width: 28px; height: 32px; font-size: 14px; }
-.home-shop .qty-stepper input { width: 30px; height: 32px; font-size: 13px; }
-.home-shop .product-card [data-buy-box] {
-  flex: 1;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 8px 14px;
-}
-.home-shop .product-card [data-buy-box] > div:first-child { width: 100%; }
-.home-shop .qty-stepper { margin: 0; }
-.home-shop .product-card .btn { width: auto; padding: 8px 18px; font-size: 0.8rem; }
-.home-shop.section-tight { padding: 40px 0; }
-.home-shop .section-head { margin-bottom: 22px; }
-.home-shop .section-head h2 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); }
-.home-shop .section-head p { font-size: 0.92rem; }
-@media (max-width: 640px) {
-  .home-shop .product-card { flex-wrap: wrap; }
-}
-
 /* ---------- Product add-to-cart block ---------- */
 .buy-box {
   display: flex;
@@ -386,7 +331,6 @@ label input[type="checkbox"] { accent-color: var(--terracotta); }
   inset: 0;
   background: linear-gradient(180deg, rgba(61,39,24,0.55), rgba(61,39,24,0.62));
 }
-#contact.photo-cta::before { background: rgba(43,27,16,0.45); }
 @media (max-width: 800px) {
   .photo-cta { background-attachment: scroll; }
 }
