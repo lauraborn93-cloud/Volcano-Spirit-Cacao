@@ -128,7 +128,7 @@
 .page-hero.has-photo {
   position: relative;
   overflow: hidden;
-  min-height: 60vh;
+  min-height: 60svh;
   display: flex;
   align-items: flex-end;
   padding: 150px 0 54px;
@@ -157,13 +157,13 @@
 .page-hero.has-photo h1 { color: var(--ivory); }
 .page-hero.has-photo p { color: var(--ivory); opacity: 0.92; }
 @media (max-width: 640px) {
-  .page-hero.has-photo { min-height: 46vh; padding: 128px 0 40px; }
+  .page-hero.has-photo { min-height: 46svh; padding: 128px 0 40px; }
 }
 
 /* Taller hero variant, for pages that want more room for the photo */
-.page-hero.has-photo.is-tall { min-height: 82vh; }
+.page-hero.has-photo.is-tall { min-height: 82svh; }
 @media (max-width: 640px) {
-  .page-hero.has-photo.is-tall { min-height: 62vh; }
+  .page-hero.has-photo.is-tall { min-height: 62svh; }
 }
 
 /* Plain photo hero (no trust-row): fully centered rather than the
