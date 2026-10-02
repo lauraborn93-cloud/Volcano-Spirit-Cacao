@@ -471,19 +471,18 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
 @media (max-width: 900px) {
   .trust-row li:not(:first-child)::before { display: none; }
 }
-/* Home page, desktop only: the six trust signals run inline inside the
-   hero itself, right under the CTA buttons, instead of as a separate
-   section below it -- a tidy two-column list, small icons, thin dividers
-   between columns. A fixed two-column grid (rather than flex-wrap) keeps
-   this predictable at every desktop width, since hero-content's own
-   640px max-width is too narrow to fit all six in a single line.
-   Hidden on mobile (see max-width:640px below), where the overlay-on-photo
-   .trust-row-mobile is used instead. */
+/* Home page, desktop only: a handful of trust signals run inline inside
+   the hero itself, right under the CTA buttons, instead of as a separate
+   section below it -- a single row, each icon in a small bordered circle
+   (same quiet-shape language as .feature-chip / .compound-icon
+   elsewhere), with thin dividers between items. Markup only includes as
+   many items as comfortably fit a single line at common desktop widths --
+   see index.html / de/index.html. Hidden on mobile (see max-width:640px
+   below), where the overlay-on-photo .trust-row-mobile is used instead. */
 .trust-strip {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  column-gap: 26px;
-  row-gap: 12px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
   list-style: none;
   margin: 32px 0 0;
   padding: 0;
@@ -491,25 +490,36 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
 .trust-strip li {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
+  padding: 0 16px;
   position: relative;
 }
-.trust-strip li:nth-child(even)::before {
+.trust-strip li:first-child { padding-left: 0; }
+.trust-strip li:not(:first-child)::before {
   content: "";
   position: absolute;
-  left: -14px;
-  top: 2px;
-  bottom: 2px;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
   width: 1px;
   background: rgba(241,227,201,0.3);
 }
-.trust-strip img {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
+.trust-strip .icon-chip {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(241,227,201,0.45);
+  background: rgba(241,227,201,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  opacity: 0.92;
-  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.45));
+}
+.trust-strip img {
+  width: 19px;
+  height: 19px;
+  object-fit: contain;
+  opacity: 0.95;
 }
 .trust-strip span {
   font-family: var(--font-body);
@@ -521,10 +531,6 @@ body.is-scrolled .hero-logo-big { pointer-events: none; }
   opacity: 0.85;
   white-space: nowrap;
   text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-}
-@media (max-width: 860px) {
-  .trust-strip { column-gap: 16px; }
-  .trust-strip li:nth-child(even)::before { left: -9px; }
 }
 /* ---------- Sections ---------- */
 section { position: relative; }
