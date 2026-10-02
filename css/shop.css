@@ -128,7 +128,10 @@
 .page-hero.has-photo {
   position: relative;
   overflow: hidden;
-  min-height: 60svh;
+  /* lvh, not svh -- see the matching comment on .hero in style.css: a
+     static viewport unit avoids the scroll-start image "jump" that
+     svh/dvh can cause together with background-size:cover. */
+  min-height: 60lvh;
   display: flex;
   align-items: flex-end;
   padding: 150px 0 54px;
@@ -157,13 +160,13 @@
 .page-hero.has-photo h1 { color: var(--ivory); }
 .page-hero.has-photo p { color: var(--ivory); opacity: 0.92; }
 @media (max-width: 640px) {
-  .page-hero.has-photo { min-height: 46svh; padding: 128px 0 40px; }
+  .page-hero.has-photo { min-height: 46lvh; padding: 128px 0 40px; }
 }
 
 /* Taller hero variant, for pages that want more room for the photo */
-.page-hero.has-photo.is-tall { min-height: 82svh; }
+.page-hero.has-photo.is-tall { min-height: 82lvh; }
 @media (max-width: 640px) {
-  .page-hero.has-photo.is-tall { min-height: 62svh; }
+  .page-hero.has-photo.is-tall { min-height: 62lvh; }
 }
 
 /* Plain photo hero (no trust-row): fully centered rather than the
