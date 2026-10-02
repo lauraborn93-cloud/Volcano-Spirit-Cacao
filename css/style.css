@@ -663,7 +663,7 @@ section { position: relative; }
   line-height: 1.4;
 }
 .value-card .recipe-ingredients li::before,
-.recipe-plain .recipe-ingredients li::before { content: "◆"; color: var(--terracotta); font-size: 8px; margin-top: 5px; flex-shrink: 0; }
+.recipe-plain .recipe-ingredients li::before { content: "♥"; color: var(--terracotta); font-size: 13px; line-height: 1; margin-top: 2px; flex-shrink: 0; }
 .value-card .add-note,
 .recipe-plain .add-note { font-size: 0.93rem; opacity: 0.85; }
 .recipe-plain { max-width: 540px; margin: 0 auto; }
@@ -911,7 +911,7 @@ section { position: relative; }
 .product .split-media img { aspect-ratio: 3/4; object-fit: cover; }
 .product-list { list-style: none; padding: 0; margin: 26px 0 34px; display: grid; gap: 12px; }
 .product-list li { display: flex; gap: 12px; font-size: 0.98rem; }
-.product-list li::before { content: "◆"; color: var(--terracotta); font-size: 10px; margin-top: 6px; }
+.product-list li::before { content: "♥"; color: var(--terracotta); font-size: 15px; line-height: 1; margin-top: 3px; }
 
 /* ---------- CTA band ---------- */
 .cta-band {
@@ -1010,7 +1010,7 @@ section { position: relative; }
        where its (higher z-index) elements intercept the tap instead of
        the link, which is why the first item was unclickable. */
     justify-content: flex-start;
-    padding: 112px 28px 40px;
+    padding: 220px 28px 40px;
     overflow-y: auto;
   }
   .mobile-lang-switch {
@@ -1054,7 +1054,11 @@ section { position: relative; }
   .section { padding: 66px 0; }
   .manifesto, .gallery-band, .cta-band { padding: 66px 0; }
   .hero-content { padding: 230px 20px 40px; max-width: 100%; }
-  .hero h1 em { font-size: 0.6em; }
+  .hero h1 em {
+    font-size: 0.78em;
+    color: var(--ivory);
+    text-shadow: 0 0 14px rgba(241,227,201,0.85), 0 0 34px rgba(241,227,201,0.5);
+  }
   .scan-hl { font-weight: 700; color: var(--terracotta); }
   .on-dark .scan-hl, .cta-band .scan-hl, .photo-cta .scan-hl { color: #e8b98f; }
   .trust-row {
