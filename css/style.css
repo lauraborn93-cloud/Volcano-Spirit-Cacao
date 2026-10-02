@@ -708,6 +708,28 @@ section { position: relative; }
 .definition-card-body { opacity: 0.85; margin: 0; }
 .nutrient-note strong { color: var(--terracotta-dark); font-weight: 700; }
 
+/* A small note card that overlaps the bottom-right corner of a .split-media
+   photo, instead of taking a full-width block of its own. */
+.note-card {
+  position: absolute;
+  right: -22px;
+  bottom: -22px;
+  z-index: 2;
+  max-width: 250px;
+  background: #f8ece2;
+  color: var(--cacao);
+  border: 1.5px solid var(--terracotta);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-soft);
+}
+.note-card .eyebrow { margin-bottom: 4px; font-size: 10px; }
+.note-card h3 { font-family: var(--font-display); font-size: 1.15rem; margin: 6px 0 8px; line-height: 1.15; }
+.note-card p { font-size: 0.84rem; line-height: 1.5; opacity: 0.85; margin: 0; }
+@media (max-width: 900px) {
+  .note-card { position: static; max-width: 100%; margin-top: 18px; }
+}
+
 /* ---------- Nutrient figure (annotated photo, no tables) ---------- */
 .nutrient-figure {
   position: relative;
