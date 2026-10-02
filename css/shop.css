@@ -41,7 +41,16 @@
   padding: 26px;
   text-align: center;
 }
-.product-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); margin-bottom: 18px; }
+.product-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  /* A subtle studio-style grade (lifted contrast, a touch more
+     saturation and warmth) so these read as considered product shots
+     rather than flat snapshots. */
+  filter: contrast(1.08) saturate(1.12) brightness(1.03) sepia(0.04);
+}
 .product-card h3 { font-size: 1.15rem; margin-bottom: 16px; }
 .product-card h3 small { opacity: 0.65; font-size: 0.8em; font-weight: 400; }
 .product-card [data-buy-box] { display: flex; flex-direction: column; align-items: center; gap: 12px; }
@@ -50,6 +59,37 @@
 @media (max-width: 640px) {
   .product-grid { grid-template-columns: 1fr; }
 }
+
+/* ---------- Product image slider (2-3 photos per product card) ---------- */
+.product-slider { position: relative; margin-bottom: 18px; }
+.product-slider-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  border-radius: var(--radius);
+}
+.product-slider-track::-webkit-scrollbar { display: none; }
+.product-slider-track .img-lightbox-wrap { flex: 0 0 100%; scroll-snap-align: start; }
+.product-slider-track img { margin-bottom: 0; }
+.product-slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+.product-slider-dots button {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(61,39,24,0.25);
+  cursor: pointer;
+  transition: width 0.2s ease, border-radius 0.2s ease, background 0.2s ease;
+}
+.product-slider-dots button.is-active { width: 16px; border-radius: 3px; background: var(--terracotta); }
 
 /* ---------- Product add-to-cart block ---------- */
 .buy-box {

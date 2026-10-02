@@ -194,4 +194,42 @@
       });
     });
   }
+
+  // ---------- Product image sliders ----------
+  // A native horizontally-scrolling, scroll-snapped track (swipe/scroll
+  // to change slides); this script just keeps the dot indicators in sync
+  // and lets clicking a dot scroll to that slide.
+  document.querySelectorAll(".product-slider[data-slider]").forEach(function (slider) {
+    var track = slider.querySelector(".product-slider-track");
+    var dots = slider.querySelectorAll(".product-slider-dots button");
+    if (!track || !dots.length) return;
+
+    function setActive(index) {
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle("is-active", i === index);
+      });
+    }
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener("click", function () {
+        var slide = track.children[i];
+        if (slide) track.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
+      });
+    });
+
+    var tracking = false;
+    track.addEventListener(
+      "scroll",
+      function () {
+        if (tracking) return;
+        tracking = true;
+        window.requestAnimationFrame(function () {
+          var index = Math.round(track.scrollLeft / track.clientWidth);
+          setActive(index);
+          tracking = false;
+        });
+      },
+      { passive: true }
+    );
+  });
 })();
