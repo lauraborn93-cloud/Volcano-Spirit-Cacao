@@ -572,8 +572,8 @@ section { position: relative; }
 .stat-row .stat b { display: block; font-family: var(--font-display); font-size: 2.1rem; color: var(--terracotta-dark); }
 .stat-row .stat span { display: block; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.7; }
 @media (max-width: 480px) {
-  .stat-row { flex-wrap: wrap; }
-  .stat-row .stat { flex: 1 1 100%; }
+  .stat-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 16px; }
+  .stat-row .stat { flex: unset; }
   /* Brand wordmark is too wide to sit alongside the cart icon and menu
      button on very narrow phones; drop to just the logo mark so the
      header controls stay fully reachable. */
@@ -1007,19 +1007,23 @@ section { position: relative; }
     display: inline-flex;
     align-self: flex-start;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 30px;
-    padding: 8px 14px;
+    gap: 6px;
+    margin-bottom: 26px;
+    padding: 6px 12px;
     border: 1px solid rgba(241,227,201,0.4);
     border-radius: 999px;
     color: var(--ivory);
     font-family: var(--font-nav);
-    font-size: 13px;
+    font-size: 12px;
     letter-spacing: 0.03em;
   }
-  .mobile-lang-switch svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; }
-  .mobile-nav ul { list-style: none; padding: 0; margin: 0 0 30px; display: grid; gap: 22px; }
-  .mobile-nav a { color: var(--ivory); font-family: var(--font-nav); font-style: normal; font-weight: 500; font-size: 1.9rem; }
+  .mobile-lang-switch svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+  .mobile-nav ul { list-style: none; padding: 0; margin: 0 0 26px; display: grid; gap: 16px; }
+  /* Scoped to the list specifically (not ".mobile-nav a" generally) so it
+     doesn't also override .mobile-lang-switch's own, smaller font-size --
+     it's a sibling anchor directly inside .mobile-nav, and a bare element
+     descendant selector would otherwise out-specificity that single class. */
+  .mobile-nav ul a { color: var(--ivory); font-family: var(--font-nav); font-style: normal; font-weight: 500; font-size: 1.4rem; }
   .mobile-nav .btn {
     align-self: stretch;
     justify-content: center;
