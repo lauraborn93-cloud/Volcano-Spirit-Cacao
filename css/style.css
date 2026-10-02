@@ -1053,7 +1053,7 @@ section { position: relative; }
 @media (max-width: 640px) {
   .section { padding: 66px 0; }
   .manifesto, .gallery-band, .cta-band { padding: 66px 0; }
-  .hero-content { padding: 128px 20px 40px; max-width: 100%; }
+  .hero-content { padding: 230px 20px 40px; max-width: 100%; }
   .scan-hl { font-weight: 700; color: var(--terracotta); }
   .on-dark .scan-hl, .cta-band .scan-hl, .photo-cta .scan-hl, .hero .scan-hl { color: #e8b98f; }
   .trust-row {
