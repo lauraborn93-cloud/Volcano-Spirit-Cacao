@@ -16,6 +16,10 @@ const ALLOWED_FILES = new Set([
   "de/blog.html", "de/blog-what-is-artificial-chocolate.html", "de/blog-what-is-ceremonial-cacao.html",
   "de/contact.html", "de/cart.html", "de/checkout.html", "de/order-received.html", "de/wholesale.html",
   "de/legal/terms.html", "de/legal/privacy-policy.html", "de/legal/cookie-policy.html", "de/legal/shipping-returns.html",
+  "es/index.html", "es/about.html", "es/spirit-of-cacao.html", "es/shop.html", "es/recipes.html", "es/process.html",
+  "es/blog.html", "es/blog-what-is-artificial-chocolate.html", "es/blog-what-is-ceremonial-cacao.html",
+  "es/contact.html", "es/cart.html", "es/checkout.html", "es/order-received.html", "es/wholesale.html",
+  "es/legal/terms.html", "es/legal/privacy-policy.html", "es/legal/cookie-policy.html", "es/legal/shipping-returns.html",
 ]);
 
 function safeEqual(a, b) {
