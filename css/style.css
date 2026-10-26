@@ -212,17 +212,33 @@ body.has-hero.is-scrolled .site-header .brand {
 }
 
 .main-nav { display: flex; flex: 1 1 auto; min-width: 0; justify-content: center; }
+@media (max-width: 1480px) {
+  /* German/Spanish nav labels run meaningfully longer than English, and
+     with the three-language dropdown now a little wider than the old
+     two-letter pill it replaced, the full nav + wordmark + dropdown no
+     longer all fit on one line together above the 860px mobile-nav
+     breakpoint. Drop the header wordmark first (logo mark alone still
+     reads as the brand) -- same pattern already used at very narrow
+     phone widths below, just a second, higher threshold for this. */
+  .brand-word { display: none; }
+}
 .main-nav ul {
   list-style: none;
   display: flex;
-  gap: 30px;
+  /* clamp (not a flat 30px): German/Spanish nav labels run noticeably
+     longer than English, and with the language dropdown now a little
+     wider than the old two-letter pill it replaced, a fixed 30px gap
+     crowded the last nav item against it (DE/ES only) well above the
+     860px mobile-nav breakpoint -- this eases both gap and font-size
+     down smoothly as the viewport narrows instead of overflowing. */
+  gap: clamp(14px, 2.2vw, 30px);
   margin: 0;
   padding: 0;
 }
 .main-nav a {
   color: var(--ivory);
   font-family: var(--font-nav);
-  font-size: 16.5px;
+  font-size: clamp(14px, 1.25vw, 16.5px);
   font-style: normal;
   font-weight: 500;
   letter-spacing: 0.01em;
@@ -243,7 +259,7 @@ body.has-hero.is-scrolled .site-header .brand {
 }
 .main-nav a:hover::after { transform: scaleX(1); }
 
-.header-cta { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+.header-cta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 .header-cta .btn { padding: 11px 22px; }
 .header-cta .btn-outline { color: var(--ivory); border-color: var(--ivory); }
 .header-cta .btn-outline:hover { background: var(--ivory); color: var(--cacao); }
@@ -1078,7 +1094,12 @@ section { position: relative; }
   .photo-strip img { height: 260px; }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1400px) {
+  /* Raised from 860px: German/Spanish nav labels plus the wider
+     three-language dropdown no longer reliably fit inline with the
+     brand/cart/CTA above ~1400px, so the mobile nav/menu kicks in a
+     lot earlier across all three languages -- see the matching
+     .brand-word note above. */
   .main-nav, .header-cta .btn, .header-cta .lang-dropdown { display: none; }
   .nav-toggle { display: block; }
   .site-header.is-scrolled {
