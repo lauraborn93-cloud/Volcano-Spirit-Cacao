@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="/css/fonts.css" />
 <link rel="alternate" hreflang="en" href="https://volcanospiritcacao.com/blog.html" />
 <link rel="alternate" hreflang="de" href="https://volcanospiritcacao.com/de/blog.html" />
+<link rel="alternate" hreflang="es" href="https://volcanospiritcacao.com/es/blog.html" />
 <link rel="alternate" hreflang="x-default" href="https://volcanospiritcacao.com/blog.html" />
 <link rel="stylesheet" href="/css/style.css" />
 <link rel="stylesheet" href="/css/shop.css" />
@@ -44,7 +45,17 @@
     </nav>
 
     <div class="header-cta">
-      <a class="lang-switch" href="../blog.html" aria-label="Auf Englisch anzeigen">EN</a>
+      <div class="lang-dropdown" data-lang-dropdown>
+        <button type="button" class="lang-dropdown-trigger" aria-haspopup="true" aria-expanded="false" aria-label="Sprache ändern">
+          DE
+          <svg class="lang-dropdown-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <ul class="lang-dropdown-menu">
+          <li><a href="/blog.html" hreflang="en">English</a></li>
+          <li><a href="/de/blog.html" hreflang="de" class="is-active">Deutsch</a></li>
+          <li><a href="/es/blog.html" hreflang="es">Español</a></li>
+        </ul>
+      </div>
       <a class="cart-link" href="cart.html" aria-label="Warenkorb ansehen">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 8h12l-1.2 10.2a2 2 0 01-2 1.8H9.2a2 2 0 01-2-1.8L6 8z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 8V6a3 3 0 016 0v2"/></svg>
         <span class="cart-badge" data-count="0">0</span>
@@ -57,10 +68,11 @@
   </div>
 </header>
 <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile">
-  <a class="mobile-lang-switch" href="../blog.html" aria-label="Auf Englisch anzeigen">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.5 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.5-4-9s1.5-6.5 4-9z"/></svg>
-    <span>EN</span>
-  </a>
+  <div class="mobile-lang-row">
+    <a href="/blog.html" hreflang="en">EN</a>
+    <a href="/de/blog.html" hreflang="de" class="is-active">DE</a>
+    <a href="/es/blog.html" hreflang="es">ES</a>
+  </div>
   <ul>
     <li><a href="spirit-of-cacao.html">Warum zeremonieller Kakao</a></li>
     <li><a href="about.html">Über uns</a></li>

@@ -232,4 +232,25 @@
       { passive: true }
     );
   });
+
+  // ---------- Language dropdown ----------
+  var langDropdown = document.querySelector(".lang-dropdown");
+  if (langDropdown) {
+    var langTrigger = langDropdown.querySelector(".lang-dropdown-trigger");
+    var closeLangDropdown = function () {
+      langDropdown.classList.remove("is-open");
+      langTrigger.setAttribute("aria-expanded", "false");
+    };
+    langTrigger.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var isOpen = langDropdown.classList.toggle("is-open");
+      langTrigger.setAttribute("aria-expanded", String(isOpen));
+    });
+    document.addEventListener("click", function (e) {
+      if (!langDropdown.contains(e.target)) closeLangDropdown();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeLangDropdown();
+    });
+  }
 })();

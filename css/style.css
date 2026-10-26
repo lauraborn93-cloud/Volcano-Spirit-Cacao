@@ -248,22 +248,58 @@ body.has-hero.is-scrolled .site-header .brand {
 .header-cta .btn-outline { color: var(--ivory); border-color: var(--ivory); }
 .header-cta .btn-outline:hover { background: var(--ivory); color: var(--cacao); }
 
-.lang-switch {
+/* ---------- Language dropdown (header) ---------- */
+.lang-dropdown { position: relative; }
+.lang-dropdown-trigger {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 6px;
   height: 32px;
   padding: 0 13px;
   border: 1px solid rgba(241,227,201,0.5);
   border-radius: 999px;
+  background: none;
   color: var(--ivory);
   font-family: var(--font-nav);
   font-size: 13px;
   letter-spacing: 0.03em;
   white-space: nowrap;
+  cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
 }
-.lang-switch:hover { background: rgba(241,227,201,0.16); }
+.lang-dropdown-trigger:hover { background: rgba(241,227,201,0.16); }
+.lang-dropdown-chevron { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 2; transition: transform 0.2s ease; }
+.lang-dropdown.is-open .lang-dropdown-chevron { transform: rotate(180deg); }
+.lang-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 128px;
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  background: var(--cacao);
+  border: 1px solid rgba(241,227,201,0.18);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px -12px rgba(0,0,0,0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+  z-index: 200;
+}
+.lang-dropdown.is-open .lang-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.lang-dropdown-menu a {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--ivory);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  opacity: 0.8;
+}
+.lang-dropdown-menu a:hover { background: rgba(241,227,201,0.1); opacity: 1; }
+.lang-dropdown-menu a.is-active { opacity: 1; color: var(--blush); font-weight: 600; background: rgba(241,227,201,0.1); }
 
 .nav-toggle {
   display: none;
@@ -1043,7 +1079,7 @@ section { position: relative; }
 }
 
 @media (max-width: 860px) {
-  .main-nav, .header-cta .btn, .header-cta .lang-switch { display: none; }
+  .main-nav, .header-cta .btn, .header-cta .lang-dropdown { display: none; }
   .nav-toggle { display: block; }
   .site-header.is-scrolled {
     background: rgba(168, 90, 52, 0.55);
@@ -1066,12 +1102,12 @@ section { position: relative; }
     padding: 220px 28px 40px;
     overflow-y: auto;
   }
-  .mobile-lang-switch {
+  .mobile-lang-row { display: flex; align-self: flex-start; gap: 8px; margin-bottom: 26px; }
+  .mobile-lang-row a {
     display: inline-flex;
-    align-self: flex-start;
     align-items: center;
-    gap: 6px;
-    margin-bottom: 26px;
+    justify-content: center;
+    min-width: 44px;
     padding: 6px 12px;
     border: 1px solid rgba(241,227,201,0.4);
     border-radius: 999px;
@@ -1079,14 +1115,16 @@ section { position: relative; }
     font-family: var(--font-nav);
     font-size: 12px;
     letter-spacing: 0.03em;
+    opacity: 0.75;
   }
-  .mobile-lang-switch svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+  .mobile-lang-row a.is-active { opacity: 1; border-color: var(--terracotta); background: rgba(241,227,201,0.12); font-weight: 600; }
   .mobile-nav ul { list-style: none; padding: 0; margin: 0 0 26px; display: grid; gap: 16px; }
   /* Scoped to the list specifically (not ".mobile-nav a" generally) so it
-     doesn't also override .mobile-lang-switch's own, smaller font-size --
-     it's a sibling anchor directly inside .mobile-nav, and a bare element
-     descendant selector would otherwise out-specificity that single class. */
+     doesn't also override .mobile-lang-row's own, smaller font-size --
+     it's a sibling div directly inside .mobile-nav, and a bare element
+     descendant selector would otherwise out-specificity that rule. */
   .mobile-nav ul a { color: var(--ivory); font-family: var(--font-nav); font-style: normal; font-weight: 500; font-size: 1.4rem; }
+  .mobile-nav ul a.is-active { color: var(--terracotta); font-weight: 700; }
   .mobile-nav .btn {
     align-self: stretch;
     justify-content: center;

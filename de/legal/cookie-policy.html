@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="/css/fonts.css" />
 <link rel="alternate" hreflang="en" href="https://volcanospiritcacao.com/legal/cookie-policy.html" />
 <link rel="alternate" hreflang="de" href="https://volcanospiritcacao.com/de/legal/cookie-policy.html" />
+<link rel="alternate" hreflang="es" href="https://volcanospiritcacao.com/es/legal/cookie-policy.html" />
 <link rel="alternate" hreflang="x-default" href="https://volcanospiritcacao.com/legal/cookie-policy.html" />
 <link rel="stylesheet" href="/css/style.css" />
 <link rel="stylesheet" href="/css/shop.css" />
@@ -44,7 +45,17 @@
     </nav>
 
     <div class="header-cta">
-      <a class="lang-switch" href="../../legal/cookie-policy.html" aria-label="Auf Englisch anzeigen">EN</a>
+      <div class="lang-dropdown" data-lang-dropdown>
+        <button type="button" class="lang-dropdown-trigger" aria-haspopup="true" aria-expanded="false" aria-label="Sprache ändern">
+          DE
+          <svg class="lang-dropdown-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <ul class="lang-dropdown-menu">
+          <li><a href="/legal/cookie-policy.html" hreflang="en">English</a></li>
+          <li><a href="/de/legal/cookie-policy.html" hreflang="de" class="is-active">Deutsch</a></li>
+          <li><a href="/es/legal/cookie-policy.html" hreflang="es">Español</a></li>
+        </ul>
+      </div>
       <a class="cart-link" href="../cart.html" aria-label="Warenkorb ansehen">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 8h12l-1.2 10.2a2 2 0 01-2 1.8H9.2a2 2 0 01-2-1.8L6 8z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 8V6a3 3 0 016 0v2"/></svg>
         <span class="cart-badge" data-count="0">0</span>
@@ -65,7 +76,9 @@
     <li><a href="../shop.html">Shop</a></li>
     <li><a href="../wholesale.html">Großhandel</a></li>
     <li><a href="../cart.html">Warenkorb (<span class="cart-badge" data-count="0">0</span>)</a></li>
-    <li><a href="../../legal/cookie-policy.html">English (EN)</a></li>
+    <li><a href="/legal/cookie-policy.html" hreflang="en">English (EN)</a></li>
+    <li><a href="/de/legal/cookie-policy.html" hreflang="de" class="is-active">Deutsch (DE)</a></li>
+    <li><a href="/es/legal/cookie-policy.html" hreflang="es">Español (ES)</a></li>
   </ul>
   <a class="btn btn-primary" href="https://www.instagram.com/volcanospiritcacao/" target="_blank" rel="noopener">Folge @volcanospiritcacao</a>
 </nav>
